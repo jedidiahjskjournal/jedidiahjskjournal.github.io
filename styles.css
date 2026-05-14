@@ -1,57 +1,111 @@
 body {
-    font-family: Georgia, serif;
     margin: 0;
-    background: #f9f9f9;
-    color: #222;
+    font-family: 'Inter', sans-serif;
+    background: #fafafa;
+    color: #1a1a1a;
 }
 
-header {
-    text-align: center;
-    padding: 40px 20px;
+/* NAVBAR */
+.navbar {
     background: #ffffff;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #eee;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
-header h1 {
+.nav-container {
+    max-width: 900px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+}
+
+.logo {
+    font-family: 'Lora', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.nav-links a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #555;
+    font-size: 0.9rem;
+}
+
+/* HERO */
+.hero {
+    text-align: center;
+    padding: 80px 20px 60px;
+    background: #ffffff;
+}
+
+.hero h1 {
+    font-family: 'Lora', serif;
+    font-size: 2.8rem;
     margin: 0;
-    font-size: 2.5rem;
 }
 
-header p {
+.hero p {
+    margin-top: 10px;
     color: #666;
+    font-size: 1rem;
 }
 
+/* ARTICLES */
 main {
-    max-width: 800px;
+    max-width: 720px;
     margin: 40px auto;
     padding: 0 20px;
 }
 
 .article {
-    background: #fff;
-    padding: 30px;
+    background: #ffffff;
+    padding: 40px;
     margin-bottom: 40px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border-radius: 6px;
+    border: 1px solid #eee;
 }
 
 .article h2 {
+    font-family: 'Lora', serif;
     margin-top: 0;
+    font-size: 1.8rem;
 }
 
+.article p {
+    line-height: 1.8;
+    color: #333;
+    margin-bottom: 16px;
+}
+
+/* AUTHOR */
 .author {
-    margin-top: 20px;
-    font-style: italic;
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
 .author img {
-    width: 100px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
-    margin-top: 10px;
 }
 
-footer {
+.author p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* FOOTER */
+.footer {
     text-align: center;
-    padding: 20px;
+    padding: 30px;
     color: #777;
+    font-size: 0.9rem;
 }
