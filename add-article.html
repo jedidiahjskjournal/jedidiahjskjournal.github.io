@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Article | Jedidiah_Jsk Journal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lora:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<header class="navbar">
+  <div class="nav-wrap">
+    <a href="index.html" class="brand">Jedidiah_Jsk Journal</a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="index.html#articles">Articles</a>
+      <a href="index.html#research">Research</a>
+      <a href="index.html#about">About</a>
+    </nav>
+  </div>
+</header>
+
+<main class="article-page">
+
+  <h1 class="article-title">Add New Article</h1>
+  <p class="article-subtitle">Enter article details below. This page will generate the full article HTML for you.</p>
+
+  <label>Article Title</label>
+  <input id="title" placeholder="The Day the Illusion Broke">
+
+  <label>Date</label>
+  <input id="date" placeholder="May 2026">
+
+  <label>Category</label>
+  <input id="category" placeholder="Reflection">
+
+  <label>Subtitle</label>
+  <input id="subtitle" placeholder="A short summary of the article">
+
+  <label>Article Content</label>
+  <textarea id="content" placeholder="Write your article here. Leave one blank line between paragraphs."></textarea>
+
+  <button class="btn" onclick="generateArticle()">Generate Article Code</button>
+
+  <h2>File name</h2>
+  <pre id="filename"></pre>
+
+  <h2>Full Article HTML</h2>
+  <pre id="output"></pre>
+
+</main>
+
+<footer>
+  <p>© 2026 Jedidiah_Jsk Journal</p>
+</footer>
+
+<script>
+function slugify(text) {
+  return text
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
+function generateArticle() {
+  const title = document.getElementById("title").value.trim();
+  const date = document.getElementById("date").value.trim();
+  const category = document.getElementById("category").value.trim();
+  const subtitle = document.getElementById("subtitle").value.trim();
+  const content = document.getElementById("content").value.trim();
+
+  const slug = slugify(title);
+
+  const paragraphs = content
+    .split(/\n\s*\n/)
+    .map(p => `        <p>\n            ${p.trim()}\n        </p>`)
+    .join("\n\n");
+
+  document.getElementById("filename").textContent =
+    "articles/" + slug + ".html";
+
+  const html = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${title} | Jedidiah_Jsk Journal</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lora:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+
+<header class="navbar">
+    <div class="nav-wrap">
+        <a href="../index.html" class="brand">Jedidiah_Jsk Journal</a>
+
+        <nav>
+            <a href="../index.html">Home</a>
+            <a href="../index.html#articles">Articles</a>
+            <a href="../index.html#research">Research</a>
+            <a href="../index.html#about">About</a>
+        </nav>
+    </div>
+</header>
+
+<main class="article-page">
+
+    <a href="../index.html" class="back-link">← Back to Journal</a>
+
+    <p class="article-meta">${date} • ${category}</p>
+
+    <h1 class="article-title">
+        ${title}
+    </h1>
+
+    <p class="article-subtitle">
+        ${subtitle}
+    </p>
+
+    <article class="article-content">
+
+${paragraphs}
+
+    </article>
+
+    <section class="author-box">
+
+        <h3>About the Author</h3>
+
+        <p>
+            <strong>Jayasri Nelluri</strong>
+        </p>
+
+        <p>
+            Technology leader, entrepreneur, author of <em>The 3 Secrets of David</em>, and LL.B. student passionate about the intersection of law, technology, business, and innovation.
+            With over 12 years of cross-industry experience, I build future-ready solutions, write about emerging ideas, and continuously explore how technology and law can drive meaningful change.
+        </p>
+
+    </section>
+
+</main>
+
+<footer>
+    <p>© 2026 Jedidiah_Jsk Journal</p>
+</footer>
+
+</body>
+</html>`;
+
+  document.getElementById("output").textContent = html;
+}
+</script>
+
+</body>
+</html>
