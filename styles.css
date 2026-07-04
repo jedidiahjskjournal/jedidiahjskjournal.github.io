@@ -234,4 +234,18 @@ footer {
     margin-left: 12px;
     font-size: 0.85rem;
   }
+
+  .add-btn{
+  background:#16a34a;
+  color:white !important;
+  padding:10px 16px;
+  border-radius:8px;
+  text-decoration:none;
+  font-weight:700;
+}
+
+.add-btn:hover{
+  background:#15803d;
+  color:white !important;
+}
 }
