@@ -248,4 +248,29 @@ footer {
   background:#15803d;
   color:white !important;
 }
+/* Mobile Navigation */
+@media (max-width:768px){
+
+  .nav-wrap{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:16px;
+  }
+
+  nav{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    width:100%;
+  }
+
+  .add-btn{
+    width:100%;
+    text-align:center;
+    margin-top:8px;
+    margin-left:0 !important;
+    box-sizing:border-box;
+  }
+
+}
 }
