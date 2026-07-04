@@ -1,52 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jedidiah_Jsk Journal</title>
-  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
 
-<nav class="navbar">
-  <div class="nav-container">
-    <a class="logo" href="index.html">Jedidiah_Jsk Journal</a>
-    <div class="nav-links">
+<header class="navbar">
+  <div class="nav-wrap">
+    <a href="index.html" class="brand">Jedidiah_Jsk Journal</a>
+    <nav>
       <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-    </div>
-  </div>
-</nav>
-
-<header class="hero">
-  <div class="hero-overlay">
-    <p class="eyebrow">Weekly Reflections</p>
-    <h1>Jedidiah_Jsk Journal</h1>
-    <p>A quiet space for reflections, legal writing, research, and thoughtful voices.</p>
+      <a href="#articles">Articles</a>
+      <a href="#research">Research</a>
+      <a href="#about">About</a>
+    </nav>
   </div>
 </header>
 
-<main class="article-list">
-  <h2 class="section-title">Latest Articles</h2>
-
-  <a class="article-card" href="articles/the-day-the-illusion-broke.html">
-    <p class="article-date">May 2026</p>
-    <h3>The Day the Illusion Broke</h3>
-    <p>A reflection on achievement, distraction, emptiness, and the deeper life beyond the chase.</p>
-    <span>Read article →</span>
-  </a>
-
-  <div class="article-card coming-soon">
-    <p class="article-date">Coming Soon</p>
-    <h3>Future Article Title</h3>
-    <p>Add your next legal article, reflection, or research summary here.</p>
+<section class="hero">
+  <div class="hero-text">
+    <p class="tag">Legal Research • Technology • Reflections</p>
+    <h1>Jedidiah_Jsk Journal</h1>
+    <p class="subtitle">A thoughtful space for legal learning, research writing, technology insights, and personal reflections.</p>
+    <a href="#articles" class="btn">Read Articles</a>
   </div>
-</main>
+  <div class="hero-card">
+    <h3>Current Focus</h3>
+    <p>Criminal Law, Labour Law, Legal Research, AI, Data, and Practical Court Learning.</p>
+  </div>
+</section>
 
-<footer class="footer">
-  <p>© 2026 Jedidiah_Jsk Journal. All rights reserved.</p>
+<section class="section" id="articles">
+  <h2>Latest Articles</h2>
+  <div class="grid">
+    <a class="card" href="articles/the-day-the-illusion-broke.html">
+      <p class="date">May 2026</p>
+      <h3>The Day the Illusion Broke</h3>
+      <p>A reflection on achievement, distraction, emptiness, and the deeper life beyond the chase.</p>
+      <span>Read article →</span>
+    </a>
+
+    <div class="card muted">
+      <p class="date">Coming Soon</p>
+      <h3>Legal Research Article</h3>
+      <p>Future SSRN paper, case comment, or criminal law research article.</p>
+      <span>Coming soon</span>
+    </div>
+
+    <div class="card muted">
+      <p class="date">Coming Soon</p>
+      <h3>Technology Insight</h3>
+      <p>AI, Power BI, automation, or data engineering notes.</p>
+      <span>Coming soon</span>
+    </div>
+  </div>
+</section>
+
+<section class="split" id="research">
+  <div>
+    <h2>Research & Writing</h2>
+    <p>This section will showcase legal papers, SSRN publications, case comments, labour law notes, and criminal law research.</p>
+  </div>
+  <div class="feature-list">
+    <p>⚖ Criminal Law</p>
+    <p>📚 Labour Law</p>
+    <p>📝 Case Comments</p>
+    <p>🔎 Legal Research Papers</p>
+  </div>
+</section>
+
+<section class="section light" id="about">
+  <h2>About This Journal</h2>
+  <p class="about-text">
+    Jedidiah_Jsk Journal is a personal and professional writing space for reflections, legal learning, research, and technology insights. It is built to grow over time as a public portfolio of articles, academic work, and practical learning.
+  </p>
+</section>
+
+<footer>
+  <p>© 2026 Jedidiah_Jsk Journal</p>
 </footer>
 
 </body>
