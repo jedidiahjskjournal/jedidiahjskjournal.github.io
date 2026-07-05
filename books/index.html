@@ -1,1 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Books | Jedidiah_Jsk Journal</title>
 
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lora:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+
+  <style>
+    .books-hero{
+      background: radial-gradient(circle at top left,#facc15,#f97316 35%,#7c2d12 75%);
+      color:white;
+      padding:90px 24px;
+      text-align:center;
+    }
+
+    .books-hero h1{
+      font-family:'Lora',serif;
+      font-size:4rem;
+      margin:0;
+    }
+
+    .books-hero p{
+      max-width:760px;
+      margin:20px auto 0;
+      font-size:1.2rem;
+      line-height:1.8;
+      color:#fff7ed;
+    }
+
+    .book-showcase{
+      max-width:1100px;
+      margin:-50px auto 70px;
+      padding:0 24px;
+    }
+
+    .book-card-grand{
+      background:white;
+      border-radius:28px;
+      padding:42px;
+      box-shadow:0 25px 70px rgba(0,0,0,0.18);
+      display:grid;
+      grid-template-columns:1fr 1.5fr;
+      gap:42px;
+      align-items:center;
+      border:1px solid #fed7aa;
+    }
+
+    .book-cover-placeholder{
+      background:linear-gradient(160deg,#111827,#7c2d12,#f59e0b);
+      min-height:420px;
+      border-radius:22px;
+      color:white;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:28px;
+      box-shadow:inset 0 0 0 1px rgba(255,255,255,0.2);
+    }
+
+    .book-cover-placeholder h2{
+      font-family:'Lora',serif;
+      font-size:2.4rem;
+      margin:0;
+    }
+
+    .book-cover-placeholder p{
+      color:#fde68a;
+      font-weight:700;
+      margin-top:18px;
+    }
+
+    .book-tag{
+      display:inline-block;
+      background:#ffedd5;
+      color:#9a3412;
+      padding:8px 14px;
+      border-radius:999px;
+      font-weight:800;
+      font-size:0.85rem;
+      margin-bottom:14px;
+    }
+
+    .book-info h2{
+      font-family:'Lora',serif;
+      font-size:2.7rem;
+      margin:0 0 10px;
+      color:#111827;
+    }
+
+    .book-info h3{
+      margin:0 0 20px;
+      color:#9a3412;
+      font-size:1.1rem;
+    }
+
+    .book-info p{
+      color:#4b5563;
+      line-height:1.8;
+      font-size:1.05rem;
+    }
+
+    .book-points{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+      margin:26px 0;
+    }
+
+    .book-points div{
+      background:#fff7ed;
+      border:1px solid #fed7aa;
+      border-radius:14px;
+      padding:16px;
+      font-weight:700;
+      color:#7c2d12;
+    }
+
+    .amazon-buttons{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      margin-top:28px;
+    }
+
+    .amazon-btn{
+      background:#ff9900;
+      color:#111827;
+      padding:15px 22px;
+      border-radius:12px;
+      text-decoration:none;
+      font-weight:900;
+      box-shadow:0 8px 20px rgba(255,153,0,0.35);
+    }
+
+    .amazon-btn:hover{
+      background:#f59e0b;
+      color:#111827;
+    }
+
+    .secondary-btn{
+      background:#111827;
+      color:white;
+      padding:15px 22px;
+      border-radius:12px;
+      text-decoration:none;
+      font-weight:800;
+    }
+
+    .secondary-btn:hover{
+      background:#374151;
+      color:white;
+    }
+
+    .book-section{
+      max-width:1100px;
+      margin:70px auto;
+      padding:0 24px;
+    }
+
+    .book-section h2{
+      font-family:'Lora',serif;
+      font-size:2.4rem;
+      text-align:center;
+    }
+
+    .quote-box{
+      background:linear-gradient(135deg,#111827,#14532d);
+      color:white;
+      border-radius:24px;
+      padding:40px;
+      text-align:center;
+      margin-top:30px;
+    }
+
+    .quote-box p{
+      font-size:1.35rem;
+      line-height:1.8;
+      color:#dcfce7;
+      max-width:850px;
+      margin:auto;
+    }
+
+    @media(max-width:850px){
+      .books-hero h1{
+        font-size:2.7rem;
+      }
+
+      .book-card-grand{
+        grid-template-columns:1fr;
+        padding:28px;
+      }
+
+      .book-points{
+        grid-template-columns:1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="navbar">
+  <div class="nav-wrap">
+    <a href="/" class="brand">Jedidiah_Jsk Journal</a>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/articles/">Articles</a>
+      <a href="/research/">Research</a>
+      <a href="/books/">Books</a>
+      <a href="/about/">About</a>
+      <a class="add-btn" href="/add-article.html">+ Add Article</a>
+    </nav>
+  </div>
+</header>
+
+<section class="books-hero">
+  <h1>Books</h1>
+  <p>Published works by JeDiDiAh JsK — written to inspire faith, reflection, courage, and purposeful living.</p>
+</section>
+
+<main class="book-showcase">
+  <section class="book-card-grand">
+
+    <div class="book-cover-placeholder">
+      <h2>The 3 Secrets<br>of David</h2>
+      <p>2nd King of Israel<br>A Man after God's Own Heart</p>
+      <p>By JeDiDiAh JsK</p>
+    </div>
+
+    <div class="book-info">
+      <span class="book-tag">Published Book</span>
+
+      <h2>The 3 Secrets of David</h2>
+      <h3>2nd King of Israel – A Man after God's Own Heart</h3>
+
+      <p>
+        What made David, a flawed and often broken man, someone God called
+        “a man after My own heart”? This book explores David’s life as a shepherd,
+        poet, warrior, king, and relentless God-pursuer.
+      </p>
+
+      <p>
+        Through scripture-rich reflection and practical application, the book reveals
+        three timeless principles that shaped David’s walk with God and continue to
+        speak to believers today.
+      </p>
+
+      <div class="book-points">
+        <div>🙏 Worship that moves heaven</div>
+        <div>🛡 Trust that withstands giants</div>
+        <div>👑 Obedience that leaves a legacy</div>
+        <div>📖 Scripture, prayer & reflection</div>
+      </div>
+
+      <div class="amazon-buttons">
+        <a class="amazon-btn" href="https://www.amazon.in/Secrets-David-Israel-after-Heart-ebook/dp/B0F65RFFK6" target="_blank">
+          Buy on Amazon →
+        </a>
+
+        <a class="secondary-btn" href="https://www.amazon.in/Secrets-David-Israel-after-Heart-ebook/dp/B0F65RFFK6" target="_blank">
+          View Kindle & Paperback
+        </a>
+      </div>
+    </div>
+
+  </section>
+</main>
+
+<section class="book-section">
+  <h2>Why This Book Matters</h2>
+
+  <div class="quote-box">
+    <p>
+      This is more than a book about David. It is an invitation to pursue God with
+      worship, trust, and obedience — not from perfection, but from surrender.
+    </p>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Jedidiah_Jsk Journal</p>
+</footer>
+
+</body>
+</html>
