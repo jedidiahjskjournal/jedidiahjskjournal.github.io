@@ -4,216 +4,85 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About | Jedidiah_Jsk Journal</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@500;600;700&di… rel="stylesheet">
   <link rel="stylesheet" href="/styles.css">
-
-  <style>
-    body{
-      background:#f8fafc;
-    }
-
-    .about-hero{
-      background:linear-gradient(135deg,#0f172a,#1e293b,#14532d);
-      color:white;
-      padding:90px 30px;
-      text-align:center;
-    }
-
-    .about-hero h1{
-      font-family:'Lora',serif;
-      font-size:4rem;
-      margin:0;
-    }
-
-    .about-hero p{
-      max-width:760px;
-      margin:20px auto 0;
-      color:#d1fae5;
-      font-size:1.15rem;
-      line-height:1.8;
-    }
-
-    .about-container{
-      max-width:1150px;
-      margin:-60px auto 70px;
-      padding:0 24px;
-    }
-
-    .intro-card{
-      background:white;
-      border-radius:24px;
-      padding:45px;
-      box-shadow:0 20px 60px rgba(0,0,0,0.08);
-      border-top:6px solid #16a34a;
-    }
-
-    .intro-card h2{
-      font-family:'Lora',serif;
-      font-size:2.6rem;
-      margin-top:0;
-      color:#111827;
-    }
-
-    .intro-card p{
-      color:#4b5563;
-      line-height:1.8;
-      font-size:1.08rem;
-    }
-
-    .highlight{
-      color:#16a34a;
-      font-weight:700;
-    }
-
-    .info-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:25px;
-      margin-top:35px;
-    }
-
-    .info-card{
-      background:white;
-      border-radius:18px;
-      padding:28px;
-      box-shadow:0 12px 35px rgba(0,0,0,0.06);
-      transition:.25s;
-      border:1px solid #e5e7eb;
-    }
-
-    .info-card:hover{
-      transform:translateY(-8px);
-    }
-
-    .info-card .icon{
-      font-size:2.4rem;
-    }
-
-    .info-card h3{
-      font-family:'Lora',serif;
-      margin-top:16px;
-      color:#111827;
-    }
-
-    .info-card p{
-      color:#4b5563;
-      line-height:1.7;
-    }
-
-    .quote-box{
-      margin-top:40px;
-      background:linear-gradient(135deg,#111827,#14532d);
-      color:white;
-      border-radius:22px;
-      padding:40px;
-      text-align:center;
-    }
-
-    .quote-box p{
-      font-size:1.35rem;
-      line-height:1.8;
-      color:#dcfce7;
-      margin:0;
-    }
-
-    @media(max-width:900px){
-      .info-grid{
-        grid-template-columns:1fr;
-      }
-
-      .about-hero h1{
-        font-size:2.8rem;
-      }
-    }
-  </style>
 </head>
-
 <body>
+
+
 
 <header class="navbar">
   <div class="nav-wrap">
-    <a href="/" class="brand">Jedidiah_Jsk Journal</a>
-
-    <nav>
-      <a href="/">Home</a>
-      <a href="/articles/">Articles</a>
-      <a href="/research/">Research</a>
-      <a href="/books/">Books</a>
-      <a href="/about/">About</a>
-      <a class="add-btn" href="/add-article.html">+ Add Article</a>
-    </nav>
+    <a href="/" class="brand">Jedidiah_Jsk Journal</a>
+<nav>
+  <a href="/">Home</a>
+  <a href="/articles/">Articles</a>
+  <a href="/research/">Research</a>
+  <a href="/books/">Books</a>
+  <a href="/about/">About</a>
+  <a class="add-btn" href="/add-article.html">+ Add Article</a>
+</nav>
   </div>
 </header>
 
-<section class="about-hero">
-  <h1>About</h1>
+
+
+<section class="section">
+  <h2>About</h2>
+
+
+
+<div class="card">
+  <h3>Hi, I'm Jedidiah Jsk</h3>
+
+
 
   <p>
-    Exploring law, technology, research, writing, and lifelong learning —
-    one article at a time.
+    Welcome to my journal. Here I document my journey through law, technology,
+    research, and thoughtful reflections as I continue learning and building.
   </p>
+</div>
+
+
+
+  <div class="grid" style="margin-top:24px;">
+    <div class="card">
+      <p class="date">Mission</p>
+      <h3>Why This Journal Exists</h3>
+      <p>
+        This journal is built to grow as a public portfolio of articles, research, case comments, reflections, and practical learning across law and technology.
+      </p>
+    </div>
+
+
+
+    <div class="card">
+      <p class="date">Education</p>
+      <h3>LL.B. Journey</h3>
+      <p>
+        Pursuing Bachelor of Laws with an interest in criminal law, labour law, legal drafting, court practice, and legal research.
+      </p>
+    </div>
+
+
+
+    <div class="card">
+      <p class="date">Interests</p>
+      <h3>Core Areas</h3>
+      <p>
+        Criminal Law, Labour Law, Artificial Intelligence, Data Analytics, Automation, Legal Research, Writing, and Personal Growth.
+      </p>
+    </div>
+  </div>
 </section>
 
-<main class="about-container">
 
-  <section class="intro-card">
-    <h2>Hi, I'm <span class="highlight">Jedidiah Jsk</span></h2>
-
-    <p>
-      Welcome to my journal. This space reflects my journey across law, technology,
-      research, faith, books, and thoughtful reflections.
-    </p>
-
-    <p>
-      Rather than simply publishing articles, I want this journal to become a
-      long-term knowledge repository documenting what I learn, build, discover,
-      and contribute.
-    </p>
-  </section>
-
-  <section class="info-grid">
-
-    <div class="info-card">
-      <div class="icon">🎯</div>
-      <h3>Mission</h3>
-      <p>
-        To create meaningful content that inspires learning, critical thinking,
-        and practical application across law, technology, and life.
-      </p>
-    </div>
-
-    <div class="info-card">
-      <div class="icon">⚖</div>
-      <h3>Education</h3>
-      <p>
-        Bachelor of Laws (LL.B.) journey focused on Criminal Law, Labour Law,
-        Court Practice, Legal Drafting, and Legal Research.
-      </p>
-    </div>
-
-    <div class="info-card">
-      <div class="icon">🚀</div>
-      <h3>Interests</h3>
-      <p>
-        Artificial Intelligence, Law, Data Analytics, Automation, Writing,
-        Books, Leadership, and Personal Growth.
-      </p>
-    </div>
-
-  </section>
-
-  <section class="quote-box">
-    <p>
-      “Learning never ends. Knowledge becomes valuable only when it is shared.”
-    </p>
-  </section>
-
-</main>
 
 <footer>
   <p>© 2026 Jedidiah_Jsk Journal</p>
 </footer>
+
+
 
 </body>
 </html>
