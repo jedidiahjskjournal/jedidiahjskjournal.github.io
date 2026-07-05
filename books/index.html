@@ -9,194 +9,323 @@
   <link rel="stylesheet" href="/styles.css">
 
   <style>
+    body{
+      background:#000;
+      color:#fff;
+    }
+
+    .navbar{
+      background:#050505;
+      border-bottom:1px solid #b30000;
+    }
+
+    .brand, nav a{
+      color:#fff;
+    }
+
+    nav a:hover{
+      color:#e50914;
+    }
+
+    .books-page{
+      background:
+        radial-gradient(circle at 80% 20%, rgba(220,0,0,0.35), transparent 32%),
+        radial-gradient(circle at 20% 80%, rgba(120,0,0,0.25), transparent 35%),
+        #000;
+      min-height:100vh;
+    }
+
     .books-hero{
-      background: radial-gradient(circle at top left,#facc15,#f97316 35%,#7c2d12 75%);
-      color:white;
-      padding:90px 24px;
-      text-align:center;
+      max-width:1150px;
+      margin:auto;
+      padding:85px 24px 60px;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:60px;
+      align-items:center;
+      border-bottom:1px solid rgba(255,255,255,0.25);
+    }
+
+    .eyebrow{
+      color:#ff1a1a;
+      font-weight:800;
+      letter-spacing:2px;
+      text-transform:uppercase;
     }
 
     .books-hero h1{
       font-family:'Lora',serif;
-      font-size:4rem;
-      margin:0;
+      font-size:5rem;
+      line-height:1;
+      margin:18px 0;
+    }
+
+    .books-hero h1 span{
+      color:#d40000;
+      display:block;
+    }
+
+    .red-line{
+      width:60px;
+      height:3px;
+      background:#e50914;
+      margin:24px 0;
     }
 
     .books-hero p{
-      max-width:760px;
-      margin:20px auto 0;
-      font-size:1.2rem;
+      color:#e5e7eb;
+      font-size:1.15rem;
       line-height:1.8;
-      color:#fff7ed;
+      max-width:520px;
     }
 
-    .book-showcase{
-      max-width:1100px;
-      margin:-50px auto 70px;
-      padding:0 24px;
-    }
-
-    .book-card-grand{
-      background:white;
-      border-radius:28px;
-      padding:42px;
-      box-shadow:0 25px 70px rgba(0,0,0,0.18);
-      display:grid;
-      grid-template-columns:1fr 1.5fr;
-      gap:42px;
-      align-items:center;
-      border:1px solid #fed7aa;
-    }
-
-    .book-cover-placeholder{
-      background:linear-gradient(160deg,#111827,#7c2d12,#f59e0b);
-      min-height:420px;
-      border-radius:22px;
-      color:white;
+    .hero-cover{
       display:flex;
-      flex-direction:column;
       justify-content:center;
-      align-items:center;
-      text-align:center;
-      padding:28px;
-      box-shadow:inset 0 0 0 1px rgba(255,255,255,0.2);
     }
 
-    .book-cover-placeholder h2{
-      font-family:'Lora',serif;
-      font-size:2.4rem;
-      margin:0;
+    .hero-cover img{
+      max-height:520px;
+      width:auto;
+      border-radius:4px;
+      box-shadow:0 25px 80px rgba(229,9,20,0.35);
     }
 
-    .book-cover-placeholder p{
-      color:#fde68a;
-      font-weight:700;
-      margin-top:18px;
+    .book-main{
+      max-width:1150px;
+      margin:auto;
+      padding:55px 24px;
+      display:grid;
+      grid-template-columns:0.9fr 1.1fr;
+      gap:55px;
+      align-items:start;
     }
 
-    .book-tag{
-      display:inline-block;
-      background:#ffedd5;
-      color:#9a3412;
-      padding:8px 14px;
-      border-radius:999px;
+    .cover-frame{
+      background:
+        radial-gradient(circle at center, rgba(229,9,20,0.35), transparent 55%),
+        #070707;
+      border:1px solid #8b0000;
+      border-radius:22px;
+      padding:35px;
+      box-shadow:0 18px 60px rgba(229,9,20,0.18);
+    }
+
+    .cover-frame img{
+      width:100%;
+      border-radius:6px;
+      display:block;
+    }
+
+    .featured{
+      color:#ff1a1a;
       font-weight:800;
-      font-size:0.85rem;
-      margin-bottom:14px;
+      letter-spacing:1px;
+      text-transform:uppercase;
+      margin-bottom:12px;
     }
 
     .book-info h2{
       font-family:'Lora',serif;
-      font-size:2.7rem;
-      margin:0 0 10px;
-      color:#111827;
+      font-size:3rem;
+      margin:0 0 8px;
     }
 
     .book-info h3{
-      margin:0 0 20px;
-      color:#9a3412;
-      font-size:1.1rem;
+      color:#ff1a1a;
+      margin:0 0 18px;
+      font-size:1.2rem;
     }
 
     .book-info p{
-      color:#4b5563;
+      color:#e5e7eb;
       line-height:1.8;
-      font-size:1.05rem;
+      font-size:1.02rem;
     }
 
-    .book-points{
+    .principles{
       display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:14px;
-      margin:26px 0;
+      grid-template-columns:repeat(3,1fr);
+      gap:16px;
+      margin:30px 0;
     }
 
-    .book-points div{
-      background:#fff7ed;
-      border:1px solid #fed7aa;
-      border-radius:14px;
-      padding:16px;
-      font-weight:700;
-      color:#7c2d12;
+    .principle{
+      border:1px solid #e50914;
+      border-radius:16px;
+      padding:18px;
+      text-align:center;
+      background:rgba(255,255,255,0.03);
     }
 
-    .amazon-buttons{
+    .principle strong{
+      display:block;
+      color:#fff;
+      margin-bottom:6px;
+    }
+
+    .principle span{
+      color:#cbd5e1;
+      font-size:0.9rem;
+    }
+
+    .buttons{
       display:flex;
       flex-wrap:wrap;
-      gap:14px;
-      margin-top:28px;
+      gap:16px;
+      margin:28px 0;
     }
 
-    .amazon-btn{
-      background:#ff9900;
-      color:#111827;
-      padding:15px 22px;
-      border-radius:12px;
+    .amazon-red{
+      background:#e50914;
+      color:white;
+      padding:16px 24px;
+      border-radius:10px;
       text-decoration:none;
       font-weight:900;
-      box-shadow:0 8px 20px rgba(255,153,0,0.35);
+      box-shadow:0 10px 30px rgba(229,9,20,0.35);
     }
 
-    .amazon-btn:hover{
-      background:#f59e0b;
-      color:#111827;
-    }
-
-    .secondary-btn{
-      background:#111827;
+    .amazon-dark{
+      background:#111;
       color:white;
-      padding:15px 22px;
-      border-radius:12px;
+      border:1px solid #777;
+      padding:16px 24px;
+      border-radius:10px;
       text-decoration:none;
+      font-weight:900;
+    }
+
+    .amazon-red:hover,
+    .amazon-dark:hover{
+      color:white;
+      transform:translateY(-2px);
+    }
+
+    .why-specs{
+      max-width:1150px;
+      margin:auto;
+      padding:20px 24px 40px;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:50px;
+      align-items:start;
+    }
+
+    .why h3,
+    .specs h3{
+      color:#ff1a1a;
+      text-transform:uppercase;
+      letter-spacing:1px;
+      font-size:1rem;
+    }
+
+    .why ul{
+      list-style:none;
+      padding:0;
+      margin:22px 0 0;
+    }
+
+    .why li{
+      margin:14px 0;
+      color:#e5e7eb;
+      line-height:1.6;
+    }
+
+    .why li::before{
+      content:"✓";
+      color:#ff1a1a;
+      font-weight:900;
+      margin-right:12px;
+    }
+
+    .spec-box{
+      background:linear-gradient(135deg,#111,#1f1f1f);
+      border:1px solid #2f2f2f;
+      border-radius:18px;
+      padding:26px;
+    }
+
+    .spec-row{
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      border-bottom:1px solid #333;
+      padding:14px 0;
+      color:#e5e7eb;
+    }
+
+    .spec-row:last-child{
+      border-bottom:none;
+    }
+
+    .spec-row strong{
+      color:white;
+    }
+
+    .quote{
+      max-width:1050px;
+      margin:35px auto 65px;
+      background:white;
+      color:#111;
+      border-radius:16px;
+      padding:42px;
+      text-align:center;
+      box-shadow:0 14px 50px rgba(255,255,255,0.12);
+    }
+
+    .quote p{
+      font-size:1.35rem;
+      line-height:1.8;
+      font-style:italic;
+      margin:0;
+    }
+
+    .coming{
+      max-width:1050px;
+      margin:auto;
+      padding:10px 24px 70px;
+      text-align:center;
+    }
+
+    .coming h2{
+      font-family:'Lora',serif;
+      font-size:2.3rem;
+      margin:8px 0;
+    }
+
+    .coming p{
+      color:#e5e7eb;
+    }
+
+    .coming .red{
+      color:#ff1a1a;
       font-weight:800;
     }
 
-    .secondary-btn:hover{
-      background:#374151;
-      color:white;
+    footer{
+      background:#050505;
+      border-top:1px solid #b30000;
+      color:#aaa;
     }
 
-    .book-section{
-      max-width:1100px;
-      margin:70px auto;
-      padding:0 24px;
-    }
+    @media(max-width:900px){
+      .books-hero,
+      .book-main,
+      .why-specs{
+        grid-template-columns:1fr;
+      }
 
-    .book-section h2{
-      font-family:'Lora',serif;
-      font-size:2.4rem;
-      text-align:center;
-    }
-
-    .quote-box{
-      background:linear-gradient(135deg,#111827,#14532d);
-      color:white;
-      border-radius:24px;
-      padding:40px;
-      text-align:center;
-      margin-top:30px;
-    }
-
-    .quote-box p{
-      font-size:1.35rem;
-      line-height:1.8;
-      color:#dcfce7;
-      max-width:850px;
-      margin:auto;
-    }
-
-    @media(max-width:850px){
       .books-hero h1{
-        font-size:2.7rem;
+        font-size:3.4rem;
       }
 
-      .book-card-grand{
+      .principles{
         grid-template-columns:1fr;
-        padding:28px;
       }
 
-      .book-points{
-        grid-template-columns:1fr;
+      .hero-cover img{
+        max-height:460px;
       }
     }
   </style>
@@ -218,72 +347,142 @@
   </div>
 </header>
 
-<section class="books-hero">
-  <h1>Books</h1>
-  <p>Published works by JeDiDiAh JsK — written to inspire faith, reflection, courage, and purposeful living.</p>
-</section>
+<main class="books-page">
 
-<main class="book-showcase">
-  <section class="book-card-grand">
+  <section class="books-hero">
+    <div>
+      <p class="eyebrow">Books</p>
+      <h1>Published <span>Works</span></h1>
+      <div class="red-line"></div>
+      <p>
+        Books written to inspire faith, reflection, courage, and purposeful living.
+      </p>
+    </div>
 
-    <div class="book-cover-placeholder">
-      <h2>The 3 Secrets<br>of David</h2>
-      <p>2nd King of Israel<br>A Man after God's Own Heart</p>
-      <p>By JeDiDiAh JsK</p>
+    <div class="hero-cover">
+      <img src="/images/the-3-secrets-of-david-cover.png" alt="The 3 Secrets of David book cover">
+    </div>
+  </section>
+
+  <section class="book-main">
+
+    <div class="cover-frame">
+      <img src="/images/the-3-secrets-of-david-cover.png" alt="The 3 Secrets of David">
     </div>
 
     <div class="book-info">
-      <span class="book-tag">Published Book</span>
+      <p class="featured">Featured Book</p>
 
       <h2>The 3 Secrets of David</h2>
       <h3>2nd King of Israel – A Man after God's Own Heart</h3>
 
+      <p><strong>By JeDiDiAh JsK</strong></p>
+
       <p>
         What made David, a flawed and often broken man, someone God called
-        “a man after My own heart”? This book explores David’s life as a shepherd,
-        poet, warrior, king, and relentless God-pursuer.
+        “a man after My own heart”? This book takes you on a powerful,
+        scripture-rich journey through the life of David — shepherd, poet,
+        warrior, king, and relentless God-pursuer.
       </p>
 
       <p>
-        Through scripture-rich reflection and practical application, the book reveals
-        three timeless principles that shaped David’s walk with God and continue to
-        speak to believers today.
+        Discover the three timeless secrets that shaped David’s walk with God
+        and continue to transform lives today.
       </p>
 
-      <div class="book-points">
-        <div>🙏 Worship that moves heaven</div>
-        <div>🛡 Trust that withstands giants</div>
-        <div>👑 Obedience that leaves a legacy</div>
-        <div>📖 Scripture, prayer & reflection</div>
+      <div class="principles">
+        <div class="principle">
+          <strong>Worship</strong>
+          <span>that moves heaven</span>
+        </div>
+
+        <div class="principle">
+          <strong>Trust</strong>
+          <span>that withstands giants</span>
+        </div>
+
+        <div class="principle">
+          <strong>Obedience</strong>
+          <span>that leaves a legacy</span>
+        </div>
       </div>
 
-      <div class="amazon-buttons">
-        <a class="amazon-btn" href="https://www.amazon.in/Secrets-David-Israel-after-Heart-ebook/dp/B0F65RFFK6" target="_blank">
-          Buy on Amazon →
+      <div class="buttons">
+        <a class="amazon-red" href="https://www.amazon.in/Secrets-David-Israel-after-Heart-ebook/dp/B0F65RFFK6" target="_blank">
+          Buy on Amazon – Kindle
         </a>
 
-        <a class="secondary-btn" href="https://www.amazon.in/Secrets-David-Israel-after-Heart-ebook/dp/B0F65RFFK6" target="_blank">
-          View Kindle & Paperback
+        <a class="amazon-dark" href="https://www.amazon.in/Secrets-David-Israel-after-Heart-ebook/dp/B0F65RFFK6" target="_blank">
+          View Paperback
         </a>
       </div>
     </div>
 
   </section>
+
+  <section class="why-specs">
+
+    <div class="why">
+      <h3>Why Read This Book?</h3>
+      <ul>
+        <li>A deep dive into the life of David from the Bible.</li>
+        <li>Three life-changing principles for every believer.</li>
+        <li>Practical applications for daily life.</li>
+        <li>Scripture references, reflections, and prayers.</li>
+        <li>Perfect for personal growth and spiritual maturity.</li>
+      </ul>
+    </div>
+
+    <div class="specs">
+      <h3>Book Details</h3>
+
+      <div class="spec-box">
+        <div class="spec-row">
+          <strong>Pages</strong>
+          <span>44 pages</span>
+        </div>
+
+        <div class="spec-row">
+          <strong>Publication Date</strong>
+          <span>23 April 2025</span>
+        </div>
+
+        <div class="spec-row">
+          <strong>Language</strong>
+          <span>English</span>
+        </div>
+
+        <div class="spec-row">
+          <strong>Author</strong>
+          <span>JeDiDiAh JsK</span>
+        </div>
+
+        <div class="spec-row">
+          <strong>Format</strong>
+          <span>Kindle & Paperback</span>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="quote">
+    <p>
+      “This is more than a book about David. It is an invitation to pursue God
+      with worship, trust, and obedience — not from perfection, but from surrender.”
+    </p>
+  </section>
+
+  <section class="coming">
+    <h2>Coming Soon</h2>
+    <p>More books and study guides are on the way.</p>
+    <p class="red">Stay tuned for future releases.</p>
+  </section>
+
 </main>
 
-<section class="book-section">
-  <h2>Why This Book Matters</h2>
-
-  <div class="quote-box">
-    <p>
-      This is more than a book about David. It is an invitation to pursue God with
-      worship, trust, and obedience — not from perfection, but from surrender.
-    </p>
-  </div>
-</section>
-
 <footer>
-  <p>© 2026 Jedidiah_Jsk Journal</p>
+  <p>© 2026 Jedidiah_Jsk Journal. All rights reserved.</p>
 </footer>
 
 </body>
