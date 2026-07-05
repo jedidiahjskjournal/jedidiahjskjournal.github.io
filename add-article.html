@@ -166,10 +166,10 @@
   <div class="nav-wrap">
     <a href="index.html" class="brand">Jedidiah_Jsk Journal</a>
     <nav>
-      <a href="index.html">Home</a>
-      <a href="index.html#articles">Articles</a>
-      <a href="index.html#research">Research</a>
-      <a href="index.html#about">About</a>
+      <a href="/">Home</a>
+      <a href="/articles/">Articles</a>
+      <a href="/research/">Research</a>
+      <a href="/about/">About</a>
     </nav>
   </div>
 </header>
@@ -275,7 +275,7 @@ function generateArticle(){
   }
 
   const slug=slugify(title);
-  const fileName="articles/" + slug + ".html";
+  const fileName="articles/" + slug + "/index.html";
 
   const paragraphs=content
     .split(/\n\s*\n/)
@@ -290,7 +290,7 @@ function generateArticle(){
     <title>${escapeHtml(title)} | Jedidiah_Jsk Journal</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lora:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="/styles.css">
 </head>
 
 <body>
@@ -352,7 +352,7 @@ ${paragraphs}
 </body>
 </html>`;
 
-  const cardHtml=`<a class="card" href="${fileName}">
+  const cardHtml=`<a class="card" href="/articles/${slug}/">
   <p class="date">${escapeHtml(date)}</p>
   <h3>${escapeHtml(title)}</h3>
   <p>${escapeHtml(subtitle)}</p>
