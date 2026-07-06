@@ -273,4 +273,36 @@ footer {
   }
 
 }
+
+  .logo-brand{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    text-decoration:none;
+}
+
+.logo-img{
+    width:42px;
+    height:42px;
+    object-fit:contain;
+}
+
+.logo-brand span{
+    font-family:'Lora',serif;
+    font-size:1.35rem;
+    font-weight:700;
+    color:#111827;
+}
+
+@media(max-width:768px){
+
+.logo-img{
+    width:34px;
+    height:34px;
+}
+
+.logo-brand span{
+    font-size:1.1rem;
+}
+
 }
