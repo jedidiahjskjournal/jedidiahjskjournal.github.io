@@ -1,178 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Add Article | Jedidiah_Jsk Journal</title>
 
+  <link rel="icon" type="image/png" href="/images/J3-Logo.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/J3-Logo.png">
+  <link rel="apple-touch-icon" href="/images/J3-Logo.png">
+
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="/styles.css">
 
   <style>
-    .cms-page{
-      max-width:1100px;
-      margin:auto;
-      padding:70px 24px;
-    }
-
-    .cms-hero{
-      background:linear-gradient(135deg,#111827,#14532d);
-      color:white;
-      padding:42px;
-      border-radius:22px;
-      margin-bottom:35px;
-    }
-
-    .cms-hero h1{
-      font-family:'Lora',serif;
-      font-size:2.7rem;
-      margin:0 0 12px;
-    }
-
-    .cms-hero p{
-      color:#dcfce7;
-      line-height:1.7;
-      max-width:720px;
-    }
-
-    .cms-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:26px;
-    }
-
-    .cms-panel{
-      background:white;
-      border:1px solid #e5e7eb;
-      border-radius:18px;
-      padding:28px;
-      box-shadow:0 10px 30px rgba(0,0,0,0.06);
-    }
-
-    .cms-panel h2{
-      font-family:'Lora',serif;
-      margin-top:0;
-    }
-
-    label{
-      display:block;
-      margin-top:18px;
-      font-weight:700;
-      color:#111827;
-    }
-
-    input,textarea{
-      width:100%;
-      box-sizing:border-box;
-      margin-top:8px;
-      padding:13px 14px;
-      border:1px solid #d1d5db;
-      border-radius:10px;
-      font-family:Inter,sans-serif;
-      font-size:15px;
-    }
-
-    textarea{
-      min-height:260px;
-      resize:vertical;
-      line-height:1.7;
-    }
-
-    .generate-btn{
-      margin-top:24px;
-      width:100%;
-      background:#16a34a;
-      color:white;
-      border:none;
-      padding:15px 20px;
-      border-radius:10px;
-      font-weight:800;
-      font-size:16px;
-      cursor:pointer;
-    }
-
-    .generate-btn:hover{
-      background:#15803d;
-    }
-
-    .output-box{
-      margin-top:18px;
-      background:#0f172a;
-      color:#e5e7eb;
-      border-radius:14px;
-      overflow:hidden;
-      border:1px solid #1f2937;
-    }
-
-    .output-header{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      background:#111827;
-      padding:12px 14px;
-      font-weight:700;
-      color:white;
-    }
-
-    .copy-btn{
-      background:#16a34a;
-      color:white;
-      border:none;
-      border-radius:8px;
-      padding:8px 12px;
-      font-weight:700;
-      cursor:pointer;
-    }
-
-    .copy-btn:hover{
-      background:#15803d;
-    }
-
-    pre{
-      margin:0;
-      padding:18px;
-      overflow:auto;
-      white-space:pre-wrap;
-      font-size:13px;
-      line-height:1.6;
-    }
-
-    .note{
-      background:#ecfdf5;
-      color:#065f46;
-      border:1px solid #bbf7d0;
-      border-radius:12px;
-      padding:14px 16px;
-      margin-top:20px;
-      line-height:1.6;
-      font-weight:600;
-    }
+    .cms-page{max-width:1100px;margin:auto;padding:70px 24px;}
+    .cms-hero{background:linear-gradient(135deg,#111827,#14532d);color:white;padding:42px;border-radius:22px;margin-bottom:35px;}
+    .cms-hero h1{font-family:'Lora',serif;font-size:2.7rem;margin:0 0 12px;}
+    .cms-hero p{color:#dcfce7;line-height:1.7;max-width:720px;}
+    .cms-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;}
+    .cms-panel{background:white;border:1px solid #e5e7eb;border-radius:18px;padding:28px;box-shadow:0 10px 30px rgba(0,0,0,0.06);}
+    .cms-panel h2{font-family:'Lora',serif;margin-top:0;}
+    label{display:block;margin-top:18px;font-weight:700;color:#111827;}
+    input,textarea{width:100%;box-sizing:border-box;margin-top:8px;padding:13px 14px;border:1px solid #d1d5db;border-radius:10px;font-family:Inter,sans-serif;font-size:15px;}
+    textarea{min-height:260px;resize:vertical;line-height:1.7;}
+    .generate-btn{margin-top:24px;width:100%;background:#16a34a;color:white;border:none;padding:15px 20px;border-radius:10px;font-weight:800;font-size:16px;cursor:pointer;}
+    .generate-btn:hover{background:#15803d;}
+    .output-box{margin-top:18px;background:#0f172a;color:#e5e7eb;border-radius:14px;overflow:hidden;border:1px solid #1f2937;}
+    .output-header{display:flex;justify-content:space-between;align-items:center;background:#111827;padding:12px 14px;font-weight:700;color:white;}
+    .copy-btn{background:#16a34a;color:white;border:none;border-radius:8px;padding:8px 12px;font-weight:700;cursor:pointer;}
+    .copy-btn:hover{background:#15803d;}
+    pre{margin:0;padding:18px;overflow:auto;white-space:pre-wrap;font-size:13px;line-height:1.6;}
+    .note{background:#ecfdf5;color:#065f46;border:1px solid #bbf7d0;border-radius:12px;padding:14px 16px;margin-top:20px;line-height:1.6;font-weight:600;}
 
     @media(max-width:900px){
-      .cms-grid{
-        grid-template-columns:1fr;
-      }
-
-      .cms-hero h1{
-        font-size:2rem;
-      }
+      .cms-grid{grid-template-columns:1fr;}
+      .cms-hero h1{font-size:2rem;}
     }
   </style>
+
 </head>
 
 <body>
 
 <header class="navbar">
   <div class="nav-wrap">
-    <a href="index.html" class="brand">Jedidiah_Jsk Journal</a>
+
+    <a href="/" class="logo-brand">
+      <img src="/images/J3-Logo.png" alt="J³ Logo" class="logo-img">
+    </a>
+
     <nav>
-  <a href="/">Home</a>
-  <a href="/articles/">Articles</a>
-  <a href="/research/">Research</a>
-  <a href="/books/">Books</a>
-  <a href="/about/">About</a>
-  <a class="add-btn" href="/add-article.html">+ Add Article</a>
-</nav>
+      <a href="/">Home</a>
+      <a href="/articles/">Articles</a>
+      <a href="/research/">Research</a>
+      <a href="/books/">Books</a>
+      <a href="/about/">About</a>
+      <a class="add-btn" href="/add-article.html">+ Add Article</a>
+    </nav>
+
   </div>
 </header>
 
@@ -286,35 +174,47 @@ function generateArticle(){
 
   const articleHtml=`<!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>${escapeHtml(title)} | Jedidiah_Jsk Journal</title>
+
+    <link rel="icon" type="image/png" href="/images/J3-Logo.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/J3-Logo.png">
+    <link rel="apple-touch-icon" href="/images/J3-Logo.png">
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lora:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles.css">
+
 </head>
 
 <body>
 
 <header class="navbar">
     <div class="nav-wrap">
-        <a href="../index.html" class="brand">Jedidiah_Jsk Journal</a>
+
+        <a href="/" class="logo-brand">
+            <img src="/images/J3-Logo.png" alt="J³ Logo" class="logo-img">
+        </a>
 
         <nav>
-  <a href="/">Home</a>
-  <a href="/articles/">Articles</a>
-  <a href="/research/">Research</a>
-  <a href="/books/">Books</a>
-  <a href="/about/">About</a>
-  <a class="add-btn" href="/add-article.html">+ Add Article</a>
-</nav>
+            <a href="/">Home</a>
+            <a href="/articles/">Articles</a>
+            <a href="/research/">Research</a>
+            <a href="/books/">Books</a>
+            <a href="/about/">About</a>
+            <a class="add-btn" href="/add-article.html">+ Add Article</a>
+        </nav>
+
     </div>
 </header>
 
 <main class="article-page">
 
-    <a href="../index.html" class="back-link">← Back to Journal</a>
+    <a href="/articles/" class="back-link">← Back to Articles</a>
 
     <p class="article-meta">${escapeHtml(date)} • ${escapeHtml(category)}</p>
 
@@ -334,7 +234,7 @@ ${paragraphs}
 
     <section class="author-box">
 
-        <h3>About the Author</h3>
+        <h3>About the Writer</h3>
 
         <p>
             <strong>Jayasri Nelluri</strong>
@@ -354,6 +254,7 @@ ${paragraphs}
 </footer>
 
 </body>
+
 </html>`;
 
   const cardHtml=`<a class="card" href="/articles/${slug}/">
@@ -377,4 +278,5 @@ function copyText(id){
 </script>
 
 </body>
+
 </html>
