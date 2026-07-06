@@ -68,7 +68,7 @@
 
   <section class="cms-hero">
     <h1>Add New Article</h1>
-    <p>Write once. Generate everything. This page creates the full article HTML and the Latest Articles card for your homepage.</p>
+    <p>Write once. Generate everything. This page creates the article file, homepage card, and articles page card.</p>
   </section>
 
   <div class="cms-grid">
@@ -88,6 +88,12 @@
       <label>Subtitle / Summary</label>
       <input id="subtitle" placeholder="A short summary of the article">
 
+      <label>Writer Name</label>
+      <input id="writerName" placeholder="Jayasri Nelluri">
+
+      <label>Writer Designation</label>
+      <input id="writerDesignation" placeholder="Technology leader, author, LL.B. student">
+
       <label>Article Content</label>
       <textarea id="content" placeholder="Write your article here.
 
@@ -96,7 +102,7 @@ Leave one blank line between paragraphs."></textarea>
       <button class="generate-btn" onclick="generateArticle()">Generate Article</button>
 
       <div class="note">
-        After generating, create the suggested file inside the articles folder, paste the Article HTML, then paste the Homepage Card inside index.html under Latest Articles.
+        After generating, create the suggested file inside the articles folder, paste the Article HTML, then paste the card code into index.html and articles/index.html.
       </div>
     </section>
 
@@ -122,10 +128,19 @@ Leave one blank line between paragraphs."></textarea>
       <div class="output-box">
         <div class="output-header">
           <span>Homepage Card for index.html</span>
-          <button class="copy-btn" onclick="copyText('cardOutput')">Copy</button>
+          <button class="copy-btn" onclick="copyText('homeCardOutput')">Copy</button>
         </div>
-        <pre id="cardOutput">Generate article to see card code...</pre>
+        <pre id="homeCardOutput">Generate article to see homepage card code...</pre>
       </div>
+
+      <div class="output-box">
+        <div class="output-header">
+          <span>Articles Page Card for articles/index.html</span>
+          <button class="copy-btn" onclick="copyText('articlesCardOutput')">Copy</button>
+        </div>
+        <pre id="articlesCardOutput">Generate article to see articles page card code...</pre>
+      </div>
+
     </section>
 
   </div>
@@ -157,9 +172,11 @@ function generateArticle(){
   const date=document.getElementById("date").value.trim();
   const category=document.getElementById("category").value.trim();
   const subtitle=document.getElementById("subtitle").value.trim();
+  const writerName=document.getElementById("writerName").value.trim();
+  const writerDesignation=document.getElementById("writerDesignation").value.trim();
   const content=document.getElementById("content").value.trim();
 
-  if(!title || !date || !category || !subtitle || !content){
+  if(!title || !date || !category || !subtitle || !writerName || !writerDesignation || !content){
     alert("Please fill all fields before generating.");
     return;
   }
@@ -237,12 +254,11 @@ ${paragraphs}
         <h3>About the Writer</h3>
 
         <p>
-            <strong>Jayasri Nelluri</strong>
+            <strong>${escapeHtml(writerName)}</strong>
         </p>
 
         <p>
-            Technology leader, entrepreneur, author of <em>The 3 Secrets of David</em>, and LL.B. student passionate about the intersection of law, technology, business, and innovation.
-            With over 12 years of cross-industry experience, I build future-ready solutions, write about emerging ideas, and continuously explore how technology and law can drive meaningful change.
+            ${escapeHtml(writerDesignation)}
         </p>
 
     </section>
@@ -266,7 +282,8 @@ ${paragraphs}
 
   document.getElementById("filename").textContent=fileName;
   document.getElementById("articleOutput").textContent=articleHtml;
-  document.getElementById("cardOutput").textContent=cardHtml;
+  document.getElementById("homeCardOutput").textContent=cardHtml;
+  document.getElementById("articlesCardOutput").textContent=cardHtml;
 }
 
 function copyText(id){
