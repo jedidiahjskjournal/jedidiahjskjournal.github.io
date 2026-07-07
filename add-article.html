@@ -31,7 +31,6 @@
     .output-box{margin-top:18px;background:#0f172a;color:#e5e7eb;border-radius:14px;overflow:hidden;border:1px solid #1f2937;}
     .output-header{display:flex;justify-content:space-between;align-items:center;background:#111827;padding:12px 14px;font-weight:700;color:white;}
     .copy-btn{background:#16a34a;color:white;border:none;border-radius:8px;padding:8px 12px;font-weight:700;cursor:pointer;}
-    .copy-btn:hover{background:#15803d;}
     pre{margin:0;padding:18px;overflow:auto;white-space:pre-wrap;font-size:13px;line-height:1.6;}
     .note{background:#ecfdf5;color:#065f46;border:1px solid #bbf7d0;border-radius:12px;padding:14px 16px;margin-top:20px;line-height:1.6;font-weight:600;}
 
@@ -68,7 +67,7 @@
 
   <section class="cms-hero">
     <h1>Add New Article</h1>
-    <p>Write once. Generate everything. This page creates the article file, homepage card, and articles page card.</p>
+    <p>Write once. Generate the article page, homepage card, and articles page card.</p>
   </section>
 
   <div class="cms-grid">
@@ -88,8 +87,17 @@
       <label>Subtitle / Summary</label>
       <input id="subtitle" placeholder="A short summary of the article">
 
+      <label>Hero Image Path</label>
+      <input id="heroImage" placeholder="/images/your-article-image.png">
+
       <label>Writer Name</label>
       <input id="writerName" placeholder="Jedidiah Jsk">
+
+      <label>Writer Initials</label>
+      <input id="writerInitials" placeholder="JJ">
+
+      <label>Read Time</label>
+      <input id="readTime" placeholder="5 min read">
 
       <label>Writer Designation</label>
       <input id="writerDesignation" placeholder="Technology leader, author, LL.B. student">
@@ -102,7 +110,7 @@ Leave one blank line between paragraphs."></textarea>
       <button class="generate-btn" onclick="generateArticle()">Generate Article</button>
 
       <div class="note">
-        After generating, create the suggested file inside the articles folder, paste the Article HTML, then paste the card code into index.html and articles/index.html.
+        Create the suggested folder/file, paste Article HTML, then paste the card code into index.html and articles/index.html.
       </div>
     </section>
 
@@ -140,7 +148,6 @@ Leave one blank line between paragraphs."></textarea>
         </div>
         <pre id="articlesCardOutput">Generate article to see articles page card code...</pre>
       </div>
-
     </section>
 
   </div>
@@ -153,18 +160,11 @@ Leave one blank line between paragraphs."></textarea>
 
 <script>
 function slugify(text){
-  return text
-    .toLowerCase()
-    .trim()
-    .replace(/[^a-z0-9]+/g,"-")
-    .replace(/^-|-$/g,"");
+  return text.toLowerCase().trim().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
 }
 
 function escapeHtml(text){
-  return text
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;");
+  return text.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
 }
 
 function generateArticle(){
@@ -172,11 +172,14 @@ function generateArticle(){
   const date=document.getElementById("date").value.trim();
   const category=document.getElementById("category").value.trim();
   const subtitle=document.getElementById("subtitle").value.trim();
+  const heroImage=document.getElementById("heroImage").value.trim();
   const writerName=document.getElementById("writerName").value.trim();
+  const writerInitials=document.getElementById("writerInitials").value.trim();
+  const readTime=document.getElementById("readTime").value.trim();
   const writerDesignation=document.getElementById("writerDesignation").value.trim();
   const content=document.getElementById("content").value.trim();
 
-  if(!title || !date || !category || !subtitle || !writerName || !writerDesignation || !content){
+  if(!title || !date || !category || !subtitle || !heroImage || !writerName || !writerInitials || !readTime || !writerDesignation || !content){
     alert("Please fill all fields before generating.");
     return;
   }
@@ -205,6 +208,60 @@ function generateArticle(){
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lora:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles.css">
+
+    <style>
+        .article-subtitle{
+            font-family:'Lora', serif !important;
+            font-style:italic !important;
+            font-weight:400 !important;
+        }
+
+        .article-hero-image{
+            width:100%;
+            margin:38px 0 26px;
+            border-radius:14px;
+            overflow:hidden;
+            box-shadow:0 18px 45px rgba(0,0,0,0.12);
+        }
+
+        .article-hero-image img{
+            width:100%;
+            height:auto;
+            display:block;
+        }
+
+        .writer-row{
+            display:flex;
+            align-items:center;
+            gap:14px;
+            margin:26px 0 42px;
+            padding-bottom:28px;
+            border-bottom:1px solid #e5e7eb;
+        }
+
+        .writer-avatar{
+            width:46px;
+            height:46px;
+            border-radius:50%;
+            background:#111827;
+            color:white;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-weight:800;
+            flex-shrink:0;
+        }
+
+        .writer-row p{
+            margin:0;
+            color:#6b7280;
+            line-height:1.5;
+        }
+
+        .writer-row strong{
+            color:#111827;
+        }
+    </style>
 
 </head>
 
@@ -242,6 +299,19 @@ function generateArticle(){
     <p class="article-subtitle">
         ${escapeHtml(subtitle)}
     </p>
+
+    <div class="article-hero-image">
+        <img src="${escapeHtml(heroImage)}" alt="${escapeHtml(title)} hero image">
+    </div>
+
+    <div class="writer-row">
+        <div class="writer-avatar">${escapeHtml(writerInitials)}</div>
+
+        <div>
+            <p><strong>By ${escapeHtml(writerName)}</strong></p>
+            <p>${escapeHtml(date)} • ${escapeHtml(readTime)}</p>
+        </div>
+    </div>
 
     <article class="article-content">
 
