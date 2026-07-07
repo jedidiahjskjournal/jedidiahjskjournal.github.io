@@ -25,13 +25,15 @@
     .cms-panel h2{font-family:'Lora',serif;margin-top:0;}
     label{display:block;margin-top:18px;font-weight:700;color:#111827;}
     input,textarea{width:100%;box-sizing:border-box;margin-top:8px;padding:13px 14px;border:1px solid #d1d5db;border-radius:10px;font-family:Inter,sans-serif;font-size:15px;}
-    textarea{min-height:260px;resize:vertical;line-height:1.7;}
+    textarea{min-height:300px;resize:vertical;line-height:1.7;}
     .generate-btn{margin-top:24px;width:100%;background:#16a34a;color:white;border:none;padding:15px 20px;border-radius:10px;font-weight:800;font-size:16px;cursor:pointer;}
     .generate-btn:hover{background:#15803d;}
     .output-box{margin-top:18px;background:#0f172a;color:#e5e7eb;border-radius:14px;overflow:hidden;border:1px solid #1f2937;}
     .output-header{display:flex;justify-content:space-between;align-items:center;background:#111827;padding:12px 14px;font-weight:700;color:white;}
     .copy-btn{background:#16a34a;color:white;border:none;border-radius:8px;padding:8px 12px;font-weight:700;cursor:pointer;}
-    pre{margin:0;padding:18px;overflow:auto;white-space:pre-wrap;font-size:13px;line-height:1.6;}
+    .copy-btn:hover{background:#15803d;}
+    pre{margin:0;padding:18px;overflow:auto;white-space:pre-wrap;font-size:13px;line-height:1.6;max-height:320px;}
+    #filename{max-height:80px;}
     .note{background:#ecfdf5;color:#065f46;border:1px solid #bbf7d0;border-radius:12px;padding:14px 16px;margin-top:20px;line-height:1.6;font-weight:600;}
 
     @media(max-width:900px){
@@ -76,19 +78,19 @@
       <h2>Article Details</h2>
 
       <label>Article Title</label>
-      <input id="title" placeholder="The Day the Illusion Broke">
+      <input id="title" placeholder="What Happens After an FIR?">
 
       <label>Date</label>
-      <input id="date" placeholder="May 2026">
+      <input id="date" placeholder="Apr 2026">
 
       <label>Category</label>
-      <input id="category" placeholder="Reflection">
+      <input id="category" placeholder="Criminal Law">
 
       <label>Subtitle / Summary</label>
-      <input id="subtitle" placeholder="A short summary of the article">
+      <input id="subtitle" placeholder="A practical guide to understanding what happens after an FIR is registered">
 
       <label>Hero Image Path</label>
-      <input id="heroImage" placeholder="/images/your-article-image.png">
+      <input id="heroImage" placeholder="/images/what-happens-after-fir.png">
 
       <label>Writer Name</label>
       <input id="writerName" placeholder="Jedidiah Jsk">
@@ -97,15 +99,27 @@
       <input id="writerInitials" placeholder="JJ">
 
       <label>Read Time</label>
-      <input id="readTime" placeholder="5 min read">
+      <input id="readTime" placeholder="10 min read">
 
       <label>Writer Designation</label>
-      <input id="writerDesignation" placeholder="Technology leader, author, LL.B. student">
+      <input id="writerDesignation" placeholder="Technology Leader | Entrepreneur | LL.B. | Legal Researcher">
 
       <label>Article Content</label>
-      <textarea id="content" placeholder="Write your article here.
+      <textarea id="content" placeholder="Use this format:
 
-Leave one blank line between paragraphs."></textarea>
+## What is an FIR?
+
+Write your paragraph here.
+
+## What Happens Immediately After Registration?
+
+Write your paragraph here.
+
+> This becomes a quote.
+
+## Conclusion
+
+Write your conclusion here."></textarea>
 
       <button class="generate-btn" onclick="generateArticle()">Generate Article</button>
 
@@ -119,7 +133,7 @@ Leave one blank line between paragraphs."></textarea>
 
       <div class="output-box">
         <div class="output-header">
-          <span>File Name</span>
+          <span>Article File Name</span>
           <button class="copy-btn" onclick="copyText('filename')">Copy</button>
         </div>
         <pre id="filename">Generate article to see file name...</pre>
@@ -167,6 +181,24 @@ function escapeHtml(text){
   return text.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
 }
 
+function formatArticleContent(content){
+  const blocks = content.split(/\n\s*\n/);
+
+  return blocks.map(block => {
+    const clean = block.trim();
+
+    if(clean.startsWith("## ")){
+      return `        <h2>${escapeHtml(clean.replace("## ",""))}</h2>`;
+    }
+
+    if(clean.startsWith("> ")){
+      return `        <blockquote>\n            ${escapeHtml(clean.replace("> ",""))}\n        </blockquote>`;
+    }
+
+    return `        <p>\n            ${escapeHtml(clean)}\n        </p>`;
+  }).join("\n\n");
+}
+
 function generateArticle(){
   const title=document.getElementById("title").value.trim();
   const date=document.getElementById("date").value.trim();
@@ -185,12 +217,9 @@ function generateArticle(){
   }
 
   const slug=slugify(title);
-  const fileName="articles/" + slug + "/index.html";
+  const fileName=slug + "/index.html";
 
-  const paragraphs=content
-    .split(/\n\s*\n/)
-    .map(p => `        <p>\n            ${escapeHtml(p.trim())}\n        </p>`)
-    .join("\n\n");
+  const formattedContent=formatArticleContent(content);
 
   const articleHtml=`<!DOCTYPE html>
 <html lang="en">
@@ -261,6 +290,27 @@ function generateArticle(){
         .writer-row strong{
             color:#111827;
         }
+
+        .article-content h2{
+            font-family:'Lora', serif;
+            font-size:2rem;
+            margin-top:60px;
+            margin-bottom:22px;
+            color:#111827;
+        }
+
+        .article-content blockquote{
+            font-size:1.2rem;
+            line-height:1.8;
+            font-style:italic;
+            color:#4b5563;
+            text-align:center;
+            max-width:700px;
+            margin:50px auto;
+            padding:24px;
+            border-top:1px solid #e5e7eb;
+            border-bottom:1px solid #e5e7eb;
+        }
     </style>
 
 </head>
@@ -315,7 +365,7 @@ function generateArticle(){
 
     <article class="article-content">
 
-${paragraphs}
+${formattedContent}
 
     </article>
 
