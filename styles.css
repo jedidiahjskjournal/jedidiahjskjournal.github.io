@@ -15,11 +15,12 @@ body {
 
 .nav-wrap {
   max-width: 1100px;
-  margin: auto;
+  margin: 0 auto;
   padding: 12px 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-sizing: border-box;
 }
 
 .brand {
@@ -77,11 +78,12 @@ nav a:hover {
 
 .hero {
   max-width: 1100px;
-  margin: auto;
+  margin: 0 auto;
   padding: 90px 24px;
   display: flex;
   align-items: center;
   gap: 60px;
+  box-sizing: border-box;
 }
 
 .hero-text {
@@ -144,8 +146,9 @@ nav a:hover {
 
 .section {
   max-width: 1100px;
-  margin: auto;
+  margin: 0 auto;
   padding: 70px 24px;
+  box-sizing: border-box;
 }
 
 .section h2,
@@ -168,7 +171,7 @@ nav a:hover {
   padding: 28px;
   text-decoration: none;
   color: #111827;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
 }
 
 .card:hover {
@@ -201,11 +204,14 @@ nav a:hover {
 }
 
 .split {
+  max-width: 1100px;
+  margin: 0 auto;
   background: #f3f4f6;
   padding: 80px 24px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 60px;
+  box-sizing: border-box;
 }
 
 .split > div {
@@ -239,6 +245,15 @@ nav a:hover {
   font-size: 1.1rem;
 }
 
+.articles-intro {
+  max-width: 900px;
+  margin: 0;
+  color: #4b5563;
+  line-height: 1.8;
+  font-size: 1.1rem;
+  text-align: left;
+}
+
 footer {
   text-align: center;
   background: #f3f4f6;
@@ -249,8 +264,9 @@ footer {
 /* ARTICLE PAGE */
 .article-page {
   max-width: 1100px;
-  margin: auto;
+  margin: 0 auto;
   padding: 70px 24px;
+  box-sizing: border-box;
 }
 
 .article-inner {
@@ -368,6 +384,10 @@ footer {
   }
 
   .article-content p {
+    font-size: 1rem;
+  }
+
+  .articles-intro {
     font-size: 1rem;
   }
 }
