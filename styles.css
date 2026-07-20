@@ -413,28 +413,24 @@ footer {
 
 .second-book .cover-frame{
     order:2;
-
     background:
         radial-gradient(circle at center,
         rgba(255,193,7,.18),
         transparent 60%),
         #070707;
-
     border:1px solid #f4b400;
-
-    border-radius:8px;
-
+    border-radius:22px;
     padding:35px;
-
-    box-shadow:0 18px 60px rgba(244,180,0,.22);
+    box-shadow:0 0 18px rgba(244,180,0,.25),
+        0 0 45px rgba(244,180,0,.15);
 }
 
 .second-book .book-info h3 {
-  color: #ffb400;
+  color:#f4b400;
 }
 
 .second-book .featured {
-  color: #ffb400;
+  color:#f4b400;
 }
 
 .second-book .amazon-red {
