@@ -411,8 +411,22 @@ footer {
   order: 1;
 }
 
-.second-book .cover-frame {
-  order: 2;
+.second-book .cover-frame{
+    order:2;
+
+    background:
+        radial-gradient(circle at center,
+        rgba(255,193,7,.18),
+        transparent 60%),
+        #070707;
+
+    border:1px solid #f4b400;
+
+    border-radius:22px;
+
+    padding:35px;
+
+    box-shadow:0 18px 60px rgba(244,180,0,.22);
 }
 
 .second-book .book-info h3 {
