@@ -82,16 +82,34 @@
       max-width:520px;
     }
 
-    .hero-cover{
-      display:flex;
-      justify-content:center;
+    .hero-cover-stack{
+      position:relative;
+      width:min(420px, 100%);
+      min-height:460px;
+      margin-left:auto;
     }
 
-    .hero-cover img{
-      max-height:520px;
+    .hero-book{
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
       width:auto;
-      border-radius:4px;
-      box-shadow:0 25px 80px rgba(229,9,20,0.35);
+      border-radius:6px;
+      box-shadow:0 20px 50px rgba(0,0,0,.40);
+    }
+
+    .book-back{
+      left:10px;
+      max-height:360px;
+      transform:translateY(-50%) rotate(-10deg);
+      z-index:1;
+    }
+
+    .book-front{
+      right:10px;
+      max-height:400px;
+      transform:translateY(-50%) rotate(8deg);
+      z-index:2;
     }
 
     .book-main{
@@ -327,8 +345,25 @@
         grid-template-columns:1fr;
       }
 
-      .hero-cover img{
-        max-height:460px;
+      .hero-cover-stack{
+        min-height:360px;
+        width:100%;
+      }
+
+      .hero-book{
+        position:absolute;
+      }
+
+      .book-back{
+        max-height:280px;
+        left:0;
+        top:50%;
+      }
+
+      .book-front{
+        max-height:320px;
+        right:0;
+        top:50%;
       }
     }
   </style>
@@ -339,8 +374,8 @@
 <header class="navbar">
   <div class="nav-wrap">
     <a href="/" class="logo-brand">
-  <img src="/images/J3-Logo-3.png" alt="J³ Logo" class="logo-img">
-</a>
+      <img src="/images/J3-Logo-3.png" alt="J³ Logo" class="logo-img">
+    </a>
     <nav>
       <a href="/">Home</a>
       <a href="/articles/">Articles</a>
@@ -364,10 +399,10 @@
       </p>
     </div>
 
-<div class="hero-cover-stack">
-  <img class="hero-book book-back" src="/images/the-boy-who-refused-to-quit-cover.png" alt="The Boy Who Refused to Quit book cover">
-  <img class="hero-book book-front" src="/images/the-3-secrets-of-david-cover.png" alt="The 3 Secrets of David book cover">
-</div>
+    <div class="hero-cover-stack">
+      <img class="hero-book book-back" src="/images/the-boy-who-refused-to-quit-cover.png" alt="The Boy Who Refused to Quit book cover">
+      <img class="hero-book book-front" src="/images/the-3-secrets-of-david-cover.png" alt="The 3 Secrets of David book cover">
+    </div>
   </section>
 
   <section class="book-main">
@@ -477,118 +512,115 @@
       “This is more than a book about David. It is an invitation to pursue God
       with worship, trust, and obedience - not from perfection, but from surrender.”
     </p>
-    
   </section>
-
-
 
   <section class="book-main second-book">
 
-  <div class="cover-frame">
-    <img src="/images/the-boy-who-refused-to-quit-cover.png" alt="The Boy Who Refused to Quit book cover">
-  </div>
+    <div class="cover-frame">
+      <img src="/images/the-boy-who-refused-to-quit-cover.png" alt="The Boy Who Refused to Quit book cover">
+    </div>
 
-  <div class="book-info">
-    <p class="featured">Second Book</p>
+    <div class="book-info">
+      <p class="featured">Second Book</p>
 
-    <h2>The Boy Who Refused to Quit</h2>
-    <h3>The Extraordinary Journey of an Ordinary Boy Through Work, Struggles, Failure, and Success</h3>
+      <h2>The Boy Who Refused to Quit</h2>
+      <h3>The Extraordinary Journey of an Ordinary Boy Through Work, Struggles, Failure, and Success</h3>
 
-    <p><strong>By JeDiDiAh JsK</strong></p>
+      <p><strong>By JeDiDiAh JsK</strong></p>
 
+      <p>
+        A true story of resilience, hard work, faith, and the relentless pursuit of a better future.
+      </p>
+
+      <p>
+        This book follows a boy who started with a dream, met struggles early, learned through work,
+        faced failure, adapted through different seasons, and kept moving forward until success began to take shape.
+      </p>
+
+      <div class="principles">
+        <div class="principle">
+          <strong>Resilience</strong>
+          <span>through struggle</span>
+        </div>
+
+        <div class="principle">
+          <strong>Faith</strong>
+          <span>through uncertainty</span>
+        </div>
+
+        <div class="principle">
+          <strong>Persistence</strong>
+          <span>without quitting</span>
+        </div>
+      </div>
+
+      <div class="buttons">
+        <a class="amazon-red" href="#" target="_blank">
+          Buy on Amazon - Kindle
+        </a>
+
+        <a class="amazon-dark" href="#" target="_blank">
+          Buy on Amazon - View Paperback
+        </a>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="why-specs">
+
+    <div class="why">
+      <h3>Why Read This Book?</h3>
+      <ul>
+        <li>An inspiring true story of perseverance and resilience.</li>
+        <li>Lessons learned through work, failure, and personal growth.</li>
+        <li>Practical insights for students and young professionals.</li>
+        <li>Encouragement to keep moving forward despite setbacks.</li>
+        <li>A reminder that success is built through faith, discipline, and persistence.</li>
+      </ul>
+    </div>
+
+    <div class="specs">
+      <h3>Book Details</h3>
+
+      <div class="spec-box">
+        <div class="spec-row">
+          <strong>Status</strong>
+          <span>Coming Soon</span>
+        </div>
+
+        <div class="spec-row">
+          <strong>Genre</strong>
+          <span>Biography • Personal Development</span>
+        </div>
+
+        <div class="spec-row">
+          <strong>Language</strong>
+          <span>English</span>
+        </div>
+
+        <div class="spec-row">
+          <strong>Author</strong>
+          <span>JeDiDiAh JsK</span>
+        </div>
+
+        <div class="spec-row">
+          <strong>Formats</strong>
+          <span>Kindle & Paperback</span>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="quote">
     <p>
-      A true story of resilience, hard work, faith, and the relentless pursuit of a better future.
+      “Every setback became a lesson. Every failure became preparation.
+      Every job became a classroom. This is the story of a boy who refused to quit.”
     </p>
+  </section>
 
-    <p>
-      This book follows a boy who started with a dream, met struggles early, learned through work,
-      faced failure, adapted through different seasons, and kept moving forward until success began to take shape.
-    </p>
-
-    <div class="principles">
-      <div class="principle">
-        <strong>Resilience</strong>
-        <span>through struggle</span>
-      </div>
-
-      <div class="principle">
-        <strong>Faith</strong>
-        <span>through uncertainty</span>
-      </div>
-
-      <div class="principle">
-        <strong>Persistence</strong>
-        <span>without quitting</span>
-      </div>
-    </div>
-
-    <div class="buttons">
-      <a class="amazon-red" href="#" target="_blank">
-        Buy on Amazon - Kindle
-      </a>
-
-      <a class="amazon-dark" href="#" target="_blank">
-        Buy on Amazon - View Paperback
-      </a>
-    </div>
-  </div>
-
-</section>
-
-<section class="why-specs">
-
-  <div class="why">
-    <h3>Why Read This Book?</h3>
-    <ul>
-      <li>An inspiring true story of perseverance and resilience.</li>
-      <li>Lessons learned through work, failure, and personal growth.</li>
-      <li>Practical insights for students and young professionals.</li>
-      <li>Encouragement to keep moving forward despite setbacks.</li>
-      <li>A reminder that success is built through faith, discipline, and persistence.</li>
-    </ul>
-  </div>
-
-  <div class="specs">
-    <h3>Book Details</h3>
-
-    <div class="spec-box">
-      <div class="spec-row">
-        <strong>Status</strong>
-        <span>Coming Soon</span>
-      </div>
-
-      <div class="spec-row">
-        <strong>Genre</strong>
-        <span>Biography • Personal Development</span>
-      </div>
-
-      <div class="spec-row">
-        <strong>Language</strong>
-        <span>English</span>
-      </div>
-
-      <div class="spec-row">
-        <strong>Author</strong>
-        <span>JeDiDiAh JsK</span>
-      </div>
-
-      <div class="spec-row">
-        <strong>Formats</strong>
-        <span>Kindle & Paperback</span>
-      </div>
-    </div>
-  </div>
-
-</section>
-
-<section class="quote">
-  <p>
-    “Every setback became a lesson. Every failure became preparation.
-    Every job became a classroom. This is the story of a boy who refused to quit.”
-  </p>
-</section>
-
-    <section class="coming">
+  <section class="coming">
     <h2>Coming Soon</h2>
     <p>More books and study guides are on the way.</p>
     <p class="red">Stay tuned for future releases.</p>
