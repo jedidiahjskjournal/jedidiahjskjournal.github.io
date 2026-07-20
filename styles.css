@@ -402,9 +402,14 @@ footer {
   }
 }
 
+
+
+
+
+
 /* Second book layout */
 .second-book {
-  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-columns: 0.9fr 1.1fr;
 }
 
 .second-book .book-info {
@@ -425,13 +430,28 @@ footer {
   color: #f4b400;
 }
 
-.second-book .principle{
-  border-color:#ffb400;
-  background:rgba(255,180,0,0.06);
+.second-book .principle {
+  border: 1px solid #f4b400;
+  border-radius: 16px;
+  padding: 18px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.second-book .principle strong {
+  display: block;
+  color: #ffffff;
+  margin-bottom: 6px;
+}
+
+.second-book .principle span {
+  color: #cbd5e1;
+  font-size: 0.9rem;
 }
 
 .second-book .amazon-red {
   background: #ffb400;
+  color: white;
   box-shadow: 0 10px 30px rgba(255, 180, 0, 0.25);
 }
 
