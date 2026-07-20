@@ -425,6 +425,11 @@ footer {
   color: #f4b400;
 }
 
+.second-book .principle{
+  border-color:#ffb400;
+  background:rgba(255,180,0,0.06);
+}
+
 .second-book .amazon-red {
   background: #ffb400;
   box-shadow: 0 10px 30px rgba(255, 180, 0, 0.25);
