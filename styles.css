@@ -401,3 +401,40 @@ footer {
     font-size: 1rem;
   }
 }
+
+/* Second book layout */
+.second-book {
+  grid-template-columns: 1.1fr 0.9fr;
+}
+
+.second-book .book-info {
+  order: 1;
+}
+
+.second-book .cover-frame {
+  order: 2;
+}
+
+.second-book .book-info h3 {
+  color: #ffb400;
+}
+
+.second-book .featured {
+  color: #ffb400;
+}
+
+.second-book .amazon-red {
+  background: #ffb400;
+  box-shadow: 0 10px 30px rgba(255, 180, 0, 0.25);
+}
+
+.second-book .amazon-red:hover {
+  background: #d99600;
+}
+
+@media (max-width: 900px) {
+  .second-book .book-info,
+  .second-book .cover-frame {
+    order: initial;
+  }
+}
