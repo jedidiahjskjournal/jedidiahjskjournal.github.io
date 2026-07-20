@@ -404,7 +404,7 @@ footer {
 
 /* Second book layout */
 .second-book {
-  grid-template-columns: 0.9fr 1.1fr;
+  grid-template-columns: 1.1fr 0.9fr;
 }
 
 .second-book .book-info {
