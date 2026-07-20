@@ -418,8 +418,18 @@ footer {
 
 .second-book .cover-frame {
   order: 2;
-  border-color: #f4b400;
+  background: transparent;
+  border: 1px solid #f4b400;
+  border-radius: 22px;
+  padding: 0;
+  overflow: hidden;
   box-shadow: 0 18px 60px rgba(244, 180, 0, 0.18);
+}
+
+.second-book .cover-frame img {
+  width: 100%;
+  display: block;
+  border-radius: 22px;
 }
 
 .second-book .book-info h3 {
