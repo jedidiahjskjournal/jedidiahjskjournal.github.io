@@ -92,6 +92,9 @@
       <label>Hero Image Path</label>
       <input id="heroImage" placeholder="/images/what-happens-after-fir.png">
 
+      <label>Preview Image Path</label>
+      <input id="previewImage" placeholder="/images/what-happens-after-fir-preview.jpg">
+
       <label>Writer Name</label>
       <input id="writerName" placeholder="Jedidiah Jsk">
 
@@ -205,33 +208,38 @@ function formatArticleContent(content){
 }
 
 function generateArticle(){
-  const title=document.getElementById("title").value.trim();
-  const date=document.getElementById("date").value.trim();
-  const category=document.getElementById("category").value.trim();
-  const subtitle=document.getElementById("subtitle").value.trim();
-  const heroImage=document.getElementById("heroImage").value.trim();
-  const writerName=document.getElementById("writerName").value.trim();
-  const writerInitials=document.getElementById("writerInitials").value.trim();
-  const readTime=document.getElementById("readTime").value.trim();
-  const writerDesignation=document.getElementById("writerDesignation").value.trim();
-  const content=document.getElementById("content").value.trim();
+  const title = document.getElementById("title").value.trim();
+  const date = document.getElementById("date").value.trim();
+  const category = document.getElementById("category").value.trim();
+  const subtitle = document.getElementById("subtitle").value.trim();
+  const heroImage = document.getElementById("heroImage").value.trim();
+  const previewImage = document.getElementById("previewImage").value.trim();
+  const writerName = document.getElementById("writerName").value.trim();
+  const writerInitials = document.getElementById("writerInitials").value.trim();
+  const readTime = document.getElementById("readTime").value.trim();
+  const writerDesignation = document.getElementById("writerDesignation").value.trim();
+  const content = document.getElementById("content").value.trim();
 
-  if(!title || !date || !category || !subtitle || !heroImage || !writerName || !writerInitials || !readTime || !writerDesignation || !content){
+  if(!title || !date || !category || !subtitle || !heroImage || !previewImage || !writerName || !writerInitials || !readTime || !writerDesignation || !content){
     alert("Please fill all fields before generating.");
     return;
   }
 
-  const slug=slugify(title);
-  const fileName=slug + "/index.html";
-  const formattedContent=formatArticleContent(content);
+  const slug = slugify(title);
+  const fileName = slug + "/index.html";
+  const formattedContent = formatArticleContent(content);
 
   const heroImageUrl = heroImage.startsWith("http")
     ? heroImage
     : `https://jedidiahjskjournal.github.io${heroImage.startsWith("/") ? heroImage : "/" + heroImage}`;
 
+  const previewImageUrl = previewImage.startsWith("http")
+    ? previewImage
+    : `https://jedidiahjskjournal.github.io${previewImage.startsWith("/") ? previewImage : "/" + previewImage}`;
+
   const articleUrl = `https://jedidiahjskjournal.github.io/articles/${slug}/`;
 
-  const articleHtml=`<!DOCTYPE html>
+  const articleHtml = `<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -245,15 +253,15 @@ function generateArticle(){
     <meta property="og:title" content="${escapeHtml(title)}">
     <meta property="og:description" content="${escapeHtml(subtitle)}">
     <meta property="og:url" content="${escapeHtml(articleUrl)}">
-    <meta property="og:image" content="${escapeHtml(heroImageUrl)}">
-    <meta property="og:image:width" content="1959">
-    <meta property="og:image:height" content="803">
+    <meta property="og:image" content="${escapeHtml(previewImageUrl)}">
+    <meta property="og:image:width" content="1024">
+    <meta property="og:image:height" content="1024">
     <meta property="og:image:alt" content="${escapeHtml(title)}">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="${escapeHtml(title)}">
     <meta name="twitter:description" content="${escapeHtml(subtitle)}">
-    <meta name="twitter:image" content="${escapeHtml(heroImageUrl)}">
+    <meta name="twitter:image" content="${escapeHtml(previewImageUrl)}">
 
     <link rel="icon" type="image/png" href="/images/J3-Logo-2.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/images/J3-Logo-2.png">
@@ -417,21 +425,21 @@ ${formattedContent}
 
 </html>`;
 
-  const cardHtml=`<a class="card" href="/articles/${slug}/">
+  const cardHtml = `<a class="card" href="/articles/${slug}/">
   <p class="date">${escapeHtml(date)}</p>
   <h3>${escapeHtml(title)}</h3>
   <p>${escapeHtml(subtitle)}</p>
   <span>Read article →</span>
 </a>`;
 
-  document.getElementById("filename").textContent=fileName;
-  document.getElementById("articleOutput").textContent=articleHtml;
-  document.getElementById("homeCardOutput").textContent=cardHtml;
-  document.getElementById("articlesCardOutput").textContent=cardHtml;
+  document.getElementById("filename").textContent = fileName;
+  document.getElementById("articleOutput").textContent = articleHtml;
+  document.getElementById("homeCardOutput").textContent = cardHtml;
+  document.getElementById("articlesCardOutput").textContent = cardHtml;
 }
 
 function copyText(id){
-  const text=document.getElementById(id).textContent;
+  const text = document.getElementById(id).textContent;
   navigator.clipboard.writeText(text).then(function(){
     alert("Copied!");
   });
