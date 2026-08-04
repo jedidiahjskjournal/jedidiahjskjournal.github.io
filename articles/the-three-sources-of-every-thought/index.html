@@ -104,8 +104,9 @@
         }
 
         /* =========================================================
-           LANGUAGE BUTTON - CUSTOM UI
-           Change this block later if you want to redesign the button
+           CUSTOM LANGUAGE BUTTON
+           Edit this block if you want to change the design of the
+           language button or dropdown.
            ========================================================= */
 
         .lang-switcher {
@@ -149,7 +150,7 @@
             position: absolute;
             right: 0;
             top: calc(100% + 10px);
-            width: 230px;
+            width: 250px;
             background: #ffffff;
             border: 1px solid #e5e7eb;
             border-radius: 14px;
@@ -212,9 +213,9 @@
         }
 
         /* =========================================================
-           GOOGLE TRANSLATE DEFAULT UI HIDE
-           Keep this block if you still want the Google engine
-           but only use your custom button UI
+           GOOGLE TRANSLATOR HIDDEN ENGINE
+           This keeps Google Translate working in the background
+           while your custom language menu stays visible.
            ========================================================= */
 
         #google_translate_element {
@@ -223,23 +224,34 @@
             top: -9999px;
         }
 
+        /* Hide Google top banner, tooltip, and highlight */
+        .goog-te-banner-frame,
         .goog-te-banner-frame.skiptranslate,
-        .goog-te-banner-frame {
+        iframe.goog-te-banner-frame {
             display: none !important;
+            visibility: hidden !important;
+            height: 0 !important;
+            overflow: hidden !important;
         }
 
         body {
             top: 0 !important;
+            margin-top: 0 !important;
+            position: static !important;
+        }
+
+        html {
+            top: 0 !important;
+            margin-top: 0 !important;
         }
 
         #goog-gt-tt,
         .goog-te-balloon-frame,
         .goog-tooltip,
-        .goog-tooltip:hover {
-            display: none !important;
-        }
-
+        .goog-tooltip:hover,
         .goog-text-highlight {
+            display: none !important;
+            visibility: hidden !important;
             background: transparent !important;
             box-shadow: none !important;
         }
@@ -293,10 +305,7 @@
 
             <!-- =====================================================
                  CUSTOM LANGUAGE BUTTON
-                 Edit this block later if you want to change:
-                 - button text
-                 - language order
-                 - languages shown in menu
+                 Change the visible label, order, or languages here.
                  ===================================================== -->
             <div class="lang-switcher">
                 <button class="lang-btn" id="langBtn" type="button" aria-haspopup="true" aria-expanded="false">
@@ -321,7 +330,6 @@
 
                     <div class="lang-divider"></div>
 
-                    <!-- Other languages -->
                     <button class="lang-item" type="button" data-lang="es">
                         <span>🇪🇸 Español</span>
                         <span class="lang-check" data-check="es" style="display:none;">✓</span>
@@ -384,7 +392,7 @@
                 </div>
             </div>
 
-            <!-- Hidden Google Translate engine -->
+            <!-- GOOGLE TRANSLATOR ENGINE (hidden) -->
             <div id="google_translate_element"></div>
         </nav>
 
@@ -532,11 +540,7 @@
     <p>© 2026 Jedidiah_Jsk Journal</p>
 </footer>
 
-<!-- =========================================================
-     GOOGLE TRANSLATE SETUP
-     If you ever want to change the available languages or the
-     default selection behavior, edit this block only.
-     ========================================================= -->
+<!-- GOOGLE TRANSLATOR SETUP -->
 <script>
     function googleTranslateElementInit() {
         new google.translate.TranslateElement({
@@ -549,13 +553,7 @@
 
 <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-<!-- =========================================================
-     CUSTOM LANGUAGE MENU LOGIC
-     Edit this block later if you want to change:
-     - default language
-     - remembered language key
-     - menu open/close behavior
-     ========================================================= -->
+<!-- CUSTOM LANGUAGE MENU LOGIC -->
 <script>
     (function () {
         const btn = document.getElementById('langBtn');
@@ -630,7 +628,7 @@
         const savedLang = localStorage.getItem(storageKey);
 
         // Default language when no language has been chosen yet.
-        // Change this to 'te' if you want Telugu to be selected automatically.
+        // Change this to 'te' if you want Telugu selected by default.
         if (savedLang) {
             setActiveLanguage(savedLang);
             if (savedLang !== 'en') {
@@ -639,6 +637,35 @@
         } else {
             setActiveLanguage('en');
         }
+    })();
+</script>
+
+<!-- EXTRA BANNER CLEANUP
+     Keeps the Google top bar hidden if it appears again after translation.
+-->
+<script>
+    (function () {
+        function hideGoogleBanner() {
+            const banners = document.querySelectorAll(
+                '.goog-te-banner-frame, iframe.goog-te-banner-frame, .goog-te-banner-frame.skiptranslate'
+            );
+
+            banners.forEach(el => {
+                el.style.display = 'none';
+                el.style.visibility = 'hidden';
+                el.style.height = '0';
+            });
+
+            document.body.style.top = '0px';
+            document.body.style.marginTop = '0px';
+            document.documentElement.style.top = '0px';
+            document.documentElement.style.marginTop = '0px';
+        }
+
+        window.addEventListener('load', hideGoogleBanner);
+        setTimeout(hideGoogleBanner, 300);
+        setTimeout(hideGoogleBanner, 1000);
+        setInterval(hideGoogleBanner, 1500);
     })();
 </script>
 
