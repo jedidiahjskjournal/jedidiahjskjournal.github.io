@@ -103,55 +103,66 @@
                 border-bottom: 1px solid #e5e7eb;
             }
     
-    /* Google Translate Button */
-    
-    .translate-wrapper{
-        position:relative;
-        display:inline-block;
-        margin-left:12px;
-    }
-    
-    .translate-btn{
-        background:#16a34a;
-        color:#fff;
-        border:none;
-        border-radius:8px;
-        padding:10px 18px;
-        font-family:'Inter',sans-serif;
-        font-size:15px;
-        font-weight:600;
-        cursor:pointer;
-        transition:.2s;
-    }
-    
-    .translate-btn:hover{
-        background:#15803d;
-    }
-    
-    .goog-te-gadget{
-        font-size:0;
-    }
-    
-    .goog-logo-link,
-    .goog-te-gadget span{
-        display:none !important;
-    }
-    
-    .goog-te-gadget{
-        color:transparent !important;
-    }
-    
-    #google_translate_element{
-        position:absolute;
-        opacity:0;
-        width:1px;
-        height:1px;
-        overflow:hidden;
-    }
-    
-    .goog-te-gadget select{
-        width:160px;
-    }
+  /* ---------- Google Translate ---------- */
+
+.translate-wrapper{
+    position:relative;
+    display:inline-block;
+    margin-left:12px;
+}
+
+.translate-btn{
+    background:#16a34a;
+    color:#fff;
+    border:none;
+    border-radius:8px;
+    padding:10px 18px;
+    font-family:'Inter',sans-serif;
+    font-size:15px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.translate-btn:hover{
+    background:#15803d;
+}
+
+/* Hide Google's top text */
+.goog-te-gadget{
+    font-size:0;
+}
+
+.goog-logo-link,
+.goog-te-gadget span{
+    display:none !important;
+}
+
+.goog-te-gadget{
+    color:transparent !important;
+}
+
+/* Dropdown panel */
+#google_translate_element{
+    display:none;
+    position:absolute;
+    top:50px;
+    right:0;
+    background:#fff;
+    padding:12px;
+    border-radius:10px;
+    box-shadow:0 8px 24px rgba(0,0,0,.15);
+    z-index:9999;
+}
+
+/* Dropdown style */
+.goog-te-gadget select{
+    width:180px;
+    padding:8px;
+    border-radius:6px;
+    border:1px solid #ddd;
+    font-family:'Inter',sans-serif;
+}
         
         </style>
     
@@ -174,14 +185,15 @@
                 <a href="/about/">About</a>
                 <a class="add-btn" href="/add-article.html">+ Add Article</a>
                 
-                <div class="translate-wrapper">
-                <button class="translate-btn" onclick="openTranslateMenu()">
-                🌐 Translate
-                </button>
-    
-                    
-        <div id="google_translate_element"></div>
-    </div>
+               <div class="translate-wrapper">
+
+    <button class="translate-btn" onclick="toggleTranslate()">
+        🌐 Translate
+    </button>
+
+    <div id="google_translate_element"></div>
+
+</div>
             </nav>
     
         </div>
@@ -339,20 +351,18 @@
     </script>
         
     <script>
-    function openTranslateMenu() {
-        const select = document.querySelector(".goog-te-combo");
-    
-        if (select) {
-            select.focus();
-            select.click();
-    
-            const event = new MouseEvent("mousedown", {
-                bubbles: true
-            });
-    
-            select.dispatchEvent(event);
-        }
+function toggleTranslate() {
+
+    const panel = document.getElementById("google_translate_element");
+
+    if(panel.style.display==="block"){
+        panel.style.display="none";
     }
+    else{
+        panel.style.display="block";
+    }
+
+}
     </script>
     
     <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
