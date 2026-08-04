@@ -103,7 +103,11 @@
             border-bottom: 1px solid #e5e7eb;
         }
 
-        /* Custom Language Button */
+        /* =========================================================
+           LANGUAGE BUTTON - CUSTOM UI
+           Change this block later if you want to redesign the button
+           ========================================================= */
+
         .lang-switcher {
             position: relative;
             display: inline-block;
@@ -207,19 +211,37 @@
             flex-shrink: 0;
         }
 
-        /* Hide Google default widget but keep it functional */
+        /* =========================================================
+           GOOGLE TRANSLATE DEFAULT UI HIDE
+           Keep this block if you still want the Google engine
+           but only use your custom button UI
+           ========================================================= */
+
         #google_translate_element {
             position: absolute;
             left: -9999px;
             top: -9999px;
         }
 
-        .goog-te-banner-frame.skiptranslate {
+        .goog-te-banner-frame.skiptranslate,
+        .goog-te-banner-frame {
             display: none !important;
         }
 
         body {
             top: 0 !important;
+        }
+
+        #goog-gt-tt,
+        .goog-te-balloon-frame,
+        .goog-tooltip,
+        .goog-tooltip:hover {
+            display: none !important;
+        }
+
+        .goog-text-highlight {
+            background: transparent !important;
+            box-shadow: none !important;
         }
 
         .goog-te-gadget {
@@ -269,6 +291,13 @@
             <a href="/about/">About</a>
             <a class="add-btn" href="/add-article.html">+ Add Article</a>
 
+            <!-- =====================================================
+                 CUSTOM LANGUAGE BUTTON
+                 Edit this block later if you want to change:
+                 - button text
+                 - language order
+                 - languages shown in menu
+                 ===================================================== -->
             <div class="lang-switcher">
                 <button class="lang-btn" id="langBtn" type="button" aria-haspopup="true" aria-expanded="false">
                     <span>🌐 Language</span>
@@ -278,11 +307,13 @@
                 <div class="lang-menu" id="langMenu" role="menu" aria-label="Language selector">
                     <div class="lang-menu-header">Select Language</div>
 
+                    <!-- Top priority language -->
                     <button class="lang-item" type="button" data-lang="te">
                         <span>🇮🇳 తెలుగు</span>
                         <span class="lang-check" data-check="te" style="display:none;">✓</span>
                     </button>
 
+                    <!-- Original language -->
                     <button class="lang-item" type="button" data-lang="en">
                         <span>🇬🇧 English (Original)</span>
                         <span class="lang-check" data-check="en" style="display:none;">✓</span>
@@ -290,6 +321,7 @@
 
                     <div class="lang-divider"></div>
 
+                    <!-- Other languages -->
                     <button class="lang-item" type="button" data-lang="es">
                         <span>🇪🇸 Español</span>
                         <span class="lang-check" data-check="es" style="display:none;">✓</span>
@@ -352,6 +384,7 @@
                 </div>
             </div>
 
+            <!-- Hidden Google Translate engine -->
             <div id="google_translate_element"></div>
         </nav>
 
@@ -499,6 +532,11 @@
     <p>© 2026 Jedidiah_Jsk Journal</p>
 </footer>
 
+<!-- =========================================================
+     GOOGLE TRANSLATE SETUP
+     If you ever want to change the available languages or the
+     default selection behavior, edit this block only.
+     ========================================================= -->
 <script>
     function googleTranslateElementInit() {
         new google.translate.TranslateElement({
@@ -511,6 +549,13 @@
 
 <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
+<!-- =========================================================
+     CUSTOM LANGUAGE MENU LOGIC
+     Edit this block later if you want to change:
+     - default language
+     - remembered language key
+     - menu open/close behavior
+     ========================================================= -->
 <script>
     (function () {
         const btn = document.getElementById('langBtn');
@@ -528,8 +573,11 @@
         }
 
         function toggleMenu() {
-            if (menu.classList.contains('open')) closeMenu();
-            else openMenu();
+            if (menu.classList.contains('open')) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
         }
 
         function setActiveLanguage(lang) {
@@ -574,14 +622,22 @@
         });
 
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeMenu();
+            if (e.key === 'Escape') {
+                closeMenu();
+            }
         });
 
         const savedLang = localStorage.getItem(storageKey);
+
+        // Default language when no language has been chosen yet.
+        // Change this to 'te' if you want Telugu to be selected automatically.
         if (savedLang) {
             setActiveLanguage(savedLang);
+            if (savedLang !== 'en') {
+                applyLanguage(savedLang);
+            }
         } else {
-            setActiveLanguage('te');
+            setActiveLanguage('en');
         }
     })();
 </script>
