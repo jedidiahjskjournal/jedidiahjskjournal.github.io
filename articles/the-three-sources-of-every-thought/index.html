@@ -103,25 +103,54 @@
             border-bottom: 1px solid #e5e7eb;
         }
 
-        /* Google Translate */
-        #google_translate_element {
-            margin-left: 15px;
-            display: inline-block;
-            vertical-align: middle;
-        }
+/* Google Translate */
+#google_translate_element {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 12px;
+}
 
-        .goog-te-gadget {
-            font-size: 0;
-        }
+/* Hide Google's branding text */
+.goog-te-gadget {
+    font-size: 0;
+    font-family: 'Inter', sans-serif !important;
+}
 
-        .goog-te-gadget select {
-            padding: 8px 10px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-family: 'Inter', sans-serif;
-            background: #fff;
-            cursor: pointer;
-        }
+/* Match Add Article button */
+.goog-te-gadget select {
+    background: #16a34a;          /* Same green */
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 18px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    transition: all .2s ease;
+    outline: none;
+    min-width: 150px;
+}
+
+/* Hover effect */
+.goog-te-gadget select:hover {
+    background: #15803d;
+}
+
+/* Focus */
+.goog-te-gadget select:focus {
+    box-shadow: 0 0 0 3px rgba(22,163,74,.25);
+}
+
+/* Remove Google logo */
+.goog-logo-link,
+.goog-te-gadget span {
+    display: none !important;
+}
+
+.goog-te-gadget {
+    color: transparent !important;
+}
     </style>
 
 </head>
@@ -142,7 +171,6 @@
             <a href="/books/">Books</a>
             <a href="/about/">About</a>
             <a class="add-btn" href="/add-article.html">+ Add Article</a>
-           /* Google Translate */
             <span id="google_translate_element"></span> 
         </nav>
 
