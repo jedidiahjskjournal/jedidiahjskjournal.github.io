@@ -103,205 +103,24 @@
             border-bottom: 1px solid #e5e7eb;
         }
 
-        /* =========================================================
-           NAVBAR LAYOUT
-           Move the language button to the left side of the nav links.
-           ========================================================= */
-
-        .nav-wrap {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 20px;
-        }
-
-        .top-nav {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            flex-wrap: wrap;
-            justify-content: flex-start;
-        }
-
-        /* =========================================================
-           CUSTOM LANGUAGE BUTTON
-           Edit this block later if you want to change the style,
-           spacing, width, or dropdown design.
-           ========================================================= */
-
-        .lang-switcher {
-            position: relative;
-            display: inline-block;
-            margin-left: 0;
-            margin-right: 8px;
-            vertical-align: middle;
-            flex-shrink: 0;
-        }
-
-        .lang-btn {
-            height: 40px;
-            padding: 0 14px;
-            border: 1px solid #d1d5db;
-            border-radius: 10px;
-            background: #fff;
-            color: #111827;
-            font-family: 'Inter', sans-serif;
-            font-size: 14px;
-            font-weight: 500;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            cursor: pointer;
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
-            transition: all 0.2s ease;
-            white-space: nowrap;
-        }
-
-        .lang-btn:hover {
-            border-color: #16a34a;
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-        }
-
-        .lang-caret {
-            font-size: 11px;
-            line-height: 1;
-            color: #6b7280;
-        }
-
-        .lang-menu {
-            position: absolute;
-            left: 0;
-            top: calc(100% + 10px);
-            width: 250px;
-            background: #ffffff;
-            border: 1px solid #e5e7eb;
-            border-radius: 14px;
-            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.14);
-            padding: 8px;
-            z-index: 9999;
-            display: none;
-        }
-
-        .lang-menu.open {
-            display: block;
-        }
-
-        .lang-menu-header {
-            font-family: 'Inter', sans-serif;
-            font-size: 12px;
-            font-weight: 600;
-            color: #6b7280;
-            padding: 8px 10px 10px;
-        }
-
-        .lang-item {
-            width: 100%;
-            border: 0;
-            background: transparent;
-            padding: 9px 10px;
-            text-align: left;
-            border-radius: 10px;
-            font-family: 'Inter', sans-serif;
-            font-size: 14px;
-            color: #111827;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 10px;
-            transition: background 0.2s ease;
-        }
-
-        .lang-item:hover {
-            background: #f3f4f6;
-        }
-
-        .lang-item.active {
-            background: #ecfdf5;
-            color: #166534;
-            font-weight: 600;
-        }
-
-        .lang-divider {
-            height: 1px;
-            background: #e5e7eb;
-            margin: 6px 0;
-        }
-
-        .lang-check {
-            font-weight: 700;
-            color: #16a34a;
-            flex-shrink: 0;
-        }
-
-        /* =========================================================
-           GOOGLE TRANSLATOR HIDDEN ENGINE
-           Keep this if you want Google Translate to work behind the
-           custom language menu while hiding the default widget.
-           ========================================================= */
-
+        /* Google Translate */
         #google_translate_element {
-            position: absolute;
-            left: -9999px;
-            top: -9999px;
-        }
-
-        .goog-te-banner-frame,
-        .goog-te-banner-frame.skiptranslate,
-        iframe.goog-te-banner-frame {
-            display: none !important;
-            visibility: hidden !important;
-            height: 0 !important;
-            overflow: hidden !important;
-        }
-
-        body {
-            top: 0 !important;
-            margin-top: 0 !important;
-            position: static !important;
-        }
-
-        html {
-            top: 0 !important;
-            margin-top: 0 !important;
-        }
-
-        #goog-gt-tt,
-        .goog-te-balloon-frame,
-        .goog-tooltip,
-        .goog-tooltip:hover,
-        .goog-text-highlight {
-            display: none !important;
-            visibility: hidden !important;
-            background: transparent !important;
-            box-shadow: none !important;
+            margin-left: 15px;
+            display: inline-block;
+            vertical-align: middle;
         }
 
         .goog-te-gadget {
-            font-size: 0 !important;
-        }
-
-        .goog-te-gadget span {
-            display: none !important;
+            font-size: 0;
         }
 
         .goog-te-gadget select {
-            display: none !important;
-        }
-
-        .goog-logo-link {
-            display: none !important;
-        }
-
-        .goog-te-gadget .goog-te-combo {
-            display: none !important;
-        }
-
-        @media (max-width: 900px) {
-            .lang-menu {
-                left: 0;
-                right: auto;
-            }
+            padding: 8px 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            background: #fff;
+            cursor: pointer;
         }
     </style>
 
@@ -316,105 +135,14 @@
             <img src="/images/J3-Logo-2.png" alt="J³ Logo" class="logo-img">
         </a>
 
-        <nav class="top-nav">
-            <!-- =====================================================
-                 CUSTOM LANGUAGE BUTTON
-                 Change the visible label, order, or languages here.
-                 ===================================================== -->
-            <div class="lang-switcher">
-                <button class="lang-btn" id="langBtn" type="button" aria-haspopup="true" aria-expanded="false">
-                    <span>🌐 Language</span>
-                    <span class="lang-caret">▼</span>
-                </button>
-
-                <div class="lang-menu" id="langMenu" role="menu" aria-label="Language selector">
-                    <div class="lang-menu-header">Select Language</div>
-
-                    <!-- Top priority language -->
-                    <button class="lang-item" type="button" data-lang="te">
-                        <span>🇮🇳 తెలుగు</span>
-                        <span class="lang-check" data-check="te" style="display:none;">✓</span>
-                    </button>
-
-                    <!-- Original language -->
-                    <button class="lang-item" type="button" data-lang="en">
-                        <span>🇬🇧 English (Original)</span>
-                        <span class="lang-check" data-check="en" style="display:none;">✓</span>
-                    </button>
-
-                    <div class="lang-divider"></div>
-
-                    <button class="lang-item" type="button" data-lang="es">
-                        <span>🇪🇸 Español</span>
-                        <span class="lang-check" data-check="es" style="display:none;">✓</span>
-                    </button>
-
-                    <button class="lang-item" type="button" data-lang="fr">
-                        <span>🇫🇷 Français</span>
-                        <span class="lang-check" data-check="fr" style="display:none;">✓</span>
-                    </button>
-
-                    <button class="lang-item" type="button" data-lang="de">
-                        <span>🇩🇪 Deutsch</span>
-                        <span class="lang-check" data-check="de" style="display:none;">✓</span>
-                    </button>
-
-                    <button class="lang-item" type="button" data-lang="pt">
-                        <span>🇵🇹 Português</span>
-                        <span class="lang-check" data-check="pt" style="display:none;">✓</span>
-                    </button>
-
-                    <button class="lang-item" type="button" data-lang="ru">
-                        <span>🇷🇺 Русский</span>
-                        <span class="lang-check" data-check="ru" style="display:none;">✓</span>
-                    </button>
-
-                    <button class="lang-item" type="button" data-lang="ja">
-                        <span>🇯🇵 日本語</span>
-                        <span class="lang-check" data-check="ja" style="display:none;">✓</span>
-                    </button>
-
-                    <button class="lang-item" type="button" data-lang="ko">
-                        <span>🇰🇷 한국어</span>
-                        <span class="lang-check" data-check="ko" style="display:none;">✓</span>
-                    </button>
-
-                    <button class="lang-item" type="button" data-lang="zh-CN">
-                        <span>🇨🇳 中文</span>
-                        <span class="lang-check" data-check="zh-CN" style="display:none;">✓</span>
-                    </button>
-
-                    <button class="lang-item" type="button" data-lang="hi">
-                        <span>🇮🇳 हिन्दी</span>
-                        <span class="lang-check" data-check="hi" style="display:none;">✓</span>
-                    </button>
-
-                    <button class="lang-item" type="button" data-lang="ta">
-                        <span>🇮🇳 தமிழ்</span>
-                        <span class="lang-check" data-check="ta" style="display:none;">✓</span>
-                    </button>
-
-                    <button class="lang-item" type="button" data-lang="kn">
-                        <span>🇮🇳 ಕನ್ನಡ</span>
-                        <span class="lang-check" data-check="kn" style="display:none;">✓</span>
-                    </button>
-
-                    <button class="lang-item" type="button" data-lang="ml">
-                        <span>🇮🇳 മലയാളം</span>
-                        <span class="lang-check" data-check="ml" style="display:none;">✓</span>
-                    </button>
-                </div>
-            </div>
-
+        <nav>
             <a href="/">Home</a>
             <a href="/articles/">Articles</a>
             <a href="/research/">Research</a>
             <a href="/books/">Books</a>
             <a href="/about/">About</a>
             <a class="add-btn" href="/add-article.html">+ Add Article</a>
-
-            <!-- GOOGLE TRANSLATOR ENGINE (hidden) -->
-            <div id="google_translate_element"></div>
+            <span id="google_translate_element"></span>
         </nav>
 
     </div>
@@ -561,132 +289,17 @@
     <p>© 2026 Jedidiah_Jsk Journal</p>
 </footer>
 
-<!-- GOOGLE TRANSLATOR SETUP -->
 <script>
-    function googleTranslateElementInit() {
-        new google.translate.TranslateElement({
-            pageLanguage: 'en',
-            includedLanguages: 'te,en,es,fr,de,pt,ru,ja,ko,zh-CN,hi,ta,kn,ml',
-            autoDisplay: false
-        }, 'google_translate_element');
-    }
+function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,es,fr,de,it,pt,ru,ja,ko,zh-CN,hi,te,ta,kn,ml',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+    }, 'google_translate_element');
+}
 </script>
 
 <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
-<!-- CUSTOM LANGUAGE MENU LOGIC -->
-<script>
-    (function () {
-        const btn = document.getElementById('langBtn');
-        const menu = document.getElementById('langMenu');
-        const storageKey = 'j3_selected_language';
-
-        function openMenu() {
-            menu.classList.add('open');
-            btn.setAttribute('aria-expanded', 'true');
-        }
-
-        function closeMenu() {
-            menu.classList.remove('open');
-            btn.setAttribute('aria-expanded', 'false');
-        }
-
-        function toggleMenu() {
-            if (menu.classList.contains('open')) {
-                closeMenu();
-            } else {
-                openMenu();
-            }
-        }
-
-        function setActiveLanguage(lang) {
-            document.querySelectorAll('.lang-item').forEach(item => {
-                item.classList.toggle('active', item.getAttribute('data-lang') === lang);
-            });
-
-            document.querySelectorAll('.lang-check').forEach(check => {
-                check.style.display = (check.getAttribute('data-check') === lang) ? 'inline' : 'none';
-            });
-
-            localStorage.setItem(storageKey, lang);
-        }
-
-        function applyLanguage(lang) {
-            const comboInterval = setInterval(() => {
-                const combo = document.querySelector('.goog-te-combo');
-                if (combo) {
-                    combo.value = lang;
-                    combo.dispatchEvent(new Event('change'));
-                    clearInterval(comboInterval);
-                }
-            }, 100);
-
-            setActiveLanguage(lang);
-            closeMenu();
-        }
-
-        btn.addEventListener('click', toggleMenu);
-
-        document.querySelectorAll('.lang-item').forEach(item => {
-            item.addEventListener('click', () => {
-                const lang = item.getAttribute('data-lang');
-                applyLanguage(lang);
-            });
-        });
-
-        document.addEventListener('click', (e) => {
-            if (!menu.contains(e.target) && !btn.contains(e.target)) {
-                closeMenu();
-            }
-        });
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                closeMenu();
-            }
-        });
-
-        const savedLang = localStorage.getItem(storageKey);
-
-        // Default language when no language has been chosen yet.
-        // Change this to 'te' if you want Telugu selected by default.
-        if (savedLang) {
-            setActiveLanguage(savedLang);
-            if (savedLang !== 'en') {
-                applyLanguage(savedLang);
-            }
-        } else {
-            setActiveLanguage('en');
-        }
-    })();
-</script>
-
-<!-- EXTRA BANNER CLEANUP -->
-<script>
-    (function () {
-        function hideGoogleBanner() {
-            const banners = document.querySelectorAll(
-                '.goog-te-banner-frame, iframe.goog-te-banner-frame, .goog-te-banner-frame.skiptranslate'
-            );
-
-            banners.forEach(el => {
-                el.style.display = 'none';
-                el.style.visibility = 'hidden';
-                el.style.height = '0';
-            });
-
-            document.body.style.top = '0px';
-            document.body.style.marginTop = '0px';
-            document.documentElement.style.top = '0px';
-            document.documentElement.style.marginTop = '0px';
-        }
-
-        window.addEventListener('load', hideGoogleBanner);
-        setTimeout(hideGoogleBanner, 300);
-        setTimeout(hideGoogleBanner, 1000);
-        setInterval(hideGoogleBanner, 1500);
-    })();
-</script>
 
 </body>
 </html>
