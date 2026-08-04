@@ -103,66 +103,11 @@
                 border-bottom: 1px solid #e5e7eb;
             }
     
-  /* ---------- Google Translate ---------- */
-
-.translate-wrapper{
-    position:relative;
-    display:inline-block;
-    margin-left:12px;
-}
-
-.translate-btn{
-    background:#16a34a;
-    color:#fff;
-    border:none;
-    border-radius:8px;
-    padding:10px 18px;
-    font-family:'Inter',sans-serif;
-    font-size:15px;
-    font-weight:600;
-    cursor:pointer;
-    transition:.2s;
-}
-
-.translate-btn:hover{
-    background:#15803d;
-}
-
-/* Hide Google's top text */
-.goog-te-gadget{
-    font-size:0;
-}
-
-.goog-logo-link,
-.goog-te-gadget span{
-    display:none !important;
-}
-
-.goog-te-gadget{
-    color:transparent !important;
-}
-
-/* Dropdown panel */
-#google_translate_element{
-    display:none;
-    position:absolute;
-    top:50px;
-    right:0;
-    background:#fff;
-    padding:12px;
-    border-radius:10px;
-    box-shadow:0 8px 24px rgba(0,0,0,.15);
-    z-index:9999;
-}
-
-/* Dropdown style */
-.goog-te-gadget select{
-    width:180px;
-    padding:8px;
-    border-radius:6px;
-    border:1px solid #ddd;
-    font-family:'Inter',sans-serif;
-}
+        #gt-mordadam-43217984 {
+            display: inline-block;
+            margin-left: 12px;
+            vertical-align: middle;
+        }
         
         </style>
     
@@ -184,16 +129,7 @@
                 <a href="/books/">Books</a>
                 <a href="/about/">About</a>
                 <a class="add-btn" href="/add-article.html">+ Add Article</a>
-                
-               <div class="translate-wrapper">
-
-    <button class="translate-btn" onclick="toggleTranslate()">
-        🌐 Translate
-    </button>
-
-    <div id="google_translate_element"></div>
-
-</div>
+                <div id="gt-mordadam-43217984"></div>
             </nav>
     
         </div>
@@ -339,33 +275,60 @@
     <footer>
         <p>© 2026 Jedidiah_Jsk Journal</p>
     </footer>
-               <!-- Google Translate -->
-    <script>
-    function googleTranslateElementInit() {
-        new google.translate.TranslateElement({
-            pageLanguage: 'en',
-            includedLanguages: 'en,es,fr,de,it,pt,ru,ja,ko,zh-CN,hi,te,ta,kn,ml',
-            layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-        }, 'google_translate_element');
-    }
-    </script>
         
     <script>
-function toggleTranslate() {
+  window.gtranslateSettings = window.gtranslateSettings || {};
+  window.gtranslateSettings['43217984'] = {
+    default_language: "en",
+    languages: [
+    // Top Languages
+    "en",      // English
+    "te",      // Telugu
+    "hi",      // Hindi
 
-    const panel = document.getElementById("google_translate_element");
+    // Major World Languages
+    "es",      // Spanish
+    "zh-CN",   // Chinese (Simplified)
+    "ar",      // Arabic
+    "fr",      // French
+    "de",      // German
+    "pt",      // Portuguese
+    "ru",      // Russian
+    "ja",      // Japanese
+    "ko",      // Korean
+    "it",      // Italian
 
-    if(panel.style.display==="block"){
-        panel.style.display="none";
-    }
-    else{
-        panel.style.display="block";
-    }
+    // Other Indian Languages
+    "ta",      // Tamil
+    "kn",      // Kannada
+    "ml",      // Malayalam
+    "bn",      // Bengali
+    "mr",      // Marathi
+    "gu",      // Gujarati
+    "pa",      // Punjabi
+    "ur",      // Urdu
 
-}
-    </script>
-    
-    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    // Remaining Supported Languages
+    "af","sq","am","fa","ps","hy","az","eu","be","bs","bg",
+    "ca","ceb","ny","zh-TW","co","hr","cs","da","nl","eo",
+    "et","tl","fi","fy","gl","ka","el","ht","ha","haw",
+    "iw","hmn","hu","is","ig","id","ga","jw","kk","km",
+    "ku","ky","lo","la","lv","lt","lb","mk","mg","ms",
+    "mt","mi","mn","my","ne","no","pl","ro","sm","gd",
+    "sr","st","sn","sd","si","sk","sl","so","su","sw",
+    "sv","tg","th","tr","uk","uz","vi","cy","xh","yi",
+    "yo","zu"
+],
+    wrapper_selector: "#gt-mordadam-43217984",
+    native_language_names: 1,
+    flag_style: "2d",
+    flag_size: 24,
+    horizontal_position: "inline",
+    flags_location: "/flags/"
+  };
+</script>
+
+<script src="/js/gt.min.js" data-gt-widget-id="43217984"></script>
     
     </body>
     </html>
