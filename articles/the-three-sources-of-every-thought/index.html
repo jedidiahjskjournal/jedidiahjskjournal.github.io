@@ -104,16 +104,38 @@
         }
 
         /* =========================================================
+           NAVBAR LAYOUT
+           Move the language button to the left side of the nav links.
+           ========================================================= */
+
+        .nav-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .top-nav {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+        }
+
+        /* =========================================================
            CUSTOM LANGUAGE BUTTON
-           Edit this block if you want to change the design of the
-           language button or dropdown.
+           Edit this block later if you want to change the style,
+           spacing, width, or dropdown design.
            ========================================================= */
 
         .lang-switcher {
             position: relative;
             display: inline-block;
-            margin-left: 10px;
+            margin-left: 0;
+            margin-right: 8px;
             vertical-align: middle;
+            flex-shrink: 0;
         }
 
         .lang-btn {
@@ -130,14 +152,14 @@
             align-items: center;
             gap: 8px;
             cursor: pointer;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
             transition: all 0.2s ease;
             white-space: nowrap;
         }
 
         .lang-btn:hover {
             border-color: #16a34a;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
         }
 
         .lang-caret {
@@ -148,13 +170,13 @@
 
         .lang-menu {
             position: absolute;
-            right: 0;
+            left: 0;
             top: calc(100% + 10px);
             width: 250px;
             background: #ffffff;
             border: 1px solid #e5e7eb;
             border-radius: 14px;
-            box-shadow: 0 18px 40px rgba(0,0,0,0.14);
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.14);
             padding: 8px;
             z-index: 9999;
             display: none;
@@ -214,8 +236,8 @@
 
         /* =========================================================
            GOOGLE TRANSLATOR HIDDEN ENGINE
-           This keeps Google Translate working in the background
-           while your custom language menu stays visible.
+           Keep this if you want Google Translate to work behind the
+           custom language menu while hiding the default widget.
            ========================================================= */
 
         #google_translate_element {
@@ -224,7 +246,6 @@
             top: -9999px;
         }
 
-        /* Hide Google top banner, tooltip, and highlight */
         .goog-te-banner-frame,
         .goog-te-banner-frame.skiptranslate,
         iframe.goog-te-banner-frame {
@@ -278,8 +299,8 @@
 
         @media (max-width: 900px) {
             .lang-menu {
-                right: auto;
                 left: 0;
+                right: auto;
             }
         }
     </style>
@@ -295,14 +316,7 @@
             <img src="/images/J3-Logo-2.png" alt="J³ Logo" class="logo-img">
         </a>
 
-        <nav>
-            <a href="/">Home</a>
-            <a href="/articles/">Articles</a>
-            <a href="/research/">Research</a>
-            <a href="/books/">Books</a>
-            <a href="/about/">About</a>
-            <a class="add-btn" href="/add-article.html">+ Add Article</a>
-
+        <nav class="top-nav">
             <!-- =====================================================
                  CUSTOM LANGUAGE BUTTON
                  Change the visible label, order, or languages here.
@@ -391,6 +405,13 @@
                     </button>
                 </div>
             </div>
+
+            <a href="/">Home</a>
+            <a href="/articles/">Articles</a>
+            <a href="/research/">Research</a>
+            <a href="/books/">Books</a>
+            <a href="/about/">About</a>
+            <a class="add-btn" href="/add-article.html">+ Add Article</a>
 
             <!-- GOOGLE TRANSLATOR ENGINE (hidden) -->
             <div id="google_translate_element"></div>
@@ -640,9 +661,7 @@
     })();
 </script>
 
-<!-- EXTRA BANNER CLEANUP
-     Keeps the Google top bar hidden if it appears again after translation.
--->
+<!-- EXTRA BANNER CLEANUP -->
 <script>
     (function () {
         function hideGoogleBanner() {
