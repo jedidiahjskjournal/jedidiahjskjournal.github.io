@@ -56,12 +56,23 @@ body {
 .logo-img:hover {
   transform: scale(1.08);
 }
+/* ===========================
+   Navigation
+=========================== */
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
 
 nav a {
-  margin-left: 24px;
   text-decoration: none;
   color: #374151;
   font-size: 0.95rem;
+  margin: 0;
 }
 
 nav a:hover {
@@ -75,6 +86,7 @@ nav a:hover {
   border-radius: 8px;
   text-decoration: none;
   font-weight: 700;
+  flex-shrink: 0;
 }
 
 .add-btn:hover {
@@ -82,6 +94,13 @@ nav a:hover {
   color: white !important;
 }
 
+/* Google Translate Widget */
+#gt-mordadam-43217984 {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0;
+  flex-shrink: 0;
+}
 .hero {
   width: min(1100px, calc(100% - 48px));
   margin: 0 auto;
@@ -365,24 +384,29 @@ footer {
     padding: 12px 0;
   }
 
-  nav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    width: 100%;
-  }
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  width: 100%;
+  white-space: normal;
+}
 
-  nav a {
-    margin-left: 0;
-    font-size: 0.9rem;
-  }
+nav a {
+  margin: 0;
+  font-size: 0.9rem;
+}
 
-  .add-btn {
-    width: 100%;
-    text-align: center;
-    margin-top: 8px;
-    box-sizing: border-box;
-  }
+.add-btn {
+  width: 100%;
+  text-align: center;
+  margin-top: 8px;
+  box-sizing: border-box;
+}
+
+#gt-mordadam-43217984 {
+  margin: 0;
+}
 
   .logo-img {
     width: 38px;
