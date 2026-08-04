@@ -429,3 +429,10 @@ footer {
 .second-book .amazon-red:hover {
   background: #d99600;
 }
+
+/* Google Translate Widget */
+#gt-mordadam-43217984 {
+    display: inline-block;
+    margin-left: 12px;
+    vertical-align: middle;
+}
