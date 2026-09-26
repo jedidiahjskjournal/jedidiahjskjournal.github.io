@@ -35,10 +35,6 @@
       margin:0 auto;
     }
 
-    .back-row{
-      padding:30px 0 20px;
-    }
-
     .back-link{
       display:inline-flex;
       align-items:center;
@@ -87,10 +83,18 @@
     }
 
     .book-stage{
-      display:flex;
-      justify-content:center;
-      align-items:flex-start;
-    }
+  position:relative;
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+}
+
+    .book-side-back{
+  position:absolute;
+  left:0;
+  top:0;
+  z-index:5;
+}
 
     .book-page{
       display:none;
@@ -372,13 +376,11 @@
 
   <div class="reader-container">
 
-    <div class="back-row">
-      <a href="/books/" class="back-link">← Back to Book</a>
-    </div>
+<section class="book-stage">
 
-    </section>
-
-    <section class="book-stage">
+  <a href="/books/" class="back-link book-side-back">
+    ← Back to Book
+  </a>
 
       <!-- PAGE 1: COVER IMAGE -->
       <article class="book-page cover-page active" data-page="1">
