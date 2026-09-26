@@ -137,13 +137,20 @@
 }
 
     .title-page{
+  width:auto;
+  height:calc(100vh - 250px);
   aspect-ratio:550 / 720;
+
   min-height:0;
+  max-height:calc(100vh - 250px);
+
   display:none;
   align-items:flex-start;
   justify-content:center;
   text-align:center;
+
   padding:5% 8% 5%;
+
   font-family:Georgia, 'Times New Roman', serif;
   overflow:hidden;
 }
@@ -313,9 +320,13 @@
       }
 
       .title-page{
-        min-height:0;
-        padding:6% 6% 5%;
-      }
+  width:100%;
+  height:auto;
+  max-height:none;
+  min-height:0;
+  aspect-ratio:550 / 799;
+  padding:6% 6% 5%;
+}
 
       .title-the{
         font-size:1.1rem;
