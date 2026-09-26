@@ -84,7 +84,7 @@
 
 
     /* ==============================
-       BACK TO BOOK
+       READER CONTAINER
        ============================== */
 
     .reader-container{
@@ -92,6 +92,10 @@
       margin:0 auto;
     }
 
+
+    /* ==============================
+       BACK TO BOOK
+       ============================== */
 
     .back-row{
       padding:30px 0 20px;
@@ -163,11 +167,16 @@
     }
 
 
+    /* ==============================
+       BOOK LANGUAGE SELECTOR
+       ============================== */
+
     .book-language{
       display:flex;
       align-items:center;
 
       gap:10px;
+
       flex-shrink:0;
     }
 
@@ -176,18 +185,17 @@
       color:#d1d5db;
 
       font-size:.9rem;
+
       font-weight:700;
+
+      white-space:nowrap;
     }
 
 
-    .translate-book-button{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-
+    .book-language-select{
       min-height:42px;
 
-      padding:0 18px;
+      padding:0 40px 0 14px;
 
       border-radius:9px;
 
@@ -197,22 +205,38 @@
 
       color:#fff;
 
-      text-decoration:none;
+      font-family:'Inter',sans-serif;
+
+      font-size:.9rem;
 
       font-weight:800;
 
-      font-size:.9rem;
+      cursor:pointer;
+
+      outline:none;
+
+      appearance:auto;
 
       transition:all .2s ease;
     }
 
 
-    .translate-book-button:hover{
-      background:#e50914;
+    .book-language-select:hover{
       border-color:#e50914;
-      color:#fff;
+    }
 
-      transform:translateY(-1px);
+
+    .book-language-select:focus{
+      border-color:#e50914;
+
+      box-shadow:
+        0 0 0 2px rgba(229,9,20,.15);
+    }
+
+
+    .book-language-select option{
+      background:#111;
+      color:#fff;
     }
 
 
@@ -317,8 +341,9 @@
       }
 
 
-      .translate-book-button{
+      .book-language-select{
         flex:1;
+        width:100%;
       }
 
 
@@ -431,7 +456,9 @@
       </div>
 
 
-      <!-- BOOK-SPECIFIC TRANSLATION -->
+      <!-- ============================
+           BOOK LANGUAGE
+           ============================ -->
 
       <div class="book-language">
 
@@ -440,14 +467,29 @@
         </span>
 
 
-        <a
-          class="translate-book-button"
-          href="https://word.cloud.microsoft/"
-          target="_blank"
-          rel="noopener noreferrer"
+        <select
+          id="bookLanguage"
+          class="book-language-select"
+          aria-label="Select book language"
         >
-          Translate in Word
-        </a>
+
+          <option value="en">
+            🇬🇧 English
+          </option>
+
+          <option value="te">
+            🇮🇳 తెలుగు
+          </option>
+
+          <option value="hi">
+            🇮🇳 हिन्दी
+          </option>
+
+          <option value="es">
+            🇪🇸 Español
+          </option>
+
+        </select>
 
       </div>
 
@@ -463,7 +505,8 @@
     <section class="word-viewer-frame">
 
       <iframe
-        src="https://view.officeapps.live.com/op/embed.aspx?src=https%3A%2F%2Fjedidiahjskjournal.github.io%2Fbooks%2Fthe-3-secrets-of-david-read%2Fthe-3-secrets-of-david.docx"
+        id="bookViewer"
+        src=""
         title="The 3 Secrets of David - Word Preview"
         allowfullscreen
       >
@@ -474,7 +517,7 @@
 
 
     <!-- ==============================
-         NOTE
+         VIEWER NOTE
          ============================== -->
 
     <p class="reader-note">
@@ -482,8 +525,6 @@
       The book is displayed using the original Word document
       so its page layout, formatting, images, and typography
       remain intact.
-
-      For translation, use the book's Word translation option.
 
     </p>
 
@@ -578,6 +619,72 @@
 <script
   src="/js/gt.min.js"
   data-gt-widget-id="43217984">
+</script>
+
+
+
+<!-- =========================================================
+     BOOK LANGUAGE SWITCHER
+     ========================================================= -->
+
+<script>
+
+  const bookViewer =
+    document.getElementById("bookViewer");
+
+  const bookLanguage =
+    document.getElementById("bookLanguage");
+
+
+  const bookDocuments = {
+
+    en:
+      "/books/the-3-secrets-of-david-read/the-3-secrets-of-david.docx",
+
+    te:
+      "/books/the-3-secrets-of-david-read/the-3-secrets-of-david-te.docx",
+
+    hi:
+      "/books/the-3-secrets-of-david-read/the-3-secrets-of-david-hi.docx",
+
+    es:
+      "/books/the-3-secrets-of-david-read/the-3-secrets-of-david-es.docx"
+
+  };
+
+
+  function loadBook(language){
+
+    const documentUrl =
+      window.location.origin +
+      bookDocuments[language];
+
+
+    const officeViewerUrl =
+      "https://view.officeapps.live.com/op/embed.aspx?src=" +
+      encodeURIComponent(documentUrl);
+
+
+    bookViewer.src =
+      officeViewerUrl;
+
+  }
+
+
+  bookLanguage.addEventListener(
+    "change",
+    function(){
+
+      loadBook(this.value);
+
+    }
+  );
+
+
+  /* Load English when the page opens */
+
+  loadBook("en");
+
 </script>
 
 
