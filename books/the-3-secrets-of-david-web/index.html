@@ -107,14 +107,24 @@
     }
 
     .cover-page{
-      background:#000;
-    }
+  background:#000;
+  text-align:center;
+}
 
-    .cover-page img{
-      display:block;
-      width:100%;
-      height:auto;
-    }
+.cover-page.active{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.cover-page img{
+  display:block;
+  width:auto;
+  height:auto;
+  max-width:100%;
+  max-height:calc(100vh - 330px);
+  object-fit:contain;
+}
 
     .title-page{
       aspect-ratio:550 / 799;
