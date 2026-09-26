@@ -216,12 +216,30 @@
     }
 
     .reader-controls{
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      gap:14px;
-      margin-top:4px;
-    }
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  align-items:center;
+  gap:40px;
+
+  width:min(760px, 100%);
+  margin:20px auto 0;
+}
+
+.reader-controls .reader-button:first-child{
+  justify-self:start;
+}
+
+.reader-controls .reader-button:last-child{
+  justify-self:end;
+}
+
+.page-counter{
+  color:#d1d5db;
+  font-size:.95rem;
+  font-weight:800;
+  white-space:nowrap;
+  text-align:center;
+}
 
     .reader-button{
       border:1px solid #555;
@@ -245,15 +263,6 @@
     .reader-button:disabled{
       opacity:.38;
       cursor:not-allowed;
-    }
-
-    .reader-note{
-      text-align:center;
-      color:#8f96a3;
-      font-size:.85rem;
-      line-height:1.7;
-      margin:18px auto 0;
-      max-width:850px;
     }
 
     .gt_white_content,
@@ -367,15 +376,6 @@
       <a href="/books/" class="back-link">← Back to Book</a>
     </div>
 
-    <section class="reader-title-row">
-      <div>
-        <h1>The 3 Secrets of David</h1>
-        <p>2nd King of Israel - A Man after God's Own Heart</p>
-      </div>
-
-      <div class="page-counter" id="pageCounter">
-        Page 1 of 2
-      </div>
     </section>
 
     <section class="book-stage">
@@ -435,31 +435,30 @@
 
     </section>
 
-    <div class="reader-controls">
+   <div class="reader-controls">
 
-      <button
-        type="button"
-        class="reader-button"
-        id="prevPage"
-        disabled
-      >
-        ← Previous Page
-      </button>
+  <button
+    type="button"
+    class="reader-button"
+    id="prevPage"
+    disabled
+  >
+    ← Previous Page
+  </button>
 
-      <button
-        type="button"
-        class="reader-button"
-        id="nextPage"
-      >
-        Next Page →
-      </button>
+  <div class="page-counter" id="pageCounter">
+    Page 1 of 2
+  </div>
 
-    </div>
+  <button
+    type="button"
+    class="reader-button"
+    id="nextPage"
+  >
+    Next Page →
+  </button>
 
-    <p class="reader-note">
-      Use the page controls to read the book one page at a time.
-      Text-based pages can be translated using the language selector in the J³ navigation above.
-    </p>
+</div>
 
   </div>
 
