@@ -29,16 +29,24 @@
       position:sticky;
       top:0;
       z-index:1000;
-      background:#fff;
-      border-bottom:1px solid #e5e7eb;
+      background:#050505;
+      border-bottom:1px solid #b30000;
+    }
+
+    .brand, nav a {
+      color:#fff;
+    }
+
+    nav a:hover {
+      color:#e50914;
     }
     .reader-toolbar {
       max-width:1000px;
       margin:0 auto;
-      padding:18px 24px;
+      padding:18px 24px 8px;
       display:flex;
       align-items:center;
-      justify-content:space-between;
+      justify-content:flex-start;
       gap:18px;
       flex-wrap:wrap;
     }
@@ -49,6 +57,11 @@
       text-decoration:none;
       color:#111827;
       font-weight:700;
+      transition:.2s ease;
+    }
+
+    .back-link:hover {
+      color:#e50914;
     }
     .reader-title {
       margin:0;
@@ -98,6 +111,14 @@
       font-family:Georgia, serif;
     }
     .book-document table { max-width:100%; }
+    footer {
+      background:#050505;
+      border-top:1px solid #b30000;
+      color:#aaa;
+      padding:14px 24px;
+      text-align:center;
+    }
+
     .book-note {
       max-width:1000px;
       margin:0 auto 60px;
@@ -108,9 +129,8 @@
       text-align:center;
     }
     @media (max-width:700px) {
-      .reader-toolbar { justify-content:center; }
-      .reader-title { order:3; flex-basis:100%; }
-      .translate-wrap { min-width:auto; }
+      .reader-toolbar { justify-content:flex-start; }
+      .reader-title { flex-basis:100%; text-align:left; }
       .book-intro h1 { font-size:1.65rem; }
       .book-document { max-width:calc(100vw - 12px); margin-top:12px; }
     }
@@ -121,7 +141,7 @@
     <header class="navbar">
       <div class="nav-wrap">
         <a href="/" class="logo-brand">
-          <img src="/images/J3-Logo-2.png" alt="J³ Logo" class="logo-img">
+          <img src="/images/J3-Logo-3.png" alt="J³ Logo" class="logo-img">
         </a>
         <nav>
           <a href="/">Home</a>
@@ -138,7 +158,6 @@
     <div class="reader-toolbar">
       <a href="/books/" class="back-link">← Back to Book</a>
       <p class="reader-title">The 3 Secrets of David</p>
-      <div class="translate-wrap"><span id="gt-reader-43217984"></span></div>
     </div>
 
     <section class="book-intro">
@@ -3308,7 +3327,9 @@ Through powerful insights and practical
 
     </main>
 
-    <p class="book-note">© 2026 Jedidiah_Jsk Journal. All rights reserved.</p>
+    <footer>
+      <p>© 2026 Jedidiah_Jsk Journal. All rights reserved.</p>
+    </footer>
   </div>
 
   <script>
@@ -3327,7 +3348,7 @@ Through powerful insights and practical
         "sr","st","sn","sd","si","sk","sl","so","su","sw",
         "sv","tg","th","tr","uk","uz","vi","cy","xh","yi","yo","zu"
       ],
-      wrapper_selector: "#gt-reader-43217984",
+      wrapper_selector: "#gt-mordadam-43217984",
       native_language_names: 1,
       flag_style: "2d",
       flag_size: 24,
