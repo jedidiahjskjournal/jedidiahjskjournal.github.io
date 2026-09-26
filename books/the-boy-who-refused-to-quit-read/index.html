@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>The Boy Who Refused to Quit | Coming Soon | Jedidiah_Jsk Journal</title>
+
+  <link rel="icon" type="image/png" href="/images/J3-Logo-2.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/J3-Logo-2.png">
+  <link rel="shortcut icon" href="/images/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="/images/J3-Logo-2.png">
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lora:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+
+  <style>
+
+    body{
+      margin:0;
+      background:#000;
+      color:#fff;
+      font-family:'Inter',sans-serif;
+    }
+
+    .navbar{
+      background:#050505;
+      border-bottom:1px solid #b8860b;
+    }
+
+    .brand,
+    nav a{
+      color:#fff;
+    }
+
+    nav a:hover{
+      color:#ffbf00;
+    }
+
+    .coming-page{
+      min-height:calc(100vh - 150px);
+      background:
+        radial-gradient(circle at 50% 40%, rgba(255,191,0,0.10), transparent 32%),
+        radial-gradient(circle at 85% 70%, rgba(255,191,0,0.06), transparent 30%),
+        #000;
+
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      padding:70px 24px;
+      box-sizing:border-box;
+    }
+
+    .coming-wrap{
+      width:100%;
+      max-width:950px;
+    }
+
+    .back-link{
+      display:inline-block;
+      margin-bottom:28px;
+      color:#d1d5db;
+      text-decoration:none;
+      font-weight:600;
+      transition:.2s ease;
+    }
+
+    .back-link:hover{
+      color:#ffbf00;
+    }
+
+    .coming-card{
+      border:1px solid #ffbf00;
+      border-radius:22px;
+      background:
+        linear-gradient(145deg,rgba(255,255,255,0.035),rgba(255,191,0,0.025)),
+        #070707;
+
+      padding:70px 45px;
+      text-align:center;
+
+      box-shadow:
+        0 20px 70px rgba(0,0,0,.55),
+        0 0 45px rgba(255,191,0,.08);
+    }
+
+    .coming-label{
+      color:#ffbf00;
+      font-weight:800;
+      letter-spacing:3px;
+      text-transform:uppercase;
+      font-size:.95rem;
+      margin-bottom:18px;
+    }
+
+    .coming-card h1{
+      font-family:'Lora',serif;
+      font-size:3.4rem;
+      line-height:1.15;
+      margin:0 auto 18px;
+      max-width:760px;
+      color:#fff;
+    }
+
+    .subtitle{
+      color:#d1d5db;
+      font-size:1.15rem;
+      line-height:1.8;
+      max-width:680px;
+      margin:0 auto 34px;
+    }
+
+    .coming-soon-box{
+      max-width:620px;
+      margin:35px auto;
+      padding:25px 30px;
+
+      border:2px solid #ffbf00;
+      border-radius:14px;
+
+      background:#111;
+      color:#fff;
+
+      font-size:1.65rem;
+      font-weight:900;
+      letter-spacing:3px;
+
+      box-shadow:0 12px 35px rgba(255,191,0,.14);
+    }
+
+    .message{
+      color:#9ca3af;
+      line-height:1.8;
+      max-width:620px;
+      margin:25px auto 0;
+    }
+
+    .book-link{
+      display:inline-block;
+      margin-top:35px;
+      padding:14px 24px;
+
+      border:1px solid #555;
+      border-radius:10px;
+
+      color:#fff;
+      background:#111;
+
+      text-decoration:none;
+      font-weight:700;
+
+      transition:.2s ease;
+    }
+
+    .book-link:hover{
+      color:#111;
+      background:#ffbf00;
+      border-color:#ffbf00;
+      transform:translateY(-2px);
+    }
+
+    footer{
+      background:#050505;
+      border-top:1px solid #b8860b;
+      color:#aaa;
+    }
+
+    #gt-mordadam-43217984{
+      display:inline-block;
+      margin-left:12px;
+      vertical-align:middle;
+    }
+
+    .gt_white_content,
+    .gt_white_content *{
+      color:#111827 !important;
+    }
+
+    .gt_white_content a{
+      color:#111827 !important;
+    }
+
+    .gt_white_content a:hover{
+      color:#16a34a !important;
+    }
+
+    @media(max-width:700px){
+
+      .coming-page{
+        padding:45px 18px;
+      }
+
+      .coming-card{
+        padding:50px 22px;
+      }
+
+      .coming-card h1{
+        font-size:2.3rem;
+      }
+
+      .coming-soon-box{
+        font-size:1.25rem;
+        letter-spacing:2px;
+        padding:20px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+<header class="navbar">
+
+  <div class="nav-wrap">
+
+    <a href="/" class="logo-brand">
+      <img src="/images/J3-Logo-3.png" alt="J³ Logo" class="logo-img">
+    </a>
+
+    <nav>
+
+      <a href="/">Home</a>
+      <a href="/articles/">Articles</a>
+      <a href="/research/">Research</a>
+      <a href="/books/">Books</a>
+      <a href="/about/">About</a>
+
+      <a class="add-btn" href="/add-article.html">
+        + Add Article
+      </a>
+
+      <div id="gt-mordadam-43217984"></div>
+
+    </nav>
+
+  </div>
+
+</header>
+
+
+<main class="coming-page">
+
+  <div class="coming-wrap">
+
+    <a href="/books/" class="back-link">
+      ← Back to Books
+    </a>
+
+    <section class="coming-card">
+
+      <p class="coming-label">
+        Upcoming Book
+      </p>
+
+      <h1>
+        The Boy Who Refused to Quit
+      </h1>
+
+      <p class="subtitle">
+        The Extraordinary Journey of an Ordinary Boy Through Work,
+        Struggles, Failure, and Success
+      </p>
+
+      <div class="coming-soon-box">
+        COMING SOON
+      </div>
+
+      <p class="message">
+        This book is currently being prepared for online reading.
+        The complete book will be available here soon.
+      </p>
+
+      <a href="/books/" class="book-link">
+        View Books
+      </a>
+
+    </section>
+
+  </div>
+
+</main>
+
+
+<footer>
+  <p>© 2026 Jedidiah_Jsk Journal. All rights reserved.</p>
+</footer>
+
+
+<script>
+
+  window.gtranslateSettings =
+    window.gtranslateSettings || {};
+
+  window.gtranslateSettings['43217984'] = {
+
+    default_language: "en",
+
+    languages: [
+
+      "en",
+      "te",
+      "hi",
+
+      "es",
+      "zh-CN",
+      "ar",
+      "fr",
+      "de",
+      "pt",
+      "ru",
+      "ja",
+      "ko",
+      "it",
+
+      "ta",
+      "kn",
+      "ml",
+      "bn",
+      "mr",
+      "gu",
+      "pa",
+      "ur",
+
+      "af","sq","am","fa","ps","hy","az","eu","be","bs","bg",
+      "ca","ceb","ny","zh-TW","co","hr","cs","da","nl","eo",
+      "et","tl","fi","fy","gl","ka","el","ht","ha","haw",
+      "iw","hmn","hu","is","ig","id","ga","jw","kk","km",
+      "ku","ky","lo","la","lv","lt","lb","mk","mg","ms",
+      "mt","mi","mn","my","ne","no","pl","ro","sm","gd",
+      "sr","st","sn","sd","si","sk","sl","so","su","sw",
+      "sv","tg","th","tr","uk","uz","vi","cy","xh","yi",
+      "yo","zu"
+
+    ],
+
+    wrapper_selector:"#gt-mordadam-43217984",
+    native_language_names:1,
+    flag_style:"2d",
+    flag_size:24,
+    horizontal_position:"inline",
+    flags_location:"/flags/"
+
+  };
+
+</script>
+
+<script
+  src="/js/gt.min.js"
+  data-gt-widget-id="43217984">
+</script>
+
+</body>
+</html>
