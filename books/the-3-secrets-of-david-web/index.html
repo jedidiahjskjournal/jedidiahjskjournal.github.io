@@ -212,23 +212,105 @@
       z-index:5;
     }
 
+    .book-page.page-turn-front::after{
+  content:"";
+  position:absolute;
+  inset:0;
+
+  pointer-events:none;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0,0,0,0) 45%,
+      rgba(0,0,0,.03) 55%,
+      rgba(0,0,0,.18) 78%,
+      rgba(0,0,0,.34) 100%
+    );
+
+  opacity:0;
+}
+
+    .book-page.turn-next::after{
+  animation:pageShadeNext var(--page-turn-duration,.55s) ease-in-out both;
+}
+
+.book-page.turn-prev::after{
+  animation:pageShadePrev var(--page-turn-duration,.55s) ease-in-out both;
+}
+
+
+@keyframes pageShadeNext{
+
+  0%{
+    opacity:0;
+  }
+
+  45%{
+    opacity:.15;
+  }
+
+  70%{
+    opacity:.55;
+  }
+
+  88%{
+    opacity:.85;
+  }
+
+  100%{
+    opacity:0;
+  }
+
+}
+
+
+@keyframes pageShadePrev{
+
+  0%{
+    opacity:0;
+  }
+
+  45%{
+    opacity:.15;
+  }
+
+  70%{
+    opacity:.55;
+  }
+
+  88%{
+    opacity:.85;
+  }
+
+  100%{
+    opacity:0;
+  }
+
+}
+
     /* ==============================
        FIXED BOOK PAGE
        Every page uses the same canvas.
        ============================== */
 
     .book-page{
-      display:none;
-      flex:none;
-      width:420px;
-      height:640px;
-      box-sizing:border-box;
-      background:#fff;
-      color:#111;
-      overflow:hidden;
-      box-shadow:0 20px 70px rgba(0,0,0,.55);
-      margin-bottom:0;
-    }
+  display:none;
+  flex:none;
+  width:420px;
+  height:640px;
+  box-sizing:border-box;
+  background:#fff;
+  color:#111;
+  overflow:hidden;
+  box-shadow:0 20px 70px rgba(0,0,0,.55);
+  margin-bottom:0;
+
+  position:relative;
+  transform-style:preserve-3d;
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
+}
 
     .book-page.active{
       display:block;
@@ -516,51 +598,135 @@
 
   0%{
     opacity:1;
-    transform:rotateY(0deg);
-    box-shadow:0 20px 70px rgba(0,0,0,.55);
+    transform:
+      perspective(1200px)
+      rotateY(0deg)
+      scaleX(1);
+
+    box-shadow:
+      0 20px 70px rgba(0,0,0,.55);
   }
 
-  40%{
+  25%{
     opacity:1;
-    transform:rotateY(-65deg);
-    box-shadow:-28px 15px 40px rgba(0,0,0,.38);
+    transform:
+      perspective(1200px)
+      rotateY(-35deg)
+      scaleX(.96);
+
+    box-shadow:
+      -12px 14px 35px rgba(0,0,0,.35);
   }
 
-  72%{
+  55%{
     opacity:1;
-    transform:rotateY(-125deg);
-    box-shadow:-18px 12px 30px rgba(0,0,0,.20);
+    transform:
+      perspective(1200px)
+      rotateY(-88deg)
+      scaleX(.84);
+
+    box-shadow:
+      -28px 16px 42px rgba(0,0,0,.42);
+  }
+
+  78%{
+    opacity:.75;
+    transform:
+      perspective(1200px)
+      rotateY(-125deg)
+      scaleX(.72);
+
+    box-shadow:
+      -18px 12px 28px rgba(0,0,0,.25);
   }
 
   88%{
-    opacity:.45;
-    transform:rotateY(-145deg);
+    opacity:.30;
+    transform:
+      perspective(1200px)
+      rotateY(-140deg)
+      scaleX(.66);
+
     box-shadow:none;
   }
 
   100%{
     opacity:0;
-    transform:rotateY(-150deg);
+    transform:
+      perspective(1200px)
+      rotateY(-150deg)
+      scaleX(.62);
+
     box-shadow:none;
   }
 
 }
 
+
 @keyframes turnPrev{
 
   0%{
-    transform:rotateY(0deg);
-    box-shadow:0 20px 70px rgba(0,0,0,.55);
+    opacity:1;
+    transform:
+      perspective(1200px)
+      rotateY(0deg)
+      scaleX(1);
+
+    box-shadow:
+      0 20px 70px rgba(0,0,0,.55);
   }
 
-  45%{
-    transform:rotateY(72deg);
-    box-shadow:30px 15px 45px rgba(0,0,0,.40);
+  25%{
+    opacity:1;
+    transform:
+      perspective(1200px)
+      rotateY(35deg)
+      scaleX(.96);
+
+    box-shadow:
+      12px 14px 35px rgba(0,0,0,.35);
+  }
+
+  55%{
+    opacity:1;
+    transform:
+      perspective(1200px)
+      rotateY(88deg)
+      scaleX(.84);
+
+    box-shadow:
+      28px 16px 42px rgba(0,0,0,.42);
+  }
+
+  78%{
+    opacity:.75;
+    transform:
+      perspective(1200px)
+      rotateY(125deg)
+      scaleX(.72);
+
+    box-shadow:
+      18px 12px 28px rgba(0,0,0,.25);
+  }
+
+  88%{
+    opacity:.30;
+    transform:
+      perspective(1200px)
+      rotateY(140deg)
+      scaleX(.66);
+
+    box-shadow:none;
   }
 
   100%{
-    transform:rotateY(180deg);
-    box-shadow:5px 10px 25px rgba(0,0,0,.15);
+    opacity:0;
+    transform:
+      perspective(1200px)
+      rotateY(150deg)
+      scaleX(.62);
+
+    box-shadow:none;
   }
 
 }
