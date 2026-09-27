@@ -349,6 +349,23 @@ footer {
   line-height: 1.7;
 }
 
+/* ==============================
+   GOOGLE TRANSLATE INJECTED UI
+   Hides Google's floating translation graphic.
+   ============================== */
+
+div.VIpgJd-ZVi9od-aZ2wEe-wOHMyf-ti6hGc {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+html,
+body {
+  top: 0 !important;
+}
+
 /* MOBILE */
 @media (max-width: 800px) {
   .nav-wrap,
