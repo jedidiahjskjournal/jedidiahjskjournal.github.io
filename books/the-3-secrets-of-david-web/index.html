@@ -39,6 +39,139 @@
       margin:0 auto;
     }
 
+    .page-selector{
+  position:relative;
+  display:inline-block;
+  justify-self:center;
+}
+
+.page-selector-button{
+  border:1px solid rgba(255,255,255,.30);
+  background:rgba(17,17,17,.45);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+
+  color:#fff;
+
+  border-radius:7px;
+
+  padding:4px 12px;
+
+  font-family:'Inter',sans-serif;
+  font-size:.95rem;
+  font-weight:800;
+
+  cursor:pointer;
+
+  white-space:nowrap;
+
+  transition:all .2s ease;
+}
+
+.page-selector-button:hover,
+.page-selector-button[aria-expanded="true"]{
+  border-color:#e50914;
+  background:rgba(229,9,20,.18);
+}
+
+.page-selector-arrow{
+  margin-left:5px;
+  font-size:.7rem;
+  opacity:.8;
+}
+
+.page-dropdown{
+  position:absolute;
+  left:50%;
+  bottom:calc(100% + 8px);
+
+  transform:translateX(-50%);
+
+  width:150px;
+  max-height:190px;
+
+  overflow-y:auto;
+
+  padding:6px;
+
+  background:rgba(10,10,10,.72);
+  border:1px solid rgba(255,255,255,.20);
+  border-radius:10px;
+
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+
+  box-shadow:
+    0 15px 35px rgba(0,0,0,.45);
+
+  opacity:0;
+  visibility:hidden;
+
+  pointer-events:none;
+
+  transition:
+    opacity .18s ease,
+    transform .18s ease,
+    visibility .18s ease;
+
+  z-index:50;
+}
+
+.page-dropdown.open{
+  opacity:1;
+  visibility:visible;
+  pointer-events:auto;
+
+  transform:translateX(-50%) translateY(-2px);
+}
+
+.page-dropdown button{
+  display:block;
+
+  width:100%;
+
+  border:0;
+  background:transparent;
+
+  color:#fff;
+
+  text-align:left;
+
+  padding:8px 10px;
+
+  border-radius:6px;
+
+  font-family:'Inter',sans-serif;
+  font-size:.88rem;
+  font-weight:600;
+
+  cursor:pointer;
+
+  transition:background .15s ease;
+}
+
+.page-dropdown button:hover{
+  background:rgba(229,9,20,.25);
+}
+
+.page-dropdown button.active{
+  background:rgba(229,9,20,.35);
+  font-weight:800;
+}
+
+.page-dropdown::-webkit-scrollbar{
+  width:6px;
+}
+
+.page-dropdown::-webkit-scrollbar-track{
+  background:transparent;
+}
+
+.page-dropdown::-webkit-scrollbar-thumb{
+  background:rgba(255,255,255,.25);
+  border-radius:10px;
+}
+
     /* ==============================
        BACK TO BOOK
        ============================== */
@@ -465,9 +598,24 @@
         ← Previous
       </button>
 
-      <div class="page-counter" id="pageCounter">
-        Page 1 of 2
-      </div>
+      <div class="page-selector" id="pageSelector">
+
+  <button
+    type="button"
+    class="page-selector-button"
+    id="pageSelectorButton"
+    aria-expanded="false"
+  >
+    Page 1 of 2
+    <span class="page-selector-arrow">▼</span>
+  </button>
+
+  <div
+    class="page-dropdown"
+    id="pageDropdown"
+  ></div>
+
+</div>
 
       <button
         type="button"
@@ -540,43 +688,247 @@
      ========================================================= -->
 
 <script>
-  const pages = Array.from(document.querySelectorAll('.book-page'));
-  const pageCounter = document.getElementById('pageCounter');
-  const prevPageButton = document.getElementById('prevPage');
-  const nextPageButton = document.getElementById('nextPage');
+  const pages = Array.from(
+    document.querySelectorAll('.book-page')
+  );
+
+  const pageSelector =
+    document.getElementById('pageSelector');
+
+  const pageSelectorButton =
+    document.getElementById('pageSelectorButton');
+
+  const pageDropdown =
+    document.getElementById('pageDropdown');
+
+  const prevPageButton =
+    document.getElementById('prevPage');
+
+  const nextPageButton =
+    document.getElementById('nextPage');
 
   let currentPage = 0;
 
-  function showPage(index) {
-    if (index < 0 || index >= pages.length) return;
 
-    pages.forEach((page, i) => {
-      page.classList.toggle('active', i === index);
-    });
+  /* =========================================
+     CREATE PAGE LIST AUTOMATICALLY
+     ========================================= */
+
+  pages.forEach((page, index) => {
+
+    const button =
+      document.createElement('button');
+
+    button.type = 'button';
+
+    button.textContent =
+      `Page ${index + 1}`;
+
+    button.dataset.page =
+      index;
+
+    button.addEventListener(
+      'click',
+      () => {
+
+        showPage(index);
+
+        closePageDropdown();
+
+      }
+    );
+
+    pageDropdown.appendChild(button);
+
+  });
+
+
+  const pageDropdownButtons =
+    Array.from(
+      pageDropdown.querySelectorAll('button')
+    );
+
+
+  /* =========================================
+     SHOW PAGE
+     ========================================= */
+
+  function showPage(index){
+
+    if(
+      index < 0 ||
+      index >= pages.length
+    ){
+      return;
+    }
+
+
+    pages.forEach(
+      (page, i) => {
+
+        page.classList.toggle(
+          'active',
+          i === index
+        );
+
+      }
+    );
+
 
     currentPage = index;
 
-    pageCounter.textContent =
-      `Page ${currentPage + 1} of ${pages.length}`;
 
-    prevPageButton.disabled = currentPage === 0;
-    nextPageButton.disabled = currentPage === pages.length - 1;
+    pageSelectorButton.innerHTML =
+      `Page ${currentPage + 1} of ${pages.length}
+       <span class="page-selector-arrow">▼</span>`;
+
+
+    prevPageButton.disabled =
+      currentPage === 0;
+
+
+    nextPageButton.disabled =
+      currentPage === pages.length - 1;
+
+
+    pageDropdownButtons.forEach(
+      (button, i) => {
+
+        button.classList.toggle(
+          'active',
+          i === currentPage
+        );
+
+      }
+    );
+
+
+    pageSelectorButton.setAttribute(
+      'aria-expanded',
+      'false'
+    );
+
 
     window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
+      top:0,
+      behavior:'smooth'
     });
+
   }
 
-  prevPageButton.addEventListener('click', () => {
-    showPage(currentPage - 1);
-  });
 
-  nextPageButton.addEventListener('click', () => {
-    showPage(currentPage + 1);
-  });
+  /* =========================================
+     OPEN / CLOSE PAGE DROPDOWN
+     ========================================= */
+
+  function openPageDropdown(){
+
+    pageDropdown.classList.add('open');
+
+    pageSelectorButton.setAttribute(
+      'aria-expanded',
+      'true'
+    );
+
+
+    const activeButton =
+      pageDropdownButtons[currentPage];
+
+    if(activeButton){
+
+      activeButton.scrollIntoView({
+        block:'nearest'
+      });
+
+    }
+
+  }
+
+
+  function closePageDropdown(){
+
+    pageDropdown.classList.remove('open');
+
+    pageSelectorButton.setAttribute(
+      'aria-expanded',
+      'false'
+    );
+
+  }
+
+
+  pageSelectorButton.addEventListener(
+    'click',
+    (event) => {
+
+      event.stopPropagation();
+
+      if(
+        pageDropdown.classList.contains('open')
+      ){
+
+        closePageDropdown();
+
+      }else{
+
+        openPageDropdown();
+
+      }
+
+    }
+  );
+
+
+  document.addEventListener(
+    'click',
+    (event) => {
+
+      if(
+        !pageSelector.contains(event.target)
+      ){
+
+        closePageDropdown();
+
+      }
+
+    }
+  );
+
+
+  /* =========================================
+     PREVIOUS / NEXT
+     ========================================= */
+
+  prevPageButton.addEventListener(
+    'click',
+    () => {
+
+      showPage(
+        currentPage - 1
+      );
+
+    }
+  );
+
+
+  nextPageButton.addEventListener(
+    'click',
+    () => {
+
+      showPage(
+        currentPage + 1
+      );
+
+    }
+  );
+
+
+  /* =========================================
+     START
+     ========================================= */
 
   showPage(0);
+
 </script>
 
 </body>
