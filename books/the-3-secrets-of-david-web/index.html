@@ -841,6 +841,13 @@
        GOOGLE TRANSLATE POPUP
        ============================== */
 
+    /* Keep the inline language selector in the navbar.
+       Hide only the separate floating GTranslate switcher. */
+    #gt_float_wrapper,
+    .gt_float_switcher{
+      display:none !important;
+    }
+
     .gt_white_content,
     .gt_white_content *{
       color:#111827 !important;
@@ -1226,28 +1233,39 @@
     if(!el.dataset.bookFitBaseSize){
       el.dataset.bookFitBaseSize = getComputedStyle(el).fontSize;
     }
+
     if(!el.dataset.bookFitBaseLineHeight){
       el.dataset.bookFitBaseLineHeight = getComputedStyle(el).lineHeight;
     }
+
     if(!el.dataset.bookFitBaseWhiteSpace){
       el.dataset.bookFitBaseWhiteSpace = getComputedStyle(el).whiteSpace;
     }
+
     if(!el.dataset.bookFitBaseWidth){
       el.dataset.bookFitBaseWidth = el.style.width || '';
     }
+
     if(!el.dataset.bookFitBaseDisplay){
       el.dataset.bookFitBaseDisplay = el.style.display || '';
+    }
+
+    if(!el.dataset.bookFitOriginalText){
+      el.dataset.bookFitOriginalText = el.textContent.trim();
     }
   }
 
   function restoreBase(el){
     saveBase(el);
+
     el.style.fontSize = el.dataset.bookFitBaseSize;
     el.style.lineHeight = el.dataset.bookFitBaseLineHeight;
     el.style.whiteSpace = el.dataset.bookFitBaseWhiteSpace;
     el.style.width = el.dataset.bookFitBaseWidth;
     el.style.display = el.dataset.bookFitBaseDisplay;
     el.style.maxWidth = '100%';
+    el.style.overflowWrap = '';
+    el.style.wordBreak = '';
   }
 
   function pageBox(page){
@@ -1272,8 +1290,13 @@
       'h1','h2','h3','h4','h5','h6','p','li','blockquote'
     ];
 
-    const nodes = Array.from(page.querySelectorAll(selectors.join(',')));
-    const nested = Array.from(page.querySelectorAll('span,strong,em')).filter(el => {
+    const nodes = Array.from(
+      page.querySelectorAll(selectors.join(','))
+    );
+
+    const nested = Array.from(
+      page.querySelectorAll('span,strong,em')
+    ).filter(el => {
       if(!el.textContent.trim()) return false;
       if(el.closest('.reader-controls,.page-selector')) return false;
       return el.children.length === 0;
@@ -1281,6 +1304,7 @@
 
     const all = [...nodes, ...nested];
     const seen = new Set();
+
     return all.filter(el => {
       if(seen.has(el)) return false;
       seen.add(el);
@@ -1297,66 +1321,106 @@
       el.classList.contains('title-subtitle') ||
       el.classList.contains('title-tagline');
 
-    const originalWhiteSpace = getComputedStyle(el).whiteSpace;
+    const translated =
+      el.textContent.trim() !== el.dataset.bookFitOriginalText;
 
-    if(isLongTitleLine){
+    const originalWhiteSpace =
+      el.dataset.bookFitBaseWhiteSpace;
+
+    /* Long translated title strings receive an explicit safe text box. */
+    if(translated && isLongTitleLine){
       el.style.width = box.width + 'px';
       el.style.maxWidth = box.width + 'px';
       el.style.display = 'block';
       el.style.marginLeft = 'auto';
       el.style.marginRight = 'auto';
+      el.style.whiteSpace = 'normal';
+      el.style.overflowWrap = 'anywhere';
+      el.style.wordBreak = 'break-word';
+    }else if(translated){
+      el.style.maxWidth = box.width + 'px';
+      el.style.overflowWrap = 'break-word';
+      el.style.wordBreak = 'break-word';
+    }else{
+      el.style.maxWidth = '100%';
     }
 
     let size = parseFloat(getComputedStyle(el).fontSize);
-    if(!Number.isFinite(size) || size <= 0) size = 16;
+    if(!Number.isFinite(size) || size <= 0){
+      size = 16;
+    }
 
     let pass = 0;
 
     while(pass < MAX_PASSES && size > MIN_FONT_PX){
-      const widthBad = el.scrollWidth > box.width + 1;
-      const heightBad = el.scrollHeight > box.height + 1;
-      if(!widthBad && !heightBad) break;
+      const widthLimit = isLongTitleLine ? box.width : box.width;
+
+      const widthBad =
+        el.scrollWidth > widthLimit + 1 ||
+        el.getBoundingClientRect().width > widthLimit + 1;
+
+      if(!widthBad){
+        break;
+      }
+
       size -= STEP_PX;
       el.style.fontSize = size + 'px';
       pass++;
     }
 
-    /* For translated strings that remain too wide, allow wrapping and
-       continue reducing until the element fits vertically as well. */
-    if(el.scrollWidth > box.width + 1){
-      el.style.whiteSpace = 'normal';
+    /*
+       If a translated long line still cannot fit at the minimum size,
+       wrapping remains enabled so nothing can escape the fixed canvas.
+    */
+    if(translated && isLongTitleLine){
+      let wrapPass = 0;
 
-      while(pass < MAX_PASSES && size > MIN_FONT_PX){
-        const widthBad = el.scrollWidth > box.width + 1;
-        const heightBad = el.scrollHeight > box.height + 1;
-        if(!widthBad && !heightBad) break;
+      while(
+        wrapPass < MAX_PASSES &&
+        size > MIN_FONT_PX &&
+        (
+          el.scrollWidth > box.width + 1 ||
+          el.scrollHeight > box.height + 1
+        )
+      ){
         size -= STEP_PX;
         el.style.fontSize = size + 'px';
-        pass++;
+        wrapPass++;
       }
-    }
-
-    if(originalWhiteSpace === 'nowrap' && el.scrollWidth <= box.width + 1){
+    }else if(!translated && originalWhiteSpace === 'nowrap'){
+      /* Preserve the original English one-line layout. */
       el.style.whiteSpace = 'nowrap';
     }
   }
 
   function fitPage(page){
     if(!page) return;
+
     page.classList.add('book-fit-active');
-    targets(page).forEach(saveBase);
-    targets(page).forEach(el => fitElement(el, page));
+
+    const pageTargets = targets(page);
+
+    pageTargets.forEach(saveBase);
+    pageTargets.forEach(el => fitElement(el, page));
   }
 
   let timer = 0;
+
   window.requestBookPageFit = function(page){
     clearTimeout(timer);
-    timer = setTimeout(() => fitPage(page), 80);
+
+    timer = setTimeout(() => {
+      fitPage(page);
+    }, 100);
   };
 
+  /* Re-fit when GTranslate replaces visible text. */
   const observer = new MutationObserver(() => {
     const active = document.querySelector('.book-page.active');
-    if(active) window.requestBookPageFit(active);
+
+    if(active){
+      window.requestBookPageFit(active);
+    }
   });
 
   observer.observe(document.body, {
@@ -1367,15 +1431,23 @@
 
   window.addEventListener('resize', () => {
     const active = document.querySelector('.book-page.active');
-    if(active) window.requestBookPageFit(active);
+
+    if(active){
+      window.requestBookPageFit(active);
+    }
   });
 
   setTimeout(() => {
     const active = document.querySelector('.book-page.active');
-    if(active) window.requestBookPageFit(active);
-  }, 500);
+
+    if(active){
+      window.requestBookPageFit(active);
+    }
+  }, 600);
 
 })();
+</script>
+
 </script>
 
 <!-- =========================================================
