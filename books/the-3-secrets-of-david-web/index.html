@@ -35,9 +35,8 @@
     }
 
     .reader-container{
-      width:min(1200px, calc(100% - 48px));
-      margin:0 auto;
-    }
+  position:relative;
+}
 
     .page-selector{
   position:relative;
@@ -217,11 +216,11 @@
     }
 
     .book-side-back{
-      position:absolute;
-      left:-90px;
-      top:12px;
-      z-index:5;
-    }
+  position:absolute;
+  left:0;
+  top:12px;
+  z-index:5;
+}
 
     .book-page.page-turn-front::after{
   content:"";
@@ -967,13 +966,15 @@
 
   <div class="reader-container">
 
+     <a href="/books/" class="back-link book-side-back">
+        ← Back to Books
+      </a>
+    
     <div class="book-stage-viewport">
 
     <section class="book-stage">
 
-      <a href="/books/" class="back-link book-side-back">
-        ← Back to Books
-      </a>
+     
 
       <!-- PAGE 1: COVER IMAGE -->
       <article class="book-page cover-page active" data-page="1">
