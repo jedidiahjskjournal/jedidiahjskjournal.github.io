@@ -948,7 +948,19 @@
         transform:scale(.76);
       }
     }
-  </style>
+  
+
+/* ==============================
+   TRANSLATED BOOK TEXT AUTO-FIT
+   Keeps every page at 420 x 640 while
+   shrinking only text that actually needs it.
+   ============================== */
+
+.book-page.book-fit-active{
+  overflow:hidden;
+}
+
+</style>
 </head>
 
 <body>
@@ -1398,6 +1410,8 @@
           }
         );
 
+        requestBookPageFit(newPage);
+
         if(currentPage !== targetIndex){
           turnStep();
         }
@@ -1449,6 +1463,8 @@
       }
 
     });
+
+    requestBookPageFit(pages[index]);
 
   }
 
@@ -1530,6 +1546,8 @@
       newPage.classList.add(
         'active'
       );
+
+      requestBookPageFit(newPage);
 
     }, 550);
 
@@ -1684,6 +1702,7 @@
      ========================================= */
 
   showPage(0);
+  requestBookPageFit(pages[0]);
 
 </script>
 
