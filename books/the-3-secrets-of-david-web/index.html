@@ -762,13 +762,10 @@
 }
 /* ==============================
    GOOGLE TRANSLATE INJECTED UI
-   Hide the Google toolbar/floating UI without hiding the
-   intended GTranslate selector in the navbar.
+   Target only the floating Google graphic container
+   identified in DevTools.
    ============================== */
-body > .skiptranslate > iframe,
-.VIpgJd-ZVi9od-ORHb-OEVmcd,
-.VIpgJd-ZVi9od-aZ2wEe-WOHMyf,
-.VIpgJd-yAWNEb-L7lbkb {
+div.VIpgJd-ZVi9od-aZ2wEe-wOHMyf-ti6hGc {
   display:none !important;
   visibility:hidden !important;
   opacity:0 !important;
@@ -777,14 +774,6 @@ body > .skiptranslate > iframe,
 html,
 body {
   top:0 !important;
-}
-/* Hide the exact Google Translate floating activity/logo identified in DevTools */
-svg.VIpgJd-ZVi9od-aZ2wEe,
-.VIpgJd-ZVi9od-aZ2wEe {
-  display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
 }
 </style>
 </head>
