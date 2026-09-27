@@ -4,1932 +4,1713 @@
 
 <head>
 
-  <meta charset="UTF-8">
+  <meta charset="UTF-8">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="description" content="Read The 3 Secrets of David by JeDiDiAh JsK online.">
+  <meta name="description" content="Read The 3 Secrets of David by JeDiDiAh JsK online.">
 
-  <title>Read The 3 Secrets of David | Jedidiah_Jsk Journal</title>
-
-
-
-  <link rel="icon" type="image/png" href="/images/J3-Logo-2.png">
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/J3-Logo-2.png">
-
-  <link rel="shortcut icon" href="/images/favicon.png" type="image/png">
-
-  <link rel="apple-touch-icon" href="/images/J3-Logo-2.png">
+  <title>Read The 3 Secrets of David | Jedidiah_Jsk Journal</title>
 
 
+  <link rel="icon" type="image/png" href="/images/J3-Logo-2.png">
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lora:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/J3-Logo-2.png">
 
-  <link rel="stylesheet" href="/styles.css">
+  <link rel="shortcut icon" href="/images/favicon.png" type="image/png">
 
-
-
-  <style>
-
-    body{
-
-      margin:0;
-
-      background:#000;
-
-      color:#fff;
-
-    }
+  <link rel="apple-touch-icon" href="/images/J3-Logo-2.png">
 
 
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lora:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    /* ==============================
-
-       READER PAGE
-
-       ============================== */
+  <link rel="stylesheet" href="/styles.css">
 
 
+  <style>
 
-    .book-web-reader{
+    body{
 
-      min-height:auto;
+      margin:0;
 
-      padding:0 0 4px;
+      background:#000;
 
-      background:
+      color:#fff;
 
-        radial-gradient(circle at 80% 20%, rgba(220,0,0,.16), transparent 35%),
-
-        radial-gradient(circle at 20% 80%, rgba(120,0,0,.10), transparent 35%),
-
-        #000;
-
-    }
+    }
 
 
+    /* ==============================
 
-    .reader-container{
+       READER PAGE
 
-  position:relative;
+       ============================== */
+
+
+    .book-web-reader{
+
+      min-height:auto;
+
+      padding:0 0 4px;
+
+      background:
+
+        radial-gradient(circle at 80% 20%, rgba(220,0,0,.16), transparent 35%),
+
+        radial-gradient(circle at 20% 80%, rgba(120,0,0,.10), transparent 35%),
+
+        #000;
+
+    }
+
+
+    .reader-container{
+
+  position:relative;
 
 }
 
 
+    .page-selector{
 
-    .page-selector{
+  position:relative;
 
-  position:relative;
+  display:inline-block;
 
-  display:inline-block;
-
-  justify-self:center;
+  justify-self:center;
 
 }
-
 
 
 .page-selector-button{
 
-  border:1px solid rgba(255,255,255,.30);
+  border:1px solid rgba(255,255,255,.30);
 
-  background:rgba(17,17,17,.45);
+  background:rgba(17,17,17,.45);
 
-  backdrop-filter:blur(8px);
+  backdrop-filter:blur(8px);
 
-  -webkit-backdrop-filter:blur(8px);
-
-
-
-  color:#fff;
+  -webkit-backdrop-filter:blur(8px);
 
 
-
-  border-radius:7px;
-
+  color:#fff;
 
 
-  padding:4px 12px;
+  border-radius:7px;
 
 
-
-  font-family:'Inter',sans-serif;
-
-  font-size:.95rem;
-
-  font-weight:800;
+  padding:4px 12px;
 
 
+  font-family:'Inter',sans-serif;
 
-  cursor:pointer;
+  font-size:.95rem;
 
-
-
-  white-space:nowrap;
-
+  font-weight:800;
 
 
-  transition:all .2s ease;
+  cursor:pointer;
+
+
+  white-space:nowrap;
+
+
+  transition:all .2s ease;
 
 }
-
 
 
 .page-selector-button:hover,
 
 .page-selector-button[aria-expanded="true"]{
 
-  border-color:#e50914;
+  border-color:#e50914;
 
-  background:rgba(229,9,20,.18);
+  background:rgba(229,9,20,.18);
 
 }
-
 
 
 .page-selector-arrow{
 
-  margin-left:5px;
+  margin-left:5px;
 
-  font-size:.7rem;
+  font-size:.7rem;
 
-  opacity:.8;
+  opacity:.8;
 
 }
-
 
 
 .page-dropdown{
 
-  position:absolute;
+  position:absolute;
 
-  left:50%;
+  left:50%;
 
-  bottom:calc(100% + 8px);
-
-
-
-  transform:translateX(-50%);
+  bottom:calc(100% + 8px);
 
 
-
-  width:150px;
-
-  max-height:190px;
+  transform:translateX(-50%);
 
 
+  width:150px;
 
-  overflow-y:auto;
-
-
-
-  padding:6px;
+  max-height:190px;
 
 
-
-  background:rgba(10,10,10,.72);
-
-  border:1px solid rgba(255,255,255,.20);
-
-  border-radius:10px;
+  overflow-y:auto;
 
 
-
-  backdrop-filter:blur(12px);
-
-  -webkit-backdrop-filter:blur(12px);
+  padding:6px;
 
 
+  background:rgba(10,10,10,.72);
 
-  box-shadow:
+  border:1px solid rgba(255,255,255,.20);
 
-    0 15px 35px rgba(0,0,0,.45);
-
-
-
-  opacity:0;
-
-  visibility:hidden;
+  border-radius:10px;
 
 
+  backdrop-filter:blur(12px);
 
-  pointer-events:none;
-
-
-
-  transition:
-
-    opacity .18s ease,
-
-    transform .18s ease,
-
-    visibility .18s ease;
+  -webkit-backdrop-filter:blur(12px);
 
 
+  box-shadow:
 
-  z-index:50;
+    0 15px 35px rgba(0,0,0,.45);
+
+
+  opacity:0;
+
+  visibility:hidden;
+
+
+  pointer-events:none;
+
+
+  transition:
+
+    opacity .18s ease,
+
+    transform .18s ease,
+
+    visibility .18s ease;
+
+
+  z-index:50;
 
 }
-
 
 
 .page-dropdown.open{
 
-  opacity:1;
+  opacity:1;
 
-  visibility:visible;
+  visibility:visible;
 
-  pointer-events:auto;
+  pointer-events:auto;
 
 
-
-  transform:translateX(-50%) translateY(-2px);
+  transform:translateX(-50%) translateY(-2px);
 
 }
-
 
 
 .page-dropdown button{
 
-  display:block;
+  display:block;
 
 
-
-  width:100%;
-
+  width:100%;
 
 
-  border:0;
+  border:0;
 
-  background:transparent;
-
-
-
-  color:#fff;
+  background:transparent;
 
 
-
-  text-align:left;
-
+  color:#fff;
 
 
-  padding:8px 10px;
+  text-align:left;
 
 
-
-  border-radius:6px;
-
+  padding:8px 10px;
 
 
-  font-family:'Inter',sans-serif;
-
-  font-size:.88rem;
-
-  font-weight:600;
+  border-radius:6px;
 
 
+  font-family:'Inter',sans-serif;
 
-  cursor:pointer;
+  font-size:.88rem;
+
+  font-weight:600;
 
 
+  cursor:pointer;
 
-  transition:background .15s ease;
+
+  transition:background .15s ease;
 
 }
-
 
 
 .page-dropdown button:hover{
 
-  background:rgba(229,9,20,.25);
+  background:rgba(229,9,20,.25);
 
 }
-
 
 
 .page-dropdown button.active{
 
-  background:rgba(229,9,20,.35);
+  background:rgba(229,9,20,.35);
 
-  font-weight:800;
+  font-weight:800;
 
 }
-
 
 
 .page-dropdown::-webkit-scrollbar{
 
-  width:6px;
+  width:6px;
 
 }
-
 
 
 .page-dropdown::-webkit-scrollbar-track{
 
-  background:transparent;
+  background:transparent;
 
 }
-
 
 
 .page-dropdown::-webkit-scrollbar-thumb{
 
-  background:rgba(255,255,255,.25);
+  background:rgba(255,255,255,.25);
 
-  border-radius:10px;
-
-}
-
-
-
-    /* ==============================
-
-       BACK TO BOOK
-
-       ============================== */
-
-
-
-    .back-link{
-
-      display:inline-flex;
-
-      align-items:center;
-
-      gap:8px;
-
-      color:#fff;
-
-      text-decoration:none;
-
-      font-weight:700;
-
-      transition:.2s ease;
-
-    }
-
-
-
-    .back-link:hover{
-
-      color:#e50914;
-
-    }
-
-
-
-    /* ==============================
-
-       BOOK STAGE
-
-       ============================== */
-
-
-
-    .book-stage-viewport{
-
-      position:relative;
-
-      width:420px;
-
-      height:650px;
-
-      margin:0 auto;
-
-      overflow:visible;
-
-    }
-
-
-
-    .book-stage{
-
-      position:relative;
-
-      display:flex;
-
-      justify-content:center;
-
-      align-items:flex-start;
-
-      width:420px;
-
-      height:650px;
-
-      padding-top:10px;
-
-      overflow:hidden;
-
-      perspective:1200px;
-
-      transform-style:preserve-3d;
-
-      isolation:isolate;
-
-    }
-
-
-
-    .book-side-back{
-
-  position:absolute;
-
-  left:calc(50% - 500px);
-
-  top:12px;
-
-  z-index:5;
+  border-radius:10px;
 
 }
 
 
+    /* ==============================
 
-    .book-page.page-turn-front::after{
+       BACK TO BOOK
 
-  content:"";
-
-  position:absolute;
-
-  inset:0;
+       ============================== */
 
 
+    .back-link{
 
-  pointer-events:none;
+      display:inline-flex;
 
+      align-items:center;
 
+      gap:8px;
 
-  background:
+      color:#fff;
 
-    linear-gradient(
+      text-decoration:none;
 
-      90deg,
+      font-weight:700;
 
-      rgba(0,0,0,0) 45%,
+      transition:.2s ease;
 
-      rgba(0,0,0,.03) 55%,
-
-      rgba(0,0,0,.18) 78%,
-
-      rgba(0,0,0,.34) 100%
-
-    );
+    }
 
 
+    .back-link:hover{
 
-  opacity:0;
+      color:#e50914;
+
+    }
+
+
+    /* ==============================
+
+       BOOK STAGE
+
+       ============================== */
+
+
+    .book-stage-viewport{
+
+      position:relative;
+
+      width:420px;
+
+      height:650px;
+
+      margin:0 auto;
+
+      overflow:visible;
+
+    }
+
+
+    .book-stage{
+
+      position:relative;
+
+      display:flex;
+
+      justify-content:center;
+
+      align-items:flex-start;
+
+      width:420px;
+
+      height:650px;
+
+      padding-top:10px;
+
+      overflow:hidden;
+
+      perspective:1200px;
+
+      transform-style:preserve-3d;
+
+      isolation:isolate;
+
+    }
+
+
+    .book-side-back{
+
+  position:absolute;
+
+  left:calc(50% - 500px);
+
+  top:12px;
+
+  z-index:5;
 
 }
 
 
+    .book-page.page-turn-front::after{
 
-    .book-page.turn-next::after{
+  content:"";
 
-  animation:pageShadeNext var(--page-turn-duration,.55s) ease-in-out both;
+  position:absolute;
+
+  inset:0;
+
+
+  pointer-events:none;
+
+
+  background:
+
+    linear-gradient(
+
+      90deg,
+
+      rgba(0,0,0,0) 45%,
+
+      rgba(0,0,0,.03) 55%,
+
+      rgba(0,0,0,.18) 78%,
+
+      rgba(0,0,0,.34) 100%
+
+    );
+
+
+  opacity:0;
 
 }
 
+
+    .book-page.turn-next::after{
+
+  animation:pageShadeNext var(--page-turn-duration,.55s) ease-in-out both;
+
+}
 
 
 .book-page.turn-prev::after{
 
-  animation:pageShadePrev var(--page-turn-duration,.55s) ease-in-out both;
+  animation:pageShadePrev var(--page-turn-duration,.55s) ease-in-out both;
 
 }
-
-
-
 
 
 @keyframes pageShadeNext{
 
 
+  0%{
 
-  0%{
+    opacity:0;
 
-    opacity:0;
-
-  }
-
+  }
 
 
-  45%{
+  45%{
 
-    opacity:.15;
+    opacity:.15;
 
-  }
-
-
-
-  70%{
-
-    opacity:.55;
-
-  }
+  }
 
 
+  70%{
 
-  88%{
+    opacity:.55;
 
-    opacity:.85;
-
-  }
-
+  }
 
 
-  100%{
+  88%{
 
-    opacity:0;
+    opacity:.85;
 
-  }
+  }
 
+
+  100%{
+
+    opacity:0;
+
+  }
 
 
 }
-
-
-
 
 
 @keyframes pageShadePrev{
 
 
+  0%{
 
-  0%{
+    opacity:0;
 
-    opacity:0;
-
-  }
-
+  }
 
 
-  45%{
+  45%{
 
-    opacity:.15;
+    opacity:.15;
 
-  }
-
-
-
-  70%{
-
-    opacity:.55;
-
-  }
+  }
 
 
+  70%{
 
-  88%{
+    opacity:.55;
 
-    opacity:.85;
-
-  }
-
+  }
 
 
-  100%{
+  88%{
 
-    opacity:0;
+    opacity:.85;
 
-  }
+  }
 
+
+  100%{
+
+    opacity:0;
+
+  }
 
 
 }
 
 
+    /* ==============================
 
-    /* ==============================
+       FIXED BOOK PAGE
 
-       FIXED BOOK PAGE
+       Every page uses the same canvas.
 
-       Every page uses the same canvas.
-
-       ============================== */
-
+       ============================== */
 
 
-    .book-page{
+    .book-page{
 
-  display:none;
+  display:none;
 
-  flex:none;
+  flex:none;
 
-  width:420px;
+  width:420px;
 
-  height:640px;
+  height:640px;
 
-  box-sizing:border-box;
+  box-sizing:border-box;
 
-  background:#fff;
+  background:#fff;
 
-  color:#111;
+  color:#111;
 
-  overflow:hidden;
+  overflow:hidden;
 
-  box-shadow:0 20px 70px rgba(0,0,0,.55);
+  box-shadow:0 20px 70px rgba(0,0,0,.55);
 
-  margin-bottom:0;
+  margin-bottom:0;
 
 
+  position:relative;
 
-  position:relative;
+  transform-style:preserve-3d;
 
-  transform-style:preserve-3d;
+  backface-visibility:hidden;
 
-  backface-visibility:hidden;
-
-  -webkit-backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
 
 }
 
 
+    .book-page.active{
 
-    .book-page.active{
+      display:block;
 
-      display:block;
-
-    }
-
+    }
 
 
-    /* ==============================
+    /* ==============================
 
-       PAGE 1 - COVER
+       PAGE 1 - COVER
 
-       ============================== */
-
-
-
-    .cover-page{
-
-      display:none;
-
-      align-items:center;
-
-      justify-content:center;
-
-      text-align:center;
-
-      background:#000;
-
-      line-height:0;
-
-    }
+       ============================== */
 
 
+    .cover-page{
 
-    .cover-page.active{
+      display:none;
 
-      display:flex;
+      align-items:center;
 
-    }
+      justify-content:center;
 
+      text-align:center;
 
+      background:#000;
 
-    .cover-page img{
+      line-height:0;
 
-      display:block;
-
-      flex:none;
-
-      width:auto;
-
-      height:auto;
-
-      max-width:100%;
-
-      max-height:100%;
-
-      object-fit:contain;
-
-    }
+    }
 
 
+    .cover-page.active{
 
-    /* ==============================
+      display:flex;
 
-       PAGE 2 - TITLE PAGE
-
-       Fixed canvas: 420 x 640.
-
-       ============================== */
+    }
 
 
+    .cover-page img{
 
-    .title-page{
+      display:block;
 
-  display:none;
+      flex:none;
 
-  align-items:flex-start;
+      width:auto;
 
-  justify-content:center;
+      height:auto;
 
-  text-align:center;
+      max-width:100%;
 
-  box-sizing:border-box;
+      max-height:100%;
 
-  padding:38px 32px 28px;
+      object-fit:contain;
 
-  background:#fff;
+    }
 
-  color:#111;
 
-  font-family:Georgia, 'Times New Roman', serif;
+    /* ==============================
 
-  overflow:hidden;
+       PAGE 2 - TITLE PAGE
+
+       Fixed canvas: 420 x 640.
+
+       ============================== */
+
+
+    .title-page{
+
+  display:none;
+
+  align-items:flex-start;
+
+  justify-content:center;
+
+  text-align:center;
+
+  box-sizing:border-box;
+
+  padding:38px 32px 28px;
+
+  background:#fff;
+
+  color:#111;
+
+  font-family:Georgia, 'Times New Roman', serif;
+
+  overflow:hidden;
 
 }
-
 
 
 .title-page.active{
 
-  display:flex;
+  display:flex;
 
 }
-
 
 
 .title-content{
 
-  width:100%;
+  width:100%;
 
-  height:100%;
+  height:100%;
 
-  display:flex;
+  display:flex;
 
-  flex-direction:column;
+  flex-direction:column;
 
-  align-items:center;
+  align-items:center;
 
 }
-
 
 
 .title-the{
 
-  margin-top:2px;
+  margin-top:2px;
 
-  font-size:1.25rem;
+  font-size:1.25rem;
 
-  font-weight:700;
+  font-weight:700;
 
-  line-height:1;
+  line-height:1;
 
 }
-
 
 
 .title-three{
 
-  margin-top:8px;
+  margin-top:8px;
 
-  font-size:6.4rem;
+  font-size:6.4rem;
 
-  line-height:.82;
+  line-height:.82;
 
-  font-weight:700;
+  font-weight:700;
 
 }
-
 
 
 .title-secrets{
 
-  margin-top:38px;
+  margin-top:38px;
 
-  font-size:2rem;
+  font-size:2rem;
 
-  line-height:1;
+  line-height:1;
 
-  font-weight:700;
+  font-weight:700;
 
-  letter-spacing:.2px;
+  letter-spacing:.2px;
 
 }
-
 
 
 .title-of{
 
-  margin-top:5px;
+  margin-top:5px;
 
-  font-size:1rem;
+  font-size:1rem;
 
-  font-weight:700;
+  font-weight:700;
 
-  line-height:1;
+  line-height:1;
 
 }
-
 
 
 .title-david{
 
-  margin-top:3px;
+  margin-top:3px;
 
-  font-size:2rem;
+  font-size:2rem;
 
-  line-height:1;
+  line-height:1;
 
-  font-weight:700;
+  font-weight:700;
 
 }
-
 
 
 .title-subtitle{
 
-  margin-top:8px;
+  margin-top:8px;
 
-  font-size:.72rem;
+  font-size:.72rem;
 
-  line-height:1.2;
+  line-height:1.2;
 
-  font-weight:700;
+  font-weight:700;
 
-  white-space:nowrap;
+  white-space:nowrap;
 
 }
-
 
 
 .title-by{
 
-  margin-top:65px;
+  margin-top:65px;
 
-  font-size:1rem;
+  font-size:1rem;
 
-  line-height:1;
+  line-height:1;
 
-  font-weight:700;
+  font-weight:700;
 
 }
-
 
 
 .title-author{
 
-  margin-top:2px;
+  margin-top:2px;
 
-  font-size:1.15rem;
+  font-size:1.15rem;
 
-  line-height:1.1;
+  line-height:1.1;
 
-  font-weight:700;
+  font-weight:700;
 
 }
-
 
 
 .title-tagline{
 
-  margin-top:55px;
+  margin-top:55px;
 
-  margin-bottom:0;
+  margin-bottom:0;
 
-  max-width:none;
+  max-width:none;
 
-  font-size:.50rem;
+  font-size:.50rem;
 
-  line-height:1.2;
+  line-height:1.2;
 
-  font-weight:700;
+  font-weight:700;
 
-  white-space:nowrap;
+  white-space:nowrap;
 
 }
-
 
 
 /* ==============================
 
-   PAGE 3 - DEDICATION
+   PAGE 3 - DEDICATION
 
-   ============================== */
-
+   ============================== */
 
 
 .book-page.dedication-page{
 
-  display:none;
+  display:none;
 
-  box-sizing:border-box;
+  box-sizing:border-box;
 
-  background:#fff;
+  background:#fff;
 
-  color:#111;
+  color:#111;
 
-  padding:38px 32px 30px;
+  padding:38px 32px 30px;
 
-  overflow:hidden;
+  overflow:hidden;
 
 
+  font-family:Georgia, 'Times New Roman', serif !important;
 
-  font-family:Georgia, 'Times New Roman', serif !important;
-
-  text-align:center !important;
+  text-align:center !important;
 
 }
-
 
 
 .book-page.dedication-page.active{
 
-  display:block;
+  display:block;
 
 }
-
 
 
 .dedication-page .dedication-content{
 
-  width:100%;
+  width:100%;
 
-  height:100%;
+  height:100%;
 
-  margin:0 auto;
-
-
-
-  display:flex;
-
-  flex-direction:column;
-
-  justify-content:center;
+  margin:0 auto;
 
 
+  display:flex;
 
-  text-align:center !important;
+  flex-direction:column;
 
-  font-family:Georgia, 'Times New Roman', serif !important;
+  justify-content:center;
+
+
+  text-align:center !important;
+
+  font-family:Georgia, 'Times New Roman', serif !important;
 
 }
-
 
 
 .dedication-page .dedication-heading,
 
 .dedication-page .acknowledgements-heading{
 
-  margin:0;
+  margin:0;
 
-  padding:0;
-
-
-
-  font-family:Georgia, 'Times New Roman', serif !important;
-
-  font-size:.78rem !important;
-
-  line-height:1.15 !important;
-
-  font-weight:700 !important;
+  padding:0;
 
 
+  font-family:Georgia, 'Times New Roman', serif !important;
 
-  text-align:center !important;
+  font-size:.78rem !important;
 
-  text-transform:uppercase;
+  line-height:1.15 !important;
 
-
-
-  color:#111 !important;
-
+  font-weight:700 !important;
 
 
-  text-decoration:underline;
+  text-align:center !important;
 
-  text-decoration-thickness:1px;
+  text-transform:uppercase;
 
-  text-underline-offset:2px;
+
+  color:#111 !important;
+
+
+  text-decoration:underline;
+
+  text-decoration-thickness:1px;
+
+  text-underline-offset:2px;
 
 }
-
 
 
 .dedication-page .dedication-text{
 
-  width:100%;
+  width:100%;
 
-  margin:18px auto 0;
-
-
-
-  font-family:Georgia, 'Times New Roman', serif !important;
-
-  font-size:.68rem !important;
-
-  line-height:1.30 !important;
+  margin:18px auto 0;
 
 
+  font-family:Georgia, 'Times New Roman', serif !important;
 
-  text-align:center !important;
+  font-size:.68rem !important;
 
-  color:#111 !important;
+  line-height:1.30 !important;
+
+
+  text-align:center !important;
+
+  color:#111 !important;
 
 }
-
 
 
 .dedication-page .dedication-text p{
 
-  margin:0 auto 15px !important;
+  margin:0 auto 15px !important;
 
-  padding:0 !important;
-
-
-
-  font-family:Georgia, 'Times New Roman', serif !important;
-
-  font-size:.68rem !important;
-
-  line-height:1.30 !important;
+  padding:0 !important;
 
 
+  font-family:Georgia, 'Times New Roman', serif !important;
 
-  text-align:center !important;
+  font-size:.68rem !important;
 
-  color:#111 !important;
+  line-height:1.30 !important;
+
+
+  text-align:center !important;
+
+  color:#111 !important;
 
 }
-
 
 
 .dedication-page .acknowledgements-heading{
 
-  margin-top:38px !important;
+  margin-top:38px !important;
 
 }
-
 
 
 .dedication-page .acknowledgements-text{
 
-  width:100%;
+  width:100%;
 
-  margin:18px auto 0;
-
-
-
-  font-family:Georgia, 'Times New Roman', serif !important;
-
-  font-size:.66rem !important;
-
-  line-height:1.30 !important;
+  margin:18px auto 0;
 
 
+  font-family:Georgia, 'Times New Roman', serif !important;
 
-  text-align:center !important;
+  font-size:.66rem !important;
 
-  color:#111 !important;
+  line-height:1.30 !important;
+
+
+  text-align:center !important;
+
+  color:#111 !important;
 
 }
-
 
 
 .dedication-page .acknowledgements-text p{
 
-  max-width:350px;
+  max-width:350px;
 
 
+  margin:0 auto 16px !important;
 
-  margin:0 auto 16px !important;
-
-  padding:0 !important;
-
+  padding:0 !important;
 
 
-  font-family:Georgia, 'Times New Roman', serif !important;
+  font-family:Georgia, 'Times New Roman', serif !important;
 
-  font-size:.66rem !important;
+  font-size:.66rem !important;
 
-  line-height:1.30 !important;
+  line-height:1.30 !important;
 
 
+  text-align:center !important;
 
-  text-align:center !important;
-
-  color:#111 !important;
+  color:#111 !important;
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /* ==============================
 
-   REAL PAGE TURN ANIMATION
+   REAL PAGE TURN ANIMATION
 
-   ============================== */
-
+   ============================== */
 
 
 .book-page{
 
-  backface-visibility:hidden;
+  backface-visibility:hidden;
 
-  -webkit-backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
 
-  transform-style:preserve-3d;
+  transform-style:preserve-3d;
 
 }
-
 
 
 /* Destination page sits underneath during the turn */
 
 .book-page.page-turn-back{
 
-  display:block;
+  display:block;
 
-  position:absolute;
+  position:absolute;
 
-  top:10px;
+  top:10px;
 
-  left:50%;
+  left:50%;
 
-  transform:translateX(-50%);
+  transform:translateX(-50%);
 
-  z-index:1;
+  z-index:1;
 
 }
-
 
 
 /* Current page performs the physical turn */
 
 .book-page.page-turn-front{
 
-  display:block;
+  display:block;
 
-  position:relative;
+  position:relative;
 
-  z-index:2;
+  z-index:2;
 
 }
-
 
 
 /* NEXT: current page turns from right to left */
 
 .book-page.turn-next{
 
-  animation:turnNext var(--page-turn-duration,.55s) ease-in-out both;
+  animation:turnNext var(--page-turn-duration,.55s) ease-in-out both;
 
-  transform-origin:left center;
+  transform-origin:left center;
 
 }
-
 
 
 /* PREVIOUS: current page turns from left to right */
 
 .book-page.turn-prev{
 
-  animation:turnPrev var(--page-turn-duration,.55s) ease-in-out both;
+  animation:turnPrev var(--page-turn-duration,.55s) ease-in-out both;
 
-  transform-origin:right center;
+  transform-origin:right center;
 
 }
-
 
 
 @keyframes turnNext{
 
 
+  0%{
 
-  0%{
+    opacity:1;
 
-    opacity:1;
+    transform:
 
-    transform:
+      perspective(1200px)
 
-      perspective(1200px)
+      rotateY(0deg)
 
-      rotateY(0deg)
+      scaleX(1);
 
-      scaleX(1);
+    box-shadow:0 20px 70px rgba(0,0,0,.55);
 
-    box-shadow:0 20px 70px rgba(0,0,0,.55);
-
-  }
-
+  }
 
 
-  25%{
+  25%{
 
-    opacity:1;
+    opacity:1;
 
-    transform:
+    transform:
 
-      perspective(1200px)
+      perspective(1200px)
 
-      rotateY(35deg)
+      rotateY(35deg)
 
-      scaleX(.96);
+      scaleX(.96);
 
-    box-shadow:12px 14px 35px rgba(0,0,0,.35);
+    box-shadow:12px 14px 35px rgba(0,0,0,.35);
 
-  }
-
-
-
-  55%{
-
-    opacity:1;
-
-    transform:
-
-      perspective(1200px)
-
-      rotateY(88deg)
-
-      scaleX(.84);
-
-    box-shadow:28px 16px 42px rgba(0,0,0,.42);
-
-  }
+  }
 
 
+  55%{
 
-  78%{
+    opacity:1;
 
-    opacity:.75;
+    transform:
 
-    transform:
+      perspective(1200px)
 
-      perspective(1200px)
+      rotateY(88deg)
 
-      rotateY(125deg)
+      scaleX(.84);
 
-      scaleX(.72);
+    box-shadow:28px 16px 42px rgba(0,0,0,.42);
 
-    box-shadow:18px 12px 28px rgba(0,0,0,.25);
-
-  }
-
+  }
 
 
-  88%{
+  78%{
 
-    opacity:.30;
+    opacity:.75;
 
-    transform:
+    transform:
 
-      perspective(1200px)
+      perspective(1200px)
 
-      rotateY(140deg)
+      rotateY(125deg)
 
-      scaleX(.66);
+      scaleX(.72);
 
-    box-shadow:none;
+    box-shadow:18px 12px 28px rgba(0,0,0,.25);
 
-  }
+  }
 
 
+  88%{
 
-  100%{
+    opacity:.30;
 
-    opacity:0;
+    transform:
 
-    transform:
+      perspective(1200px)
 
-      perspective(1200px)
+      rotateY(140deg)
 
-      rotateY(150deg)
+      scaleX(.66);
 
-      scaleX(.62);
+    box-shadow:none;
 
-    box-shadow:none;
+  }
 
-  }
 
+  100%{
+
+    opacity:0;
+
+    transform:
+
+      perspective(1200px)
+
+      rotateY(150deg)
+
+      scaleX(.62);
+
+    box-shadow:none;
+
+  }
 
 
 }
-
-
-
 
 
 @keyframes turnPrev{
 
 
+  0%{
 
-  0%{
+    opacity:1;
 
-    opacity:1;
+    transform:
 
-    transform:
+      perspective(1200px)
 
-      perspective(1200px)
+      rotateY(0deg)
 
-      rotateY(0deg)
+      scaleX(1);
 
-      scaleX(1);
+    box-shadow:0 20px 70px rgba(0,0,0,.55);
 
-    box-shadow:0 20px 70px rgba(0,0,0,.55);
-
-  }
-
+  }
 
 
-  25%{
+  25%{
 
-    opacity:1;
+    opacity:1;
 
-    transform:
+    transform:
 
-      perspective(1200px)
+      perspective(1200px)
 
-      rotateY(-35deg)
+      rotateY(-35deg)
 
-      scaleX(.96);
+      scaleX(.96);
 
-    box-shadow:-12px 14px 35px rgba(0,0,0,.35);
+    box-shadow:-12px 14px 35px rgba(0,0,0,.35);
 
-  }
-
-
-
-  55%{
-
-    opacity:1;
-
-    transform:
-
-      perspective(1200px)
-
-      rotateY(-88deg)
-
-      scaleX(.84);
-
-    box-shadow:-28px 16px 42px rgba(0,0,0,.42);
-
-  }
+  }
 
 
+  55%{
 
-  78%{
+    opacity:1;
 
-    opacity:.75;
+    transform:
 
-    transform:
+      perspective(1200px)
 
-      perspective(1200px)
+      rotateY(-88deg)
 
-      rotateY(-125deg)
+      scaleX(.84);
 
-      scaleX(.72);
+    box-shadow:-28px 16px 42px rgba(0,0,0,.42);
 
-    box-shadow:-18px 12px 28px rgba(0,0,0,.25);
-
-  }
-
+  }
 
 
-  88%{
+  78%{
 
-    opacity:.30;
+    opacity:.75;
 
-    transform:
+    transform:
 
-      perspective(1200px)
+      perspective(1200px)
 
-      rotateY(-140deg)
+      rotateY(-125deg)
 
-      scaleX(.66);
+      scaleX(.72);
 
-    box-shadow:none;
+    box-shadow:-18px 12px 28px rgba(0,0,0,.25);
 
-  }
+  }
 
 
+  88%{
 
-  100%{
+    opacity:.30;
 
-    opacity:0;
+    transform:
 
-    transform:
+      perspective(1200px)
 
-      perspective(1200px)
+      rotateY(-140deg)
 
-      rotateY(-150deg)
+      scaleX(.66);
 
-      scaleX(.62);
+    box-shadow:none;
 
-    box-shadow:none;
+  }
 
-  }
 
+  100%{
+
+    opacity:0;
+
+    transform:
+
+      perspective(1200px)
+
+      rotateY(-150deg)
+
+      scaleX(.62);
+
+    box-shadow:none;
+
+  }
 
 
 }
-
 
 
 /* The destination page remains visible underneath */
 
 .book-page.page-turn-back{
 
-  transform:translateX(-50%);
+  transform:translateX(-50%);
 
-  box-shadow:0 20px 70px rgba(0,0,0,.55);
+  box-shadow:0 20px 70px rgba(0,0,0,.55);
 
 }
-
-
-
-
-
 
 
 /* Large jumps from the page selector */
 
 .book-page.jump-next{
 
-  animation:jumpNext var(--page-turn-duration,.18s) ease-out both;
+  animation:jumpNext var(--page-turn-duration,.18s) ease-out both;
 
 }
-
 
 
 .book-page.jump-prev{
 
-  animation:jumpPrev var(--page-turn-duration,.18s) ease-out both;
+  animation:jumpPrev var(--page-turn-duration,.18s) ease-out both;
 
 }
-
 
 
 @keyframes jumpNext{
 
 
+  0%{
 
-  0%{
+    opacity:.45;
 
-    opacity:.45;
+    transform:translateX(45px) scale(.985);
 
-    transform:translateX(45px) scale(.985);
-
-  }
-
+  }
 
 
-  100%{
+  100%{
 
-    opacity:1;
+    opacity:1;
 
-    transform:translateX(0) scale(1);
+    transform:translateX(0) scale(1);
 
-  }
-
+  }
 
 
 }
-
 
 
 @keyframes jumpPrev{
 
 
+  0%{
 
-  0%{
+    opacity:.45;
 
-    opacity:.45;
+    transform:translateX(-45px) scale(.985);
 
-    transform:translateX(-45px) scale(.985);
-
-  }
-
+  }
 
 
-  100%{
+  100%{
 
-    opacity:1;
+    opacity:1;
 
-    transform:translateX(0) scale(1);
+    transform:translateX(0) scale(1);
 
-  }
-
+  }
 
 
 }
-
 
 
 @media(max-width:800px){
 
 
+  .book-stage{
 
-  .book-stage{
+    perspective:1000px;
 
-    perspective:1000px;
-
-  }
-
+  }
 
 
-  .book-page.turn-next{
+  .book-page.turn-next{
 
-    animation-duration:var(--page-turn-duration,.48s);
+    animation-duration:var(--page-turn-duration,.48s);
 
-  }
+  }
 
 
+  .book-page.turn-prev{
 
-  .book-page.turn-prev{
+    animation-duration:var(--page-turn-duration,.48s);
 
-    animation-duration:var(--page-turn-duration,.48s);
-
-  }
-
+  }
 
 
 }
 
 
+    /* ==============================
 
-    /* ==============================
+       READER CONTROLS
 
-       READER CONTROLS
+       ============================== */
 
-       ============================== */
 
+    .reader-controls{
 
+      display:grid;
 
-    .reader-controls{
+      grid-template-columns:1fr auto 1fr;
 
-      display:grid;
+      align-items:center;
 
-      grid-template-columns:1fr auto 1fr;
+      gap:40px;
 
-      align-items:center;
+      width:min(760px, 100%);
 
-      gap:40px;
+      margin:8px auto 0;
 
-      width:min(760px, 100%);
+      padding-bottom:0;
 
-      margin:8px auto 0;
+    }
 
-      padding-bottom:0;
 
-    }
+    .reader-controls .reader-button:first-child{
 
+      justify-self:start;
 
+    }
 
-    .reader-controls .reader-button:first-child{
 
-      justify-self:start;
+    .reader-controls .reader-button:last-child{
 
-    }
+      justify-self:end;
 
+    }
 
 
-    .reader-controls .reader-button:last-child{
+    .page-counter{
 
-      justify-self:end;
+      color:#d1d5db;
 
-    }
+      font-size:.95rem;
 
+      font-weight:800;
 
+      white-space:nowrap;
 
-    .page-counter{
+      text-align:center;
 
-      color:#d1d5db;
+    }
 
-      font-size:.95rem;
 
-      font-weight:800;
+    .reader-button{
 
-      white-space:nowrap;
+      border:1px solid #555;
 
-      text-align:center;
+      background:#111;
 
-    }
+      color:#fff;
 
+      border-radius:7px;
 
+      padding:2px 12px;
 
-    .reader-button{
+      font-family:'Inter',sans-serif;
 
-      border:1px solid #555;
+      font-size:.95rem;
 
-      background:#111;
+      font-weight:800;
 
-      color:#fff;
+      cursor:pointer;
 
-      border-radius:7px;
+      transition:.2s ease;
 
-      padding:2px 12px;
+    }
 
-      font-family:'Inter',sans-serif;
 
-      font-size:.95rem;
+    .reader-button:hover:not(:disabled){
 
-      font-weight:800;
+      background:#e50914;
 
-      cursor:pointer;
+      border-color:#e50914;
 
-      transition:.2s ease;
+      transform:translateY(-1px);
 
-    }
+    }
 
 
+    .reader-button:disabled{
 
-    .reader-button:hover:not(:disabled){
+      opacity:.38;
 
-      background:#e50914;
+      cursor:not-allowed;
 
-      border-color:#e50914;
+    }
 
-      transform:translateY(-1px);
 
-    }
+    /* ==============================
 
+       GOOGLE TRANSLATE POPUP
 
+       ============================== */
 
-    .reader-button:disabled{
 
-      opacity:.38;
+    .gt_white_content,
 
-      cursor:not-allowed;
+    .gt_white_content *{
 
-    }
+      color:#111827 !important;
 
+    }
 
 
-    /* ==============================
+    .gt_white_content a{
 
-       GOOGLE TRANSLATE POPUP
+      color:#111827 !important;
 
-       ============================== */
+    }
 
 
+    .gt_white_content a:hover{
 
-    .gt_white_content,
+      color:#16a34a !important;
 
-    .gt_white_content *{
+    }
 
-      color:#111827 !important;
 
-    }
+    /* ==============================
 
+       MOBILE
 
+       The book page itself remains fixed.
 
-    .gt_white_content a{
+       If it is wider than the device, the
 
-      color:#111827 !important;
+       stage can scroll horizontally.
 
-    }
+       ============================== */
 
 
+    @media(max-width:800px){
 
-    .gt_white_content a:hover{
 
-      color:#16a34a !important;
+      .mobile-hide-books{
 
-    }
-
-
-
-    /* ==============================
-
-       MOBILE
-
-       The book page itself remains fixed.
-
-       If it is wider than the device, the
-
-       stage can scroll horizontally.
-
-       ============================== */
-
-
-
-    @media(max-width:800px){
-
-
-
-      .mobile-hide-books{
-
-  display:none !important;
+  display:none !important;
 
 }
 
 
+      .navbar .nav-wrap{
 
-      .navbar .nav-wrap{
+  display:flex;
 
-  display:flex;
+  flex-direction:row;
 
-  flex-direction:row;
+  align-items:center;
 
-  align-items:center;
+  justify-content:space-between;
 
-  justify-content:space-between;
+  flex-wrap:nowrap;
 
-  flex-wrap:nowrap;
-
-  gap:10px;
+  gap:10px;
 
 }
-
 
 
 .navbar .logo-brand{
 
-  flex:0 0 auto;
+  flex:0 0 auto;
 
 }
-
 
 
 .navbar .logo-img{
 
-  width:48px;
+  width:48px;
 
-  height:auto;
+  height:auto;
 
 }
-
 
 
 .navbar nav{
 
-  display:flex;
+  display:flex;
 
-  flex-direction:row;
+  flex-direction:row;
 
-  align-items:center;
+  align-items:center;
 
-  justify-content:flex-end;
+  justify-content:flex-end;
 
-  flex-wrap:nowrap;
+  flex-wrap:nowrap;
 
-  gap:10px;
+  gap:10px;
 
-  flex:1;
+  flex:1;
 
 }
-
 
 
 .navbar nav a{
 
-  white-space:nowrap;
+  white-space:nowrap;
 
 }
-
 
 
 #gt-mordadam-43217984{
 
-  flex:0 0 auto;
+  flex:0 0 auto;
 
-  margin:0 !important;
-
-}
-
-
-
-      .reader-container{
-
-        width:calc(100% - 24px);
-
-      }
-
-
-
-      .book-stage-viewport{
-
-        width:336px;
-
-        height:520px;
-
-        margin:0 auto;
-
-      }
-
-
-
-      .book-stage{
-
-        justify-content:flex-start;
-
-        width:420px;
-
-        height:650px;
-
-        padding-top:25px;
-
-        transform:scale(.80);
-
-        transform-origin:top left;
-
-      }
-
-
-
-      .book-page.page-turn-back{
-
-        top:25px;
-
-      }
-
-
-
-      .book-side-back{
-
-  left:0;
-
-  top:0;
-
-  font-size:.80rem;
+  margin:0 !important;
 
 }
 
 
+      .reader-container{
 
-      .reader-controls{
+        width:calc(100% - 24px);
 
-        gap:20px;
-
-      }
-
-    }
+      }
 
 
+      .book-stage-viewport{
 
-    @media(max-width:380px){
+        width:336px;
 
-      .book-stage-viewport{
+        height:520px;
 
-        width:319px;
+        margin:0 auto;
 
-        height:496px;
-
-      }
-
+      }
 
 
-      .book-stage{
+      .book-stage{
 
-        transform:scale(.76);
+        justify-content:flex-start;
 
-      }
+        width:420px;
 
-    }
+        height:650px;
+
+        padding-top:25px;
+
+        transform:scale(.80);
+
+        transform-origin:top left;
+
+      }
 
 
+      .book-page.page-turn-back{
 
+        top:25px;
+
+      }
+
+
+      .book-side-back{
+
+  left:0;
+
+  top:0;
+
+  font-size:.80rem;
+
+}
+
+
+      .reader-controls{
+
+        gap:20px;
+
+      }
+
+    }
+
+
+    @media(max-width:380px){
+
+      .book-stage-viewport{
+
+        width:319px;
+
+        height:496px;
+
+      }
+
+
+      .book-stage{
+
+        transform:scale(.76);
+
+      }
+
+    }
 
 
 /* ==============================
 
-   TRANSLATED BOOK TEXT AUTO-FIT
+   TRANSLATED BOOK TEXT AUTO-FIT
 
-   Keeps the 420 x 640 page fixed and
+   Keeps the 420 x 640 page fixed and
 
-   fits translated text inside the page.
+   fits translated text inside the page.
 
-   ============================== */
-
+   ============================== */
 
 
 .book-page.book-fit-active{
 
-  overflow:hidden;
+  overflow:hidden;
 
 }
-
 
 
 .book-page .book-fit-target{
 
-  box-sizing:border-box;
+  box-sizing:border-box;
 
-  max-width:100%;
+  max-width:100%;
 
 }
-
 
 
 </style>
@@ -1937,177 +1718,150 @@
 </head>
 
 
-
 <body>
-
 
 
 <header class="navbar">
 
-  <div class="nav-wrap">
+  <div class="nav-wrap">
 
-    <a href="/" class="logo-brand">
+    <a href="/" class="logo-brand">
 
-      <img src="/images/J3-Logo-2.png" alt="J³ Logo" class="logo-img">
+      <img src="/images/J3-Logo-2.png" alt="J³ Logo" class="logo-img">
 
-    </a>
+    </a>
 
 
+    <nav>
 
-    <nav>
+      <a href="/">Home</a>
 
-      <a href="/">Home</a>
+      <a href="/articles/">Articles</a>
 
-      <a href="/articles/">Articles</a>
+      <a href="/research/">Research</a>
 
-      <a href="/research/">Research</a>
+      <a href="/books/" class="mobile-hide-books">Books</a>
 
-      <a href="/books/" class="mobile-hide-books">Books</a>
+      <a href="/about/">About</a>
 
-      <a href="/about/">About</a>
+      <div id="gt-mordadam-43217984"></div>
 
-      <div id="gt-mordadam-43217984"></div>
+    </nav>
 
-    </nav>
-
-  </div>
+  </div>
 
 </header>
-
 
 
 <main class="book-web-reader">
 
 
+  <div class="reader-container">
 
-  <div class="reader-container">
 
+     <a href="/books/" class="back-link book-side-back">
 
+        ← Back to Books
 
-     <a href="/books/" class="back-link book-side-back">
+      </a>
 
-        ← Back to Books
 
-      </a>
+    <div class="book-stage-viewport">
 
 
+    <section class="book-stage">
 
-    <div class="book-stage-viewport">
 
+      <!-- PAGE 1: COVER IMAGE -->
 
+      <article class="book-page cover-page active" data-page="1">
 
-    <section class="book-stage">
+        <img
 
+          src="/images/the-3-secrets-of-david-cover.png"
 
+          alt="The 3 Secrets of David book cover"
 
+        >
 
+      </article>
 
 
+      <!-- PAGE 2: TEXT VERSION OF TITLE PAGE -->
 
-      <!-- PAGE 1: COVER IMAGE -->
+      <article class="book-page title-page" data-page="2">
 
-      <article class="book-page cover-page active" data-page="1">
 
-        <img
+        <div class="title-content">
 
-          src="/images/the-3-secrets-of-david-cover.png"
 
-          alt="The 3 Secrets of David book cover"
+          <div class="title-the">
 
-        >
+            The
 
-      </article>
+          </div>
 
 
+          <div class="title-three">
 
-      <!-- PAGE 2: TEXT VERSION OF TITLE PAGE -->
+            3
 
-      <article class="book-page title-page" data-page="2">
+          </div>
 
 
+          <div class="title-secrets">
 
-        <div class="title-content">
+            SECRETS
 
+          </div>
 
 
-          <div class="title-the">
+          <div class="title-of">
 
-            The
+            OF
 
-          </div>
+          </div>
 
 
+          <div class="title-david">
 
-          <div class="title-three">
+            DAVID
 
-            3
+          </div>
 
-          </div>
 
+          <div class="title-subtitle">
 
+            (2nd King of Israel - A Man after God's Own Heart)
 
-          <div class="title-secrets">
+          </div>
 
-            SECRETS
 
-          </div>
+          <div class="title-by">
 
+            By
 
+          </div>
 
-          <div class="title-of">
 
-            OF
+          <div class="title-author">
 
-          </div>
+            JeDiDiAh JsK
 
+          </div>
 
 
-          <div class="title-david">
+          <div class="title-tagline">
 
-            DAVID
+            “Unlocking the Hidden Wisdom of a Warrior, Worshipper, and King”
 
-          </div>
+          </div>
 
 
+        </div>
 
-          <div class="title-subtitle">
 
-            (2nd King of Israel - A Man after God's Own Heart)
-
-          </div>
-
-
-
-          <div class="title-by">
-
-            By
-
-          </div>
-
-
-
-          <div class="title-author">
-
-            JeDiDiAh JsK
-
-          </div>
-
-
-
-          <div class="title-tagline">
-
-            “Unlocking the Hidden Wisdom of a Warrior, Worshipper, and King”
-
-          </div>
-
-
-
-        </div>
-
-
-
-      </article>
-
+      </article>
 
 
 <!-- PAGE 3: DEDICATION & ACKNOWLEDGEMENTS -->
@@ -2115,311 +1869,279 @@
 <article class="book-page dedication-page" data-page="3">
 
 
+  <div class="dedication-content">
 
-  <div class="dedication-content">
 
+    <h2 class="dedication-heading">
 
+      Dedication
 
-    <h2 class="dedication-heading">
+    </h2>
 
-      Dedication
 
-    </h2>
+    <div class="dedication-text">
 
 
+      <p>
 
-    <div class="dedication-text">
+        To God Almighty,<br>
 
+        the One who saw David's heart and sees mine.
 
+      </p>
 
-      <p>
 
-        To God Almighty,<br>
+      <p>
 
-        the One who saw David's heart and sees mine.
+        To every soul who seeks to walk with God<br>
 
-      </p>
+        as a warrior in battle, a worshipper in the quiet,<br>
 
+        and a king in purpose.
 
+      </p>
 
-      <p>
 
-        To every soul who seeks to walk with God<br>
+      <p>
 
-        as a warrior in battle, a worshipper in the quiet,<br>
+        This book is for you.
 
-        and a king in purpose.
+      </p>
 
-      </p>
 
+    </div>
 
 
-      <p>
+    <h2 class="acknowledgements-heading">
 
-        This book is for you.
+      Acknowledgements
 
-      </p>
+    </h2>
 
 
+    <div class="acknowledgements-text">
 
-    </div>
 
+      <p>
 
+        I thank God, who gave me the vision, the strength, and the
 
+        inspiration to write this book.
 
+      </p>
 
-    <h2 class="acknowledgements-heading">
 
-      Acknowledgements
+      <p>
 
-    </h2>
+        I am grateful to my family, friends, and spiritual mentors who
 
+        have walked with me, prayed for me, and believed in the
 
+        message I carry.
 
-    <div class="acknowledgements-text">
+      </p>
 
 
+      <p>
 
-      <p>
+        A special thank you to every reader you are not here by
 
-        I thank God, who gave me the vision, the strength, and the
+        accident. May the wisdom in these pages draw you closer to
 
-        inspiration to write this book.
+        God's heart.
 
-      </p>
+      </p>
 
 
+    </div>
 
-      <p>
 
-        I am grateful to my family, friends, and spiritual mentors who
-
-        have walked with me, prayed for me, and believed in the
-
-        message I carry.
-
-      </p>
-
-
-
-      <p>
-
-        A special thank you to every reader you are not here by
-
-        accident. May the wisdom in these pages draw you closer to
-
-        God's heart.
-
-      </p>
-
-
-
-    </div>
-
-
-
-  </div>
-
+  </div>
 
 
 </article>
 
 
-
-    </section>
-
+    </section>
 
 
-    </div>
+    </div>
 
 
-
-    <div class="reader-controls">
-
+    <div class="reader-controls">
 
 
-      <button
+      <button
 
-        type="button"
+        type="button"
 
-        class="reader-button"
+        class="reader-button"
 
-        id="prevPage"
+        id="prevPage"
 
-        disabled
+        disabled
 
-      >
+      >
 
-        ← Back
+        ← Back
 
-      </button>
-
-
-
-      <div class="page-selector" id="pageSelector">
+      </button>
 
 
-
-  <button
-
-    type="button"
-
-    class="page-selector-button"
-
-    id="pageSelectorButton"
-
-    aria-expanded="false"
-
-  >
-
-    Page 1 of 3
-
-    <span class="page-selector-arrow">▼</span>
-
-  </button>
+      <div class="page-selector" id="pageSelector">
 
 
+  <button
 
-  <div
+    type="button"
 
-    class="page-dropdown"
+    class="page-selector-button"
 
-    id="pageDropdown"
+    id="pageSelectorButton"
 
-  ></div>
+    aria-expanded="false"
 
+  >
+
+    Page 1 of 3
+
+    <span class="page-selector-arrow">▼</span>
+
+  </button>
+
+
+  <div
+
+    class="page-dropdown"
+
+    id="pageDropdown"
+
+  ></div>
 
 
 </div>
 
 
+      <button
 
-      <button
+        type="button"
 
-        type="button"
+        class="reader-button"
 
-        class="reader-button"
+        id="nextPage"
 
-        id="nextPage"
+      >
 
-      >
+        Next →
 
-        Next →
-
-      </button>
-
+      </button>
 
 
-    </div>
+    </div>
 
 
-
-  </div>
-
+  </div>
 
 
 </main>
 
 
-
 <!-- =========================================================
 
-     EXISTING J³ WEBSITE TRANSLATOR
+     EXISTING J³ WEBSITE TRANSLATOR
 
-     KEEP THIS CONFIGURATION UNCHANGED
+     KEEP THIS CONFIGURATION UNCHANGED
 
-     ========================================================= -->
-
+     ========================================================= -->
 
 
 <script>
 
-  window.gtranslateSettings = window.gtranslateSettings || {};
+  window.gtranslateSettings = window.gtranslateSettings || {};
 
-  window.gtranslateSettings['43217984'] = {
+  window.gtranslateSettings['43217984'] = {
 
-    default_language: "en",
+    default_language: "en",
 
-    languages: [
+    languages: [
 
-      "en",
+      "en",
 
-      "te",
+      "te",
 
-      "hi",
+      "hi",
 
-      "es",
+      "es",
 
-      "zh-CN",
+      "zh-CN",
 
-      "ar",
+      "ar",
 
-      "fr",
+      "fr",
 
-      "de",
+      "de",
 
-      "pt",
+      "pt",
 
-      "ru",
+      "ru",
 
-      "ja",
+      "ja",
 
-      "ko",
+      "ko",
 
-      "it",
+      "it",
 
-      "ta",
+      "ta",
 
-      "kn",
+      "kn",
 
-      "ml",
+      "ml",
 
-      "bn",
+      "bn",
 
-      "mr",
+      "mr",
 
-      "gu",
+      "gu",
 
-      "pa",
+      "pa",
 
-      "ur",
+      "ur",
 
-      "af","sq","am","fa","ps","hy","az","eu","be","bs","bg",
+      "af","sq","am","fa","ps","hy","az","eu","be","bs","bg",
 
-      "ca","ceb","ny","zh-TW","co","hr","cs","da","nl","eo",
+      "ca","ceb","ny","zh-TW","co","hr","cs","da","nl","eo",
 
-      "et","tl","fi","fy","gl","ka","el","ht","ha","haw",
+      "et","tl","fi","fy","gl","ka","el","ht","ha","haw",
 
-      "iw","hmn","hu","is","ig","id","ga","jw","kk","km",
+      "iw","hmn","hu","is","ig","id","ga","jw","kk","km",
 
-      "ku","ky","lo","la","lv","lt","lb","mk","mg","ms",
+      "ku","ky","lo","la","lv","lt","lb","mk","mg","ms",
 
-      "mt","mi","mn","my","ne","no","pl","ro","sm","gd",
+      "mt","mi","mn","my","ne","no","pl","ro","sm","gd",
 
-      "sr","st","sn","sd","si","sk","sl","so","su","sw",
+      "sr","st","sn","sd","si","sk","sl","so","su","sw",
 
-      "sv","tg","th","tr","uk","uz","vi","cy","xh","yi",
+      "sv","tg","th","tr","uk","uz","vi","cy","xh","yi",
 
-      "yo","zu"
+      "yo","zu"
 
-    ],
+    ],
 
-    wrapper_selector: "#gt-mordadam-43217984",
+    wrapper_selector: "#gt-mordadam-43217984",
 
-    native_language_names: 1,
+    native_language_names: 1,
 
-    flag_style: "2d",
+    flag_style: "2d",
 
-    flag_size: 24,
+    flag_size: 24,
 
-    horizontal_position: "inline",
+    horizontal_position: "inline",
 
-    flags_location: "/flags/"
+    flags_location: "/flags/"
 
-  };
+  };
 
 </script>
-
 
 
 <script src="/js/gt.min.js" data-gt-widget-id="43217984"></script>
@@ -2478,331 +2200,305 @@
 </script>
 
 
-
 <script>
 
 /* =========================================
 
-   TRANSLATED BOOK TEXT AUTO-FIT ENGINE
+   TRANSLATED BOOK TEXT AUTO-FIT ENGINE
 
-   ========================================= */
+   ========================================= */
 
 (function(){
 
 
+  const MIN_FONT_PX = 8;
 
-  const MIN_FONT_PX = 8;
+  const STEP_PX = 0.5;
 
-  const STEP_PX = 0.5;
+  const MAX_PASSES = 80;
 
-  const MAX_PASSES = 80;
 
+  function saveBase(el){
 
+    if(!el.dataset.bookFitBaseSize){
 
-  function saveBase(el){
+      el.dataset.bookFitBaseSize = getComputedStyle(el).fontSize;
 
-    if(!el.dataset.bookFitBaseSize){
+    }
 
-      el.dataset.bookFitBaseSize = getComputedStyle(el).fontSize;
+    if(!el.dataset.bookFitBaseLineHeight){
 
-    }
+      el.dataset.bookFitBaseLineHeight = getComputedStyle(el).lineHeight;
 
-    if(!el.dataset.bookFitBaseLineHeight){
+    }
 
-      el.dataset.bookFitBaseLineHeight = getComputedStyle(el).lineHeight;
+    if(!el.dataset.bookFitBaseWhiteSpace){
 
-    }
+      el.dataset.bookFitBaseWhiteSpace = getComputedStyle(el).whiteSpace;
 
-    if(!el.dataset.bookFitBaseWhiteSpace){
+    }
 
-      el.dataset.bookFitBaseWhiteSpace = getComputedStyle(el).whiteSpace;
+    if(!el.dataset.bookFitBaseWidth){
 
-    }
+      el.dataset.bookFitBaseWidth = el.style.width || '';
 
-    if(!el.dataset.bookFitBaseWidth){
+    }
 
-      el.dataset.bookFitBaseWidth = el.style.width || '';
+    if(!el.dataset.bookFitBaseDisplay){
 
-    }
+      el.dataset.bookFitBaseDisplay = el.style.display || '';
 
-    if(!el.dataset.bookFitBaseDisplay){
+    }
 
-      el.dataset.bookFitBaseDisplay = el.style.display || '';
+  }
 
-    }
 
-  }
+  function restoreBase(el){
 
+    saveBase(el);
 
+    el.style.fontSize = el.dataset.bookFitBaseSize;
 
-  function restoreBase(el){
+    el.style.lineHeight = el.dataset.bookFitBaseLineHeight;
 
-    saveBase(el);
+    el.style.whiteSpace = el.dataset.bookFitBaseWhiteSpace;
 
-    el.style.fontSize = el.dataset.bookFitBaseSize;
+    el.style.width = el.dataset.bookFitBaseWidth;
 
-    el.style.lineHeight = el.dataset.bookFitBaseLineHeight;
+    el.style.display = el.dataset.bookFitBaseDisplay;
 
-    el.style.whiteSpace = el.dataset.bookFitBaseWhiteSpace;
+    el.style.maxWidth = '100%';
 
-    el.style.width = el.dataset.bookFitBaseWidth;
+  }
 
-    el.style.display = el.dataset.bookFitBaseDisplay;
 
-    el.style.maxWidth = '100%';
+  function pageBox(page){
 
-  }
+    const cs = getComputedStyle(page);
 
+    const left = parseFloat(cs.paddingLeft) || 0;
 
+    const right = parseFloat(cs.paddingRight) || 0;
 
-  function pageBox(page){
+    const top = parseFloat(cs.paddingTop) || 0;
 
-    const cs = getComputedStyle(page);
+    const bottom = parseFloat(cs.paddingBottom) || 0;
 
-    const left = parseFloat(cs.paddingLeft) || 0;
 
-    const right = parseFloat(cs.paddingRight) || 0;
+    return {
 
-    const top = parseFloat(cs.paddingTop) || 0;
+      width: Math.max(40, page.clientWidth - left - right - 8),
 
-    const bottom = parseFloat(cs.paddingBottom) || 0;
+      height: Math.max(40, page.clientHeight - top - bottom - 8)
 
+    };
 
+  }
 
-    return {
 
-      width: Math.max(40, page.clientWidth - left - right - 8),
+  function targets(page){
 
-      height: Math.max(40, page.clientHeight - top - bottom - 8)
+    const selectors = [
 
-    };
+      '.title-the', '.title-three', '.title-secrets', '.title-of',
 
-  }
+      '.title-david', '.title-subtitle', '.title-by', '.title-author',
 
+      '.title-tagline', '.dedication-heading', '.dedication-text p',
 
+      '.acknowledgements-heading', '.acknowledgements-text p',
 
-  function targets(page){
+      'h1','h2','h3','h4','h5','h6','p','li','blockquote'
 
-    const selectors = [
+    ];
 
-      '.title-the', '.title-three', '.title-secrets', '.title-of',
 
-      '.title-david', '.title-subtitle', '.title-by', '.title-author',
+    const nodes = Array.from(page.querySelectorAll(selectors.join(',')));
 
-      '.title-tagline', '.dedication-heading', '.dedication-text p',
+    const nested = Array.from(page.querySelectorAll('span,strong,em')).filter(el => {
 
-      '.acknowledgements-heading', '.acknowledgements-text p',
+      if(!el.textContent.trim()) return false;
 
-      'h1','h2','h3','h4','h5','h6','p','li','blockquote'
+      if(el.closest('.reader-controls,.page-selector')) return false;
 
-    ];
+      return el.children.length === 0;
 
+    });
 
 
-    const nodes = Array.from(page.querySelectorAll(selectors.join(',')));
+    const all = [...nodes, ...nested];
 
-    const nested = Array.from(page.querySelectorAll('span,strong,em')).filter(el => {
+    const seen = new Set();
 
-      if(!el.textContent.trim()) return false;
+    return all.filter(el => {
 
-      if(el.closest('.reader-controls,.page-selector')) return false;
+      if(seen.has(el)) return false;
 
-      return el.children.length === 0;
+      seen.add(el);
 
-    });
+      return true;
 
+    });
 
+  }
 
-    const all = [...nodes, ...nested];
 
-    const seen = new Set();
+  function fitElement(el, page){
 
-    return all.filter(el => {
+    restoreBase(el);
 
-      if(seen.has(el)) return false;
+    el.classList.add('book-fit-target');
 
-      seen.add(el);
 
-      return true;
+    const box = pageBox(page);
 
-    });
+    const isLongTitleLine =
 
-  }
+      el.classList.contains('title-subtitle') ||
 
+      el.classList.contains('title-tagline');
 
 
-  function fitElement(el, page){
+    const originalWhiteSpace = getComputedStyle(el).whiteSpace;
 
-    restoreBase(el);
 
-    el.classList.add('book-fit-target');
+    if(isLongTitleLine){
 
+      el.style.width = box.width + 'px';
 
+      el.style.maxWidth = box.width + 'px';
 
-    const box = pageBox(page);
+      el.style.display = 'block';
 
-    const isLongTitleLine =
+      el.style.marginLeft = 'auto';
 
-      el.classList.contains('title-subtitle') ||
+      el.style.marginRight = 'auto';
 
-      el.classList.contains('title-tagline');
+    }
 
 
+    let size = parseFloat(getComputedStyle(el).fontSize);
 
-    const originalWhiteSpace = getComputedStyle(el).whiteSpace;
+    if(!Number.isFinite(size) || size <= 0) size = 16;
 
 
+    let pass = 0;
 
-    if(isLongTitleLine){
 
-      el.style.width = box.width + 'px';
+    while(pass < MAX_PASSES && size > MIN_FONT_PX){
 
-      el.style.maxWidth = box.width + 'px';
+      const widthBad = el.scrollWidth > box.width + 1;
 
-      el.style.display = 'block';
+      const heightBad = el.scrollHeight > box.height + 1;
 
-      el.style.marginLeft = 'auto';
+      if(!widthBad && !heightBad) break;
 
-      el.style.marginRight = 'auto';
+      size -= STEP_PX;
 
-    }
+      el.style.fontSize = size + 'px';
 
+      pass++;
 
+    }
 
-    let size = parseFloat(getComputedStyle(el).fontSize);
 
-    if(!Number.isFinite(size) || size <= 0) size = 16;
+    /* For translated strings that remain too wide, allow wrapping and
 
+       continue reducing until the element fits vertically as well. */
 
+    if(el.scrollWidth > box.width + 1){
 
-    let pass = 0;
+      el.style.whiteSpace = 'normal';
 
 
+      while(pass < MAX_PASSES && size > MIN_FONT_PX){
 
-    while(pass < MAX_PASSES && size > MIN_FONT_PX){
+        const widthBad = el.scrollWidth > box.width + 1;
 
-      const widthBad = el.scrollWidth > box.width + 1;
+        const heightBad = el.scrollHeight > box.height + 1;
 
-      const heightBad = el.scrollHeight > box.height + 1;
+        if(!widthBad && !heightBad) break;
 
-      if(!widthBad && !heightBad) break;
+        size -= STEP_PX;
 
-      size -= STEP_PX;
+        el.style.fontSize = size + 'px';
 
-      el.style.fontSize = size + 'px';
+        pass++;
 
-      pass++;
+      }
 
-    }
+    }
 
 
+    if(originalWhiteSpace === 'nowrap' && el.scrollWidth <= box.width + 1){
 
-    /* For translated strings that remain too wide, allow wrapping and
+      el.style.whiteSpace = 'nowrap';
 
-       continue reducing until the element fits vertically as well. */
+    }
 
-    if(el.scrollWidth > box.width + 1){
+  }
 
-      el.style.whiteSpace = 'normal';
 
+  function fitPage(page){
 
+    if(!page) return;
 
-      while(pass < MAX_PASSES && size > MIN_FONT_PX){
+    page.classList.add('book-fit-active');
 
-        const widthBad = el.scrollWidth > box.width + 1;
+    targets(page).forEach(saveBase);
 
-        const heightBad = el.scrollHeight > box.height + 1;
+    targets(page).forEach(el => fitElement(el, page));
 
-        if(!widthBad && !heightBad) break;
+  }
 
-        size -= STEP_PX;
 
-        el.style.fontSize = size + 'px';
+  let timer = 0;
 
-        pass++;
+  window.requestBookPageFit = function(page){
 
-      }
+    clearTimeout(timer);
 
-    }
+    timer = setTimeout(() => fitPage(page), 80);
 
+  };
 
 
-    if(originalWhiteSpace === 'nowrap' && el.scrollWidth <= box.width + 1){
+  const observer = new MutationObserver(() => {
 
-      el.style.whiteSpace = 'nowrap';
+    const active = document.querySelector('.book-page.active');
 
-    }
+    if(active) window.requestBookPageFit(active);
 
-  }
+  });
 
 
+  observer.observe(document.body, {
 
-  function fitPage(page){
+    subtree:true,
 
-    if(!page) return;
+    childList:true,
 
-    page.classList.add('book-fit-active');
+    characterData:true
 
-    targets(page).forEach(saveBase);
+  });
 
-    targets(page).forEach(el => fitElement(el, page));
 
-  }
+  window.addEventListener('resize', () => {
 
+    const active = document.querySelector('.book-page.active');
 
+    if(active) window.requestBookPageFit(active);
 
-  let timer = 0;
+  });
 
-  window.requestBookPageFit = function(page){
 
-    clearTimeout(timer);
+  setTimeout(() => {
 
-    timer = setTimeout(() => fitPage(page), 80);
+    const active = document.querySelector('.book-page.active');
 
-  };
+    if(active) window.requestBookPageFit(active);
 
-
-
-  const observer = new MutationObserver(() => {
-
-    const active = document.querySelector('.book-page.active');
-
-    if(active) window.requestBookPageFit(active);
-
-  });
-
-
-
-  observer.observe(document.body, {
-
-    subtree:true,
-
-    childList:true,
-
-    characterData:true
-
-  });
-
-
-
-  window.addEventListener('resize', () => {
-
-    const active = document.querySelector('.book-page.active');
-
-    if(active) window.requestBookPageFit(active);
-
-  });
-
-
-
-  setTimeout(() => {
-
-    const active = document.querySelector('.book-page.active');
-
-    if(active) window.requestBookPageFit(active);
-
-  }, 500);
-
+  }, 500);
 
 
 })();
@@ -2810,1003 +2506,844 @@
 </script>
 
 
-
 <!-- =========================================================
 
-     PAGE NAVIGATION
+     PAGE NAVIGATION
 
-     ========================================================= -->
-
+     ========================================================= -->
 
 
 <script>
 
-  const pages = Array.from(
+  const pages = Array.from(
 
-    document.querySelectorAll('.book-page')
+    document.querySelectorAll('.book-page')
 
-  );
+  );
 
 
+  const pageSelector =
 
-  const pageSelector =
+    document.getElementById('pageSelector');
 
-    document.getElementById('pageSelector');
 
+  const pageSelectorButton =
 
+    document.getElementById('pageSelectorButton');
 
-  const pageSelectorButton =
 
-    document.getElementById('pageSelectorButton');
+  const pageDropdown =
 
+    document.getElementById('pageDropdown');
 
 
-  const pageDropdown =
+  const prevPageButton =
 
-    document.getElementById('pageDropdown');
+    document.getElementById('prevPage');
 
 
+  const nextPageButton =
 
-  const prevPageButton =
+    document.getElementById('nextPage');
 
-    document.getElementById('prevPage');
 
+  let currentPage = 0;
 
 
-  const nextPageButton =
+  /* =========================================
 
-    document.getElementById('nextPage');
+     CREATE PAGE LIST AUTOMATICALLY
 
+     ========================================= */
 
 
-  let currentPage = 0;
+  pages.forEach((page, index) => {
 
 
+    const button =
 
+      document.createElement('button');
 
 
-  /* =========================================
+    button.type = 'button';
 
-     CREATE PAGE LIST AUTOMATICALLY
 
-     ========================================= */
+    button.textContent =
 
+      `Page ${index + 1}`;
 
 
-  pages.forEach((page, index) => {
+    button.dataset.page =
 
+      index;
 
 
-    const button =
+    button.addEventListener(
 
-      document.createElement('button');
+      'click',
 
+      () => {
 
 
-    button.type = 'button';
+        jumpToPage(index);
 
+        closePageDropdown();
 
 
-    button.textContent =
+      }
 
-      `Page ${index + 1}`;
+    );
 
 
+    pageDropdown.appendChild(button);
 
-    button.dataset.page =
 
-      index;
+  });
 
 
+  const pageDropdownButtons =
 
-    button.addEventListener(
+    Array.from(
 
-      'click',
+      pageDropdown.querySelectorAll('button')
 
-      () => {
+    );
 
 
+  /* =========================================
 
-        jumpToPage(index);
+     DROPDOWN PAGE TURN
 
-        closePageDropdown();
+     Reuses the same real page-turn animation
 
+     used by Previous / Next, but accelerates
 
+     it according to the jump distance.
 
-      }
+     ========================================= */
 
-    );
 
+  function jumpToPage(targetIndex){
 
 
-    pageDropdown.appendChild(button);
+    if(
 
+      targetIndex < 0 ||
 
+      targetIndex >= pages.length ||
 
-  });
+      targetIndex === currentPage
 
+    ){
 
+      return;
 
+    }
 
 
-  const pageDropdownButtons =
+    const distance =
 
-    Array.from(
+      Math.abs(targetIndex - currentPage);
 
-      pageDropdown.querySelectorAll('button')
 
-    );
+    const direction =
 
+      targetIndex > currentPage
 
+        ? 'next'
 
+        : 'prev';
 
 
-  /* =========================================
+    /*
 
-     DROPDOWN PAGE TURN
+       One physical turn is kept for each page,
 
-     Reuses the same real page-turn animation
+       but the turn becomes faster for larger jumps.
 
-     used by Previous / Next, but accelerates
+    */
 
-     it according to the jump distance.
+    let duration = 550;
 
-     ========================================= */
 
+    if(distance <= 2){
 
+      duration = 360;
 
-  function jumpToPage(targetIndex){
+    }
 
+    else if(distance <= 5){
 
+      duration = 240;
 
-    if(
+    }
 
-      targetIndex < 0 ||
+    else if(distance <= 15){
 
-      targetIndex >= pages.length ||
+      duration = 150;
 
-      targetIndex === currentPage
+    }
 
-    ){
+    else if(distance <= 30){
 
-      return;
+      duration = 105;
 
-    }
+    }
 
+    else{
 
+      duration = 75;
 
-    const distance =
+    }
 
-      Math.abs(targetIndex - currentPage);
 
+    const turnStep = () => {
 
 
-    const direction =
+      if(currentPage === targetIndex){
 
-      targetIndex > currentPage
+        return;
 
-        ? 'next'
+      }
 
-        : 'prev';
 
+      const nextIndex =
 
+        currentPage +
 
-    /*
+        (direction === 'next' ? 1 : -1);
 
-       One physical turn is kept for each page,
 
-       but the turn becomes faster for larger jumps.
+      const oldPage = pages[currentPage];
 
-    */
+      const newPage = pages[nextIndex];
 
-    let duration = 550;
 
+      pages.forEach((page) => {
 
 
-    if(distance <= 2){
+        page.classList.remove(
 
-      duration = 360;
+          'active',
 
-    }
+          'page-turn-front',
 
-    else if(distance <= 5){
+          'page-turn-back',
 
-      duration = 240;
+          'turn-next',
 
-    }
+          'turn-prev',
 
-    else if(distance <= 15){
+          'jump-next',
 
-      duration = 150;
+          'jump-prev'
 
-    }
+        );
 
-    else if(distance <= 30){
 
-      duration = 105;
+        page.style.removeProperty(
 
-    }
+          '--page-turn-duration'
 
-    else{
+        );
 
-      duration = 75;
 
-    }
+      });
 
 
+      oldPage.classList.add(
 
-    const turnStep = () => {
+        'active',
 
+        'page-turn-front'
 
+      );
 
-      if(currentPage === targetIndex){
 
-        return;
+      newPage.classList.add(
 
-      }
+        'page-turn-back'
 
+      );
 
 
-      const nextIndex =
+      void oldPage.offsetWidth;
 
-        currentPage +
 
-        (direction === 'next' ? 1 : -1);
+      oldPage.style.setProperty(
 
+        '--page-turn-duration',
 
+        `${duration}ms`
 
-      const oldPage = pages[currentPage];
+      );
 
-      const newPage = pages[nextIndex];
 
+      oldPage.classList.add(
 
+        direction === 'next'
 
-      pages.forEach((page) => {
+          ? 'turn-next'
 
+          : 'turn-prev'
 
+      );
 
-        page.classList.remove(
 
-          'active',
+      setTimeout(() => {
 
-          'page-turn-front',
 
-          'page-turn-back',
+        oldPage.classList.remove(
 
-          'turn-next',
+          'active',
 
-          'turn-prev',
+          'page-turn-front',
 
-          'jump-next',
+          'turn-next',
 
-          'jump-prev'
+          'turn-prev'
 
-        );
+        );
 
 
+        newPage.classList.remove(
 
-        page.style.removeProperty(
+          'page-turn-back'
 
-          '--page-turn-duration'
+        );
 
-        );
 
+        newPage.classList.add(
 
+          'active'
 
-      });
+        );
 
 
+        currentPage = nextIndex;
 
-      oldPage.classList.add(
 
-        'active',
+        pageSelectorButton.innerHTML =
 
-        'page-turn-front'
+          `Page ${currentPage + 1} of ${pages.length}
 
-      );
+           <span class="page-selector-arrow">▼</span>`;
 
 
+        prevPageButton.disabled =
 
-      newPage.classList.add(
+          currentPage === 0;
 
-        'page-turn-back'
 
-      );
+        nextPageButton.disabled =
 
+          currentPage === pages.length - 1;
 
 
-      void oldPage.offsetWidth;
+        pageDropdownButtons.forEach(
 
+          (button, i) => {
 
+            button.classList.toggle(
 
-      oldPage.style.setProperty(
+              'active',
 
-        '--page-turn-duration',
+              i === currentPage
 
-        `${duration}ms`
+            );
 
-      );
+          }
 
+        );
 
 
-      oldPage.classList.add(
+        requestBookPageFit(newPage);
 
-        direction === 'next'
 
-          ? 'turn-next'
+        if(currentPage !== targetIndex){
 
-          : 'turn-prev'
+          turnStep();
 
-      );
+        }
 
 
+      }, duration);
 
-      setTimeout(() => {
 
+    };
 
 
-        oldPage.classList.remove(
+    turnStep();
 
-          'active',
 
-          'page-turn-front',
+  }
 
-          'turn-next',
 
-          'turn-prev'
+  /* =========================================
 
-        );
+     SHOW PAGE
 
+     ========================================= */
 
 
-        newPage.classList.remove(
+  function showPage(index, animationMode = 'single'){
 
-          'page-turn-back'
 
-        );
+  if(
 
+    index < 0 ||
 
+    index >= pages.length
 
-        newPage.classList.add(
+  ){
 
-          'active'
+    return;
 
-        );
+  }
 
 
+  const previousIndex = currentPage;
 
-        currentPage = nextIndex;
 
+  /* Initial page load */
 
+  if(index === previousIndex){
 
-        pageSelectorButton.innerHTML =
 
-          `Page ${currentPage + 1} of ${pages.length}
+    pages.forEach((page, i) => {
 
-           <span class="page-selector-arrow">▼</span>`;
 
+      page.classList.remove(
 
+        'active',
 
-        prevPageButton.disabled =
+        'page-turn-front',
 
-          currentPage === 0;
+        'page-turn-back',
 
+        'turn-next',
 
+        'turn-prev',
 
-        nextPageButton.disabled =
+        'jump-next',
 
-          currentPage === pages.length - 1;
+        'jump-prev'
 
+      );
 
 
-        pageDropdownButtons.forEach(
+      page.style.removeProperty(
 
-          (button, i) => {
+        '--page-turn-duration'
 
-            button.classList.toggle(
+      );
 
-              'active',
 
-              i === currentPage
+      if(i === index){
 
-            );
+        page.classList.add('active');
 
-          }
+      }
 
-        );
 
+    });
 
 
-        requestBookPageFit(newPage);
+    requestBookPageFit(pages[index]);
 
 
+  }
 
-        if(currentPage !== targetIndex){
 
-          turnStep();
+  /* =========================================
 
-        }
+     NORMAL NEXT / PREVIOUS
 
+     ========================================= */
 
 
-      }, duration);
+  else if(animationMode === 'single'){
 
 
+    const oldPage = pages[previousIndex];
 
-    };
+    const newPage = pages[index];
 
 
+    const direction =
 
-    turnStep();
+      index > previousIndex
 
+        ? 'next'
 
+        : 'prev';
 
-  }
 
+    /*
 
+       Keep the destination page underneath.
 
-  /* =========================================
+    */
 
-     SHOW PAGE
 
-     ========================================= */
+    pages.forEach((page) => {
 
 
+      page.classList.remove(
 
-  function showPage(index, animationMode = 'single'){
+        'active',
 
+        'page-turn-front',
 
+        'page-turn-back',
 
-  if(
+        'turn-next',
 
-    index < 0 ||
+        'turn-prev',
 
-    index >= pages.length
+        'jump-next',
 
-  ){
+        'jump-prev'
 
-    return;
+      );
 
-  }
 
+      page.style.removeProperty(
 
+        '--page-turn-duration'
 
-  const previousIndex = currentPage;
+      );
 
 
+    });
 
-  /* Initial page load */
 
-  if(index === previousIndex){
+    oldPage.classList.add(
 
+      'active',
 
+      'page-turn-front'
 
-    pages.forEach((page, i) => {
+    );
 
 
+    newPage.classList.add(
 
-      page.classList.remove(
+      'page-turn-back'
 
-        'active',
+    );
 
-        'page-turn-front',
 
-        'page-turn-back',
+    void oldPage.offsetWidth;
 
-        'turn-next',
 
-        'turn-prev',
+    oldPage.style.setProperty(
 
-        'jump-next',
+      '--page-turn-duration',
 
-        'jump-prev'
+      '550ms'
 
-      );
+    );
 
 
+    oldPage.classList.add(
 
-      page.style.removeProperty(
+      direction === 'next'
 
-        '--page-turn-duration'
+        ? 'turn-next'
 
-      );
+        : 'turn-prev'
 
+    );
 
 
-      if(i === index){
+    /*
 
-        page.classList.add('active');
+       Finish the transition after the fold.
 
-      }
+    */
 
 
+    setTimeout(() => {
 
-    });
 
+      oldPage.classList.remove(
 
+        'active',
 
-    requestBookPageFit(pages[index]);
+        'page-turn-front',
 
+        'turn-next',
 
+        'turn-prev'
 
-  }
+      );
 
 
+      newPage.classList.remove(
 
-  /* =========================================
+        'page-turn-back'
 
-     NORMAL NEXT / PREVIOUS
+      );
 
-     ========================================= */
 
+      newPage.classList.add(
 
+        'active'
 
-  else if(animationMode === 'single'){
+      );
 
 
+      requestBookPageFit(newPage);
 
-    const oldPage = pages[previousIndex];
 
-    const newPage = pages[index];
+    }, 550);
 
 
+  }
 
-    const direction =
 
-      index > previousIndex
+  /* Dropdown jumps are handled by jumpToPage(). */
 
-        ? 'next'
 
-        : 'prev';
+  currentPage = index;
 
 
+  pageSelectorButton.innerHTML =
 
-    /*
+    `Page ${currentPage + 1} of ${pages.length}
 
-       Keep the destination page underneath.
+     <span class="page-selector-arrow">▼</span>`;
 
-    */
 
+  prevPageButton.disabled =
 
+    currentPage === 0;
 
-    pages.forEach((page) => {
 
+  nextPageButton.disabled =
 
+    currentPage === pages.length - 1;
 
-      page.classList.remove(
 
-        'active',
+  pageDropdownButtons.forEach(
 
-        'page-turn-front',
+    (button, i) => {
 
-        'page-turn-back',
 
-        'turn-next',
+      button.classList.toggle(
 
-        'turn-prev',
+        'active',
 
-        'jump-next',
+        i === currentPage
 
-        'jump-prev'
+      );
 
-      );
 
+    }
 
+  );
 
-      page.style.removeProperty(
 
-        '--page-turn-duration'
+  pageSelectorButton.setAttribute(
 
-      );
+    'aria-expanded',
 
+    'false'
 
+  );
 
-    });
 
+  window.scrollTo({
 
+    top:0,
 
-    oldPage.classList.add(
+    behavior:'smooth'
 
-      'active',
-
-      'page-turn-front'
-
-    );
-
-
-
-    newPage.classList.add(
-
-      'page-turn-back'
-
-    );
-
-
-
-    void oldPage.offsetWidth;
-
-
-
-    oldPage.style.setProperty(
-
-      '--page-turn-duration',
-
-      '550ms'
-
-    );
-
-
-
-    oldPage.classList.add(
-
-      direction === 'next'
-
-        ? 'turn-next'
-
-        : 'turn-prev'
-
-    );
-
-
-
-    /*
-
-       Finish the transition after the fold.
-
-    */
-
-
-
-    setTimeout(() => {
-
-
-
-      oldPage.classList.remove(
-
-        'active',
-
-        'page-turn-front',
-
-        'turn-next',
-
-        'turn-prev'
-
-      );
-
-
-
-      newPage.classList.remove(
-
-        'page-turn-back'
-
-      );
-
-
-
-      newPage.classList.add(
-
-        'active'
-
-      );
-
-
-
-      requestBookPageFit(newPage);
-
-
-
-    }, 550);
-
-
-
-  }
-
-
-
-  /* Dropdown jumps are handled by jumpToPage(). */
-
-
-
-
-
-  currentPage = index;
-
-
-
-  pageSelectorButton.innerHTML =
-
-    `Page ${currentPage + 1} of ${pages.length}
-
-     <span class="page-selector-arrow">▼</span>`;
-
-
-
-  prevPageButton.disabled =
-
-    currentPage === 0;
-
-
-
-  nextPageButton.disabled =
-
-    currentPage === pages.length - 1;
-
-
-
-  pageDropdownButtons.forEach(
-
-    (button, i) => {
-
-
-
-      button.classList.toggle(
-
-        'active',
-
-        i === currentPage
-
-      );
-
-
-
-    }
-
-  );
-
-
-
-  pageSelectorButton.setAttribute(
-
-    'aria-expanded',
-
-    'false'
-
-  );
-
-
-
-  window.scrollTo({
-
-    top:0,
-
-    behavior:'smooth'
-
-  });
-
+  });
 
 
 }
 
 
+  /* =========================================
 
-  /* =========================================
+     OPEN / CLOSE PAGE DROPDOWN
 
-     OPEN / CLOSE PAGE DROPDOWN
+     ========================================= */
 
-     ========================================= */
 
+  function openPageDropdown(){
 
 
-  function openPageDropdown(){
+    pageDropdown.classList.add('open');
 
 
+    pageSelectorButton.setAttribute(
 
-    pageDropdown.classList.add('open');
+      'aria-expanded',
 
+      'true'
 
+    );
 
-    pageSelectorButton.setAttribute(
 
-      'aria-expanded',
+    const activeButton =
 
-      'true'
+      pageDropdownButtons[currentPage];
 
-    );
 
+    if(activeButton){
 
 
+      activeButton.scrollIntoView({
 
+        block:'nearest'
 
-    const activeButton =
+      });
 
-      pageDropdownButtons[currentPage];
 
+    }
 
 
-    if(activeButton){
+  }
 
 
+  function closePageDropdown(){
 
-      activeButton.scrollIntoView({
 
-        block:'nearest'
+    pageDropdown.classList.remove('open');
 
-      });
 
+    pageSelectorButton.setAttribute(
 
+      'aria-expanded',
 
-    }
+      'false'
 
+    );
 
 
-  }
+  }
 
 
+  pageSelectorButton.addEventListener(
 
+    'click',
 
+    (event) => {
 
-  function closePageDropdown(){
 
+      event.stopPropagation();
 
 
-    pageDropdown.classList.remove('open');
+      if(
 
+        pageDropdown.classList.contains('open')
 
+      ){
 
-    pageSelectorButton.setAttribute(
 
-      'aria-expanded',
+        closePageDropdown();
 
-      'false'
 
-    );
+      }else{
 
 
+        openPageDropdown();
 
-  }
 
+      }
 
 
+    }
 
+  );
 
-  pageSelectorButton.addEventListener(
 
-    'click',
+  document.addEventListener(
 
-    (event) => {
+    'click',
 
+    (event) => {
 
 
-      event.stopPropagation();
+      if(
 
+        !pageSelector.contains(event.target)
 
+      ){
 
-      if(
 
-        pageDropdown.classList.contains('open')
+        closePageDropdown();
 
-      ){
 
+      }
 
 
-        closePageDropdown();
+    }
 
+  );
 
 
-      }else{
+  /* =========================================
 
+     PREVIOUS / NEXT
 
+     ========================================= */
 
-        openPageDropdown();
 
+  prevPageButton.addEventListener(
 
+    'click',
 
-      }
+    () => {
 
 
+      showPage(
 
-    }
+        currentPage - 1
 
-  );
+      );
 
 
+    }
 
+  );
 
 
-  document.addEventListener(
+  nextPageButton.addEventListener(
 
-    'click',
+    'click',
 
-    (event) => {
+    () => {
 
 
+      showPage(
 
-      if(
+        currentPage + 1
 
-        !pageSelector.contains(event.target)
+      );
 
-      ){
 
+    }
 
+  );
 
-        closePageDropdown();
 
+  /* =========================================
 
+     START
 
-      }
+     ========================================= */
 
 
+  showPage(0);
 
-    }
-
-  );
-
-
-
-
-
-  /* =========================================
-
-     PREVIOUS / NEXT
-
-     ========================================= */
-
-
-
-  prevPageButton.addEventListener(
-
-    'click',
-
-    () => {
-
-
-
-      showPage(
-
-        currentPage - 1
-
-      );
-
-
-
-    }
-
-  );
-
-
-
-
-
-  nextPageButton.addEventListener(
-
-    'click',
-
-    () => {
-
-
-
-      showPage(
-
-        currentPage + 1
-
-      );
-
-
-
-    }
-
-  );
-
-
-
-
-
-  /* =========================================
-
-     START
-
-     ========================================= */
-
-
-
-  showPage(0);
-
-  requestBookPageFit(pages[0]);
-
+  requestBookPageFit(pages[0]);
 
 
 </script>
-
 
 
 </body>
