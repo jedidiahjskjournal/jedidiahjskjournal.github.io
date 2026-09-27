@@ -361,57 +361,142 @@
       font-weight:700;
     }
 
-    /* ==============================
-   PAGE TURN ANIMATION
-   ============================== */
-
 /* ==============================
-   PAGE TURN ANIMATION
+   REAL PAGE TURN ANIMATION
    ============================== */
 
-.book-page.page-turn-next{
-  animation:pageTurnNext var(--page-turn-duration, .35s) ease both;
-  transform-origin:center center;
+.book-stage{
+  perspective:1200px;
 }
 
-.book-page.page-turn-prev{
-  animation:pageTurnPrev var(--page-turn-duration, .35s) ease both;
-  transform-origin:center center;
+.book-page{
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
+  transform-style:preserve-3d;
 }
 
-@keyframes pageTurnNext{
+/* Destination page sits underneath during the turn */
+.book-page.page-turn-back{
+  display:block;
+  position:absolute;
+  top:0;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:1;
+}
+
+/* Current page performs the physical turn */
+.book-page.page-turn-front{
+  display:block;
+  position:relative;
+  z-index:2;
+}
+
+/* NEXT: current page turns from right to left */
+.book-page.turn-next{
+  animation:turnNext var(--page-turn-duration,.55s) ease-in-out both;
+  transform-origin:right center;
+}
+
+/* PREVIOUS: current page turns from left to right */
+.book-page.turn-prev{
+  animation:turnPrev var(--page-turn-duration,.55s) ease-in-out both;
+  transform-origin:left center;
+}
+
+@keyframes turnNext{
+
   0%{
-    opacity:.65;
-    transform:translateX(38px) rotateY(-7deg);
-    box-shadow:-14px 10px 30px rgba(0,0,0,.30);
+    transform:rotateY(0deg);
+    box-shadow:0 20px 70px rgba(0,0,0,.55);
+  }
+
+  45%{
+    transform:rotateY(-72deg);
+    box-shadow:-30px 15px 45px rgba(0,0,0,.40);
+  }
+
+  100%{
+    transform:rotateY(-180deg);
+    box-shadow:-5px 10px 25px rgba(0,0,0,.15);
+  }
+
+}
+
+@keyframes turnPrev{
+
+  0%{
+    transform:rotateY(0deg);
+    box-shadow:0 20px 70px rgba(0,0,0,.55);
+  }
+
+  45%{
+    transform:rotateY(72deg);
+    box-shadow:30px 15px 45px rgba(0,0,0,.40);
+  }
+
+  100%{
+    transform:rotateY(180deg);
+    box-shadow:5px 10px 25px rgba(0,0,0,.15);
+  }
+
+}
+
+/* The destination page remains visible underneath */
+.book-page.page-turn-back{
+  transform:translateX(-50%);
+  box-shadow:0 20px 70px rgba(0,0,0,.55);
+}
+
+/* Large jumps from the page selector */
+.book-page.jump-next{
+  animation:jumpNext var(--page-turn-duration,.18s) ease-out both;
+}
+
+.book-page.jump-prev{
+  animation:jumpPrev var(--page-turn-duration,.18s) ease-out both;
+}
+
+@keyframes jumpNext{
+
+  0%{
+    opacity:.45;
+    transform:translateX(45px) scale(.985);
   }
 
   100%{
     opacity:1;
-    transform:translateX(0) rotateY(0);
-    box-shadow:0 20px 70px rgba(0,0,0,.55);
+    transform:translateX(0) scale(1);
   }
+
 }
 
-@keyframes pageTurnPrev{
+@keyframes jumpPrev{
+
   0%{
-    opacity:.65;
-    transform:translateX(-38px) rotateY(7deg);
-    box-shadow:14px 10px 30px rgba(0,0,0,.30);
+    opacity:.45;
+    transform:translateX(-45px) scale(.985);
   }
 
   100%{
     opacity:1;
-    transform:translateX(0) rotateY(0);
-    box-shadow:0 20px 70px rgba(0,0,0,.55);
+    transform:translateX(0) scale(1);
   }
+
 }
 
 @media(max-width:800px){
 
-  .book-page.page-turn-next,
-  .book-page.page-turn-prev{
-    animation-duration:var(--page-turn-duration, .30s);
+  .book-stage{
+    perspective:1000px;
+  }
+
+  .book-page.turn-next{
+    animation-duration:var(--page-turn-duration,.48s);
+  }
+
+  .book-page.turn-prev{
+    animation-duration:var(--page-turn-duration,.48s);
   }
 
 }
@@ -816,68 +901,180 @@
     return;
   }
 
-  const previousPage = currentPage;
-  const distance = Math.abs(index - previousPage);
+  const previousIndex = currentPage;
 
-  let direction = 'next';
+  /* Initial page load */
+  if(index === previousIndex){
 
-  if(index < previousPage){
-    direction = 'prev';
+    pages.forEach((page, i) => {
+
+      page.classList.remove(
+        'active',
+        'page-turn-front',
+        'page-turn-back',
+        'turn-next',
+        'turn-prev',
+        'jump-next',
+        'jump-prev'
+      );
+
+      page.style.removeProperty(
+        '--page-turn-duration'
+      );
+
+      if(i === index){
+        page.classList.add('active');
+      }
+
+    });
+
   }
 
-  let duration = 350;
+  /* =========================================
+     NORMAL NEXT / PREVIOUS
+     ========================================= */
 
-  if(animationMode === 'jump'){
+  else if(animationMode === 'single'){
+
+    const oldPage = pages[previousIndex];
+    const newPage = pages[index];
+
+    const direction =
+      index > previousIndex
+        ? 'next'
+        : 'prev';
+
+    /*
+       Keep the destination page underneath.
+    */
+
+    pages.forEach((page) => {
+
+      page.classList.remove(
+        'active',
+        'page-turn-front',
+        'page-turn-back',
+        'turn-next',
+        'turn-prev',
+        'jump-next',
+        'jump-prev'
+      );
+
+      page.style.removeProperty(
+        '--page-turn-duration'
+      );
+
+    });
+
+    oldPage.classList.add(
+      'active',
+      'page-turn-front'
+    );
+
+    newPage.classList.add(
+      'page-turn-back'
+    );
+
+    void oldPage.offsetWidth;
+
+    oldPage.style.setProperty(
+      '--page-turn-duration',
+      '550ms'
+    );
+
+    oldPage.classList.add(
+      direction === 'next'
+        ? 'turn-next'
+        : 'turn-prev'
+    );
+
+    /*
+       Finish the transition after the fold.
+    */
+
+    setTimeout(() => {
+
+      oldPage.classList.remove(
+        'active',
+        'page-turn-front',
+        'turn-next',
+        'turn-prev'
+      );
+
+      newPage.classList.remove(
+        'page-turn-back'
+      );
+
+      newPage.classList.add(
+        'active'
+      );
+
+    }, 550);
+
+  }
+
+  /* =========================================
+     DROPDOWN JUMP
+     ========================================= */
+
+  else if(animationMode === 'jump'){
+
+    const distance =
+      Math.abs(index - previousIndex);
+
+    const direction =
+      index > previousIndex
+        ? 'next'
+        : 'prev';
+
+    let duration = 180;
 
     if(distance <= 2){
-      duration = 300;
+      duration = 280;
     }
     else if(distance <= 5){
       duration = 220;
     }
     else if(distance <= 15){
-      duration = 150;
+      duration = 160;
     }
     else if(distance <= 30){
-      duration = 115;
+      duration = 120;
     }
     else{
-      duration = 85;
+      duration = 90;
     }
 
-  }
+    pages.forEach((page) => {
 
-  pages.forEach((page) => {
+      page.classList.remove(
+        'active',
+        'page-turn-front',
+        'page-turn-back',
+        'turn-next',
+        'turn-prev',
+        'jump-next',
+        'jump-prev'
+      );
 
-    page.classList.remove(
+      page.style.removeProperty(
+        '--page-turn-duration'
+      );
+
+    });
+
+    const newPage = pages[index];
+
+    newPage.classList.add(
       'active',
-      'page-turn-next',
-      'page-turn-prev'
+      direction === 'next'
+        ? 'jump-next'
+        : 'jump-prev'
     );
-
-    page.style.removeProperty(
-      '--page-turn-duration'
-    );
-
-  });
-
-  const newPage = pages[index];
-
-  newPage.classList.add('active');
-
-  void newPage.offsetWidth;
-
-  if(index !== previousPage){
 
     newPage.style.setProperty(
       '--page-turn-duration',
       `${duration}ms`
-    );
-
-    newPage.classList.add(
-      direction === 'next'
-        ? 'page-turn-next'
-        : 'page-turn-prev'
     );
 
   }
@@ -916,7 +1113,6 @@
   });
 
 }
-
 
   /* =========================================
      OPEN / CLOSE PAGE DROPDOWN
