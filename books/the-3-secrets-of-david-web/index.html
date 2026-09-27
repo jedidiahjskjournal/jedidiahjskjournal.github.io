@@ -723,63 +723,107 @@
 
       </article>
 
-<!-- PAGE 3: DEDICATION & ACKNOWLEDGEMENTS -->
-<article class="book-page dedication-page" data-page="3">
+/* ==============================
+   PAGE 3 - DEDICATION
+   ============================== */
 
-  <div class="dedication-content">
+.book-page.dedication-page{
+  display:none;
+  box-sizing:border-box;
+  background:#fff;
+  color:#111;
+  padding:38px 32px 30px;
+  overflow:hidden;
 
-    <h2 class="dedication-heading">
-      Dedication
-    </h2>
+  font-family:Georgia, 'Times New Roman', serif !important;
+  text-align:center !important;
+}
 
-    <div class="dedication-text">
+.book-page.dedication-page.active{
+  display:block;
+}
 
-      <p>
-        To God Almighty,<br>
-        the One who saw David's heart and sees mine.
-      </p>
+.dedication-page .dedication-content{
+  width:100%;
+  height:100%;
+  margin:0 auto;
+  text-align:center !important;
+  font-family:Georgia, 'Times New Roman', serif !important;
+}
 
-      <p>
-        To every soul who seeks to walk with God<br>
-        as a warrior in battle, a worshipper in the quiet,<br>
-        and a king in purpose.
-      </p>
+.dedication-page .dedication-heading,
+.dedication-page .acknowledgements-heading{
+  margin:0;
+  padding:0;
 
-      <p>
-        This book is for you.
-      </p>
+  font-family:Georgia, 'Times New Roman', serif !important;
+  font-size:.78rem !important;
+  line-height:1.15 !important;
+  font-weight:700 !important;
 
-    </div>
+  text-align:center !important;
+  text-transform:uppercase;
 
+  color:#111 !important;
 
-    <h2 class="acknowledgements-heading">
-      Acknowledgements
-    </h2>
+  text-decoration:underline;
+  text-decoration-thickness:1px;
+  text-underline-offset:2px;
+}
 
-    <div class="acknowledgements-text">
+.dedication-page .dedication-text{
+  width:100%;
+  margin:18px auto 0;
 
-      <p>
-        I thank God, who gave me the vision, the strength, and the
-        inspiration to write this book.
-      </p>
+  font-family:Georgia, 'Times New Roman', serif !important;
+  font-size:.68rem !important;
+  line-height:1.30 !important;
 
-      <p>
-        I am grateful to my family, friends, and spiritual mentors who
-        have walked with me, prayed for me, and believed in the
-        message I carry.
-      </p>
+  text-align:center !important;
+  color:#111 !important;
+}
 
-      <p>
-        A special thank you to every reader you are not here by
-        accident. May the wisdom in these pages draw you closer to
-        God's heart.
-      </p>
+.dedication-page .dedication-text p{
+  margin:0 auto 15px !important;
+  padding:0 !important;
 
-    </div>
+  font-family:Georgia, 'Times New Roman', serif !important;
+  font-size:.68rem !important;
+  line-height:1.30 !important;
 
-  </div>
+  text-align:center !important;
+  color:#111 !important;
+}
 
-</article>
+.dedication-page .acknowledgements-heading{
+  margin-top:38px !important;
+}
+
+.dedication-page .acknowledgements-text{
+  width:100%;
+  margin:18px auto 0;
+
+  font-family:Georgia, 'Times New Roman', serif !important;
+  font-size:.66rem !important;
+  line-height:1.30 !important;
+
+  text-align:center !important;
+  color:#111 !important;
+}
+
+.dedication-page .acknowledgements-text p{
+  max-width:350px;
+
+  margin:0 auto 16px !important;
+  padding:0 !important;
+
+  font-family:Georgia, 'Times New Roman', serif !important;
+  font-size:.66rem !important;
+  line-height:1.30 !important;
+
+  text-align:center !important;
+  color:#111 !important;
+}
 
 
       
