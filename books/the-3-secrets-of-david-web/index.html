@@ -200,9 +200,8 @@
       justify-content:center;
       align-items:flex-start;
       padding-top:10px;
-      overflow-x:auto;
+      overflow-x:hidden;
       overflow-y:visible;
-      scrollbar-width:thin;
     }
 
     .book-side-back{
@@ -813,52 +812,6 @@
   }
 }
 
-/* Large jumps from the page selector stay intentionally fast. */
-.book-page.jump-next{
-  animation:jumpNext var(--page-turn-duration,.18s) ease-out both;
-}
-
-.book-page.jump-prev{
-  animation:jumpPrev var(--page-turn-duration,.18s) ease-out both;
-}
-
-@keyframes jumpNext{
-  0%{
-    opacity:.45;
-    transform:translateX(45px) scale(.985);
-  }
-  100%{
-    opacity:1;
-    transform:translateX(0) scale(1);
-  }
-}
-
-@keyframes jumpPrev{
-  0%{
-    opacity:.45;
-    transform:translateX(-45px) scale(.985);
-  }
-  100%{
-    opacity:1;
-    transform:translateX(0) scale(1);
-  }
-}
-
-@media(max-width:800px){
-
-  .book-stage{
-    perspective:1000px;
-  }
-
-  .book-page.turn-next{
-    animation-duration:var(--page-turn-duration,.52s);
-  }
-
-  .book-page.turn-prev{
-    animation-duration:var(--page-turn-duration,.52s);
-  }
-
-}
 
 /* ==============================
        READER CONTROLS
@@ -1275,6 +1228,7 @@
     document.getElementById('nextPage');
 
   let currentPage = 0;
+  let isPageAnimating = false;
 
 
   /* =========================================
@@ -1297,6 +1251,8 @@
     button.addEventListener(
       'click',
       () => {
+
+        if(isPageAnimating) return;
 
         showPage(index, 'jump');
         closePageDropdown();
@@ -1446,64 +1402,8 @@
 
   else if(animationMode === 'jump'){
 
-    const distance =
-      Math.abs(index - previousIndex);
-
-    const direction =
-      index > previousIndex
-        ? 'next'
-        : 'prev';
-
-    let duration = 180;
-
-    if(distance <= 2){
-      duration = 280;
-    }
-    else if(distance <= 5){
-      duration = 220;
-    }
-    else if(distance <= 15){
-      duration = 160;
-    }
-    else if(distance <= 30){
-      duration = 120;
-    }
-    else{
-      duration = 90;
-    }
-
-    pages.forEach((page) => {
-
-      page.classList.remove(
-        'active',
-        'page-turn-front',
-        'page-turn-back',
-        'turn-next',
-        'turn-prev',
-        'jump-next',
-        'jump-prev'
-      );
-
-      page.style.removeProperty(
-        '--page-turn-duration'
-      );
-
-    });
-
-    const newPage = pages[index];
-
-    newPage.classList.add(
-      'active',
-      direction === 'next'
-        ? 'jump-next'
-        : 'jump-prev'
-    );
-
-    newPage.style.setProperty(
-      '--page-turn-duration',
-      `${duration}ms`
-    );
-
+    jumpToPage(index);
+    return;
   }
 
   currentPage = index;
@@ -1540,6 +1440,94 @@
   });
 
 }
+
+  async function jumpToPage(targetIndex){
+
+    if(isPageAnimating || targetIndex < 0 || targetIndex >= pages.length || targetIndex === currentPage){
+      return;
+    }
+
+    isPageAnimating = true;
+
+    const direction = targetIndex > currentPage ? 'next' : 'prev';
+    const distance = Math.abs(targetIndex - currentPage);
+
+    let perPageDuration;
+
+    if(distance <= 2){
+      perPageDuration = 230;
+    }else if(distance <= 5){
+      perPageDuration = 130;
+    }else if(distance <= 15){
+      perPageDuration = 60;
+    }else if(distance <= 30){
+      perPageDuration = 32;
+    }else{
+      perPageDuration = 20;
+    }
+
+    while(currentPage !== targetIndex){
+
+      const oldPage = pages[currentPage];
+      const stepIndex = currentPage + (direction === 'next' ? 1 : -1);
+      const newPage = pages[stepIndex];
+
+      pages.forEach((page) => {
+        page.classList.remove(
+          'active',
+          'page-turn-front',
+          'page-turn-back',
+          'turn-next',
+          'turn-prev'
+        );
+        page.style.removeProperty('--page-turn-duration');
+      });
+
+      oldPage.classList.add('active', 'page-turn-front');
+      newPage.classList.add('page-turn-back');
+
+      void oldPage.offsetWidth;
+
+      oldPage.style.setProperty(
+        '--page-turn-duration',
+        `${perPageDuration}ms`
+      );
+
+      oldPage.classList.add(
+        direction === 'next' ? 'turn-next' : 'turn-prev'
+      );
+
+      await new Promise((resolve) => {
+        setTimeout(resolve, perPageDuration);
+      });
+
+      oldPage.classList.remove(
+        'active',
+        'page-turn-front',
+        'turn-next',
+        'turn-prev'
+      );
+
+      newPage.classList.remove('page-turn-back');
+      newPage.classList.add('active');
+      currentPage = stepIndex;
+    }
+
+    pageSelectorButton.innerHTML =
+      `Page ${currentPage + 1} of ${pages.length}
+       <span class="page-selector-arrow">▼</span>`;
+
+    prevPageButton.disabled = currentPage === 0;
+    nextPageButton.disabled = currentPage === pages.length - 1;
+
+    pageDropdownButtons.forEach((button, i) => {
+      button.classList.toggle('active', i === currentPage);
+    });
+
+    pageSelectorButton.setAttribute('aria-expanded', 'false');
+
+    isPageAnimating = false;
+  }
 
   /* =========================================
      OPEN / CLOSE PAGE DROPDOWN
@@ -1627,6 +1615,8 @@
     'click',
     () => {
 
+      if(isPageAnimating) return;
+
       showPage(
         currentPage - 1
       );
@@ -1638,6 +1628,8 @@
   nextPageButton.addEventListener(
     'click',
     () => {
+
+      if(isPageAnimating) return;
 
       showPage(
         currentPage + 1
