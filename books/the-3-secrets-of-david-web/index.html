@@ -723,6 +723,8 @@
   box-shadow:0 20px 70px rgba(0,0,0,.55);
 }
 
+
+
 /* Large jumps from the page selector */
 .book-page.jump-next{
   animation:jumpNext var(--page-turn-duration,.18s) ease-out both;
@@ -1236,7 +1238,7 @@
       'click',
       () => {
 
-        showPage(index, 'jump');
+        jumpToPage(index);
         closePageDropdown();
 
       }
@@ -1252,6 +1254,156 @@
       pageDropdown.querySelectorAll('button')
     );
 
+
+  /* =========================================
+     DROPDOWN PAGE TURN
+     Reuses the same real page-turn animation
+     used by Previous / Next, but accelerates
+     it according to the jump distance.
+     ========================================= */
+
+  function jumpToPage(targetIndex){
+
+    if(
+      targetIndex < 0 ||
+      targetIndex >= pages.length ||
+      targetIndex === currentPage
+    ){
+      return;
+    }
+
+    const distance =
+      Math.abs(targetIndex - currentPage);
+
+    const direction =
+      targetIndex > currentPage
+        ? 'next'
+        : 'prev';
+
+    /*
+       One physical turn is kept for each page,
+       but the turn becomes faster for larger jumps.
+    */
+    let duration = 550;
+
+    if(distance <= 2){
+      duration = 360;
+    }
+    else if(distance <= 5){
+      duration = 240;
+    }
+    else if(distance <= 15){
+      duration = 150;
+    }
+    else if(distance <= 30){
+      duration = 105;
+    }
+    else{
+      duration = 75;
+    }
+
+    const turnStep = () => {
+
+      if(currentPage === targetIndex){
+        return;
+      }
+
+      const nextIndex =
+        currentPage +
+        (direction === 'next' ? 1 : -1);
+
+      const oldPage = pages[currentPage];
+      const newPage = pages[nextIndex];
+
+      pages.forEach((page) => {
+
+        page.classList.remove(
+          'active',
+          'page-turn-front',
+          'page-turn-back',
+          'turn-next',
+          'turn-prev',
+          'jump-next',
+          'jump-prev'
+        );
+
+        page.style.removeProperty(
+          '--page-turn-duration'
+        );
+
+      });
+
+      oldPage.classList.add(
+        'active',
+        'page-turn-front'
+      );
+
+      newPage.classList.add(
+        'page-turn-back'
+      );
+
+      void oldPage.offsetWidth;
+
+      oldPage.style.setProperty(
+        '--page-turn-duration',
+        `${duration}ms`
+      );
+
+      oldPage.classList.add(
+        direction === 'next'
+          ? 'turn-next'
+          : 'turn-prev'
+      );
+
+      setTimeout(() => {
+
+        oldPage.classList.remove(
+          'active',
+          'page-turn-front',
+          'turn-next',
+          'turn-prev'
+        );
+
+        newPage.classList.remove(
+          'page-turn-back'
+        );
+
+        newPage.classList.add(
+          'active'
+        );
+
+        currentPage = nextIndex;
+
+        pageSelectorButton.innerHTML =
+          `Page ${currentPage + 1} of ${pages.length}
+           <span class="page-selector-arrow">▼</span>`;
+
+        prevPageButton.disabled =
+          currentPage === 0;
+
+        nextPageButton.disabled =
+          currentPage === pages.length - 1;
+
+        pageDropdownButtons.forEach(
+          (button, i) => {
+            button.classList.toggle(
+              'active',
+              i === currentPage
+            );
+          }
+        );
+
+        if(currentPage !== targetIndex){
+          turnStep();
+        }
+
+      }, duration);
+
+    };
+
+    turnStep();
+
+  }
 
   /* =========================================
      SHOW PAGE
@@ -1378,71 +1530,8 @@
 
   }
 
-  /* =========================================
-     DROPDOWN JUMP
-     ========================================= */
+  /* Dropdown jumps are handled by jumpToPage(). */
 
-  else if(animationMode === 'jump'){
-
-    const distance =
-      Math.abs(index - previousIndex);
-
-    const direction =
-      index > previousIndex
-        ? 'next'
-        : 'prev';
-
-    let duration = 180;
-
-    if(distance <= 2){
-      duration = 280;
-    }
-    else if(distance <= 5){
-      duration = 220;
-    }
-    else if(distance <= 15){
-      duration = 160;
-    }
-    else if(distance <= 30){
-      duration = 120;
-    }
-    else{
-      duration = 90;
-    }
-
-    pages.forEach((page) => {
-
-      page.classList.remove(
-        'active',
-        'page-turn-front',
-        'page-turn-back',
-        'turn-next',
-        'turn-prev',
-        'jump-next',
-        'jump-prev'
-      );
-
-      page.style.removeProperty(
-        '--page-turn-duration'
-      );
-
-    });
-
-    const newPage = pages[index];
-
-    newPage.classList.add(
-      'active',
-      direction === 'next'
-        ? 'jump-next'
-        : 'jump-prev'
-    );
-
-    newPage.style.setProperty(
-      '--page-turn-duration',
-      `${duration}ms`
-    );
-
-  }
 
   currentPage = index;
 
