@@ -362,6 +362,61 @@
     }
 
     /* ==============================
+   PAGE TURN ANIMATION
+   ============================== */
+
+/* ==============================
+   PAGE TURN ANIMATION
+   ============================== */
+
+.book-page.page-turn-next{
+  animation:pageTurnNext var(--page-turn-duration, .35s) ease both;
+  transform-origin:center center;
+}
+
+.book-page.page-turn-prev{
+  animation:pageTurnPrev var(--page-turn-duration, .35s) ease both;
+  transform-origin:center center;
+}
+
+@keyframes pageTurnNext{
+  0%{
+    opacity:.65;
+    transform:translateX(38px) rotateY(-7deg);
+    box-shadow:-14px 10px 30px rgba(0,0,0,.30);
+  }
+
+  100%{
+    opacity:1;
+    transform:translateX(0) rotateY(0);
+    box-shadow:0 20px 70px rgba(0,0,0,.55);
+  }
+}
+
+@keyframes pageTurnPrev{
+  0%{
+    opacity:.65;
+    transform:translateX(-38px) rotateY(7deg);
+    box-shadow:14px 10px 30px rgba(0,0,0,.30);
+  }
+
+  100%{
+    opacity:1;
+    transform:translateX(0) rotateY(0);
+    box-shadow:0 20px 70px rgba(0,0,0,.55);
+  }
+}
+
+@media(max-width:800px){
+
+  .book-page.page-turn-next,
+  .book-page.page-turn-prev{
+    animation-duration:var(--page-turn-duration, .30s);
+  }
+
+}
+
+    /* ==============================
        READER CONTROLS
        ============================== */
 
@@ -731,8 +786,7 @@
       'click',
       () => {
 
-        showPage(index);
-
+        showPage(index, 'jump');
         closePageDropdown();
 
       }
@@ -753,68 +807,115 @@
      SHOW PAGE
      ========================================= */
 
-  function showPage(index){
+  function showPage(index, animationMode = 'single'){
 
-    if(
-      index < 0 ||
-      index >= pages.length
-    ){
-      return;
+  if(
+    index < 0 ||
+    index >= pages.length
+  ){
+    return;
+  }
+
+  const previousPage = currentPage;
+  const distance = Math.abs(index - previousPage);
+
+  let direction = 'next';
+
+  if(index < previousPage){
+    direction = 'prev';
+  }
+
+  let duration = 350;
+
+  if(animationMode === 'jump'){
+
+    if(distance <= 2){
+      duration = 300;
+    }
+    else if(distance <= 5){
+      duration = 220;
+    }
+    else if(distance <= 15){
+      duration = 150;
+    }
+    else if(distance <= 30){
+      duration = 115;
+    }
+    else{
+      duration = 85;
     }
 
+  }
 
-    pages.forEach(
-      (page, i) => {
+  pages.forEach((page) => {
 
-        page.classList.toggle(
-          'active',
-          i === index
-        );
-
-      }
+    page.classList.remove(
+      'active',
+      'page-turn-next',
+      'page-turn-prev'
     );
 
-
-    currentPage = index;
-
-
-    pageSelectorButton.innerHTML =
-      `Page ${currentPage + 1} of ${pages.length}
-       <span class="page-selector-arrow">▼</span>`;
-
-
-    prevPageButton.disabled =
-      currentPage === 0;
-
-
-    nextPageButton.disabled =
-      currentPage === pages.length - 1;
-
-
-    pageDropdownButtons.forEach(
-      (button, i) => {
-
-        button.classList.toggle(
-          'active',
-          i === currentPage
-        );
-
-      }
+    page.style.removeProperty(
+      '--page-turn-duration'
     );
 
+  });
 
-    pageSelectorButton.setAttribute(
-      'aria-expanded',
-      'false'
+  const newPage = pages[index];
+
+  newPage.classList.add('active');
+
+  void newPage.offsetWidth;
+
+  if(index !== previousPage){
+
+    newPage.style.setProperty(
+      '--page-turn-duration',
+      `${duration}ms`
     );
 
-
-    window.scrollTo({
-      top:0,
-      behavior:'smooth'
-    });
+    newPage.classList.add(
+      direction === 'next'
+        ? 'page-turn-next'
+        : 'page-turn-prev'
+    );
 
   }
+
+  currentPage = index;
+
+  pageSelectorButton.innerHTML =
+    `Page ${currentPage + 1} of ${pages.length}
+     <span class="page-selector-arrow">▼</span>`;
+
+  prevPageButton.disabled =
+    currentPage === 0;
+
+  nextPageButton.disabled =
+    currentPage === pages.length - 1;
+
+  pageDropdownButtons.forEach(
+    (button, i) => {
+
+      button.classList.toggle(
+        'active',
+        i === currentPage
+      );
+
+    }
+  );
+
+  pageSelectorButton.setAttribute(
+    'aria-expanded',
+    'false'
+  );
+
+  window.scrollTo({
+    top:0,
+    behavior:'smooth'
+  });
+
+}
 
 
   /* =========================================
