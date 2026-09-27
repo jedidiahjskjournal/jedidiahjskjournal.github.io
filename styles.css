@@ -380,7 +380,7 @@ footer {
   display:flex;
   flex-direction:row;
   align-items:center;
-  gap:28px;
+  gap:48px;
   height:auto;
   padding:10px 0;
 }
@@ -407,7 +407,7 @@ nav a {
 }
 
 .add-btn {
-  width:180px;
+  width:170px;
   margin:0;
   padding:8px 13px;
   border-radius:7px;
