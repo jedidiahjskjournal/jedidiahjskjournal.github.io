@@ -780,7 +780,15 @@ body > iframe.skiptranslate,
 body > div.skiptranslate > iframe.skiptranslate,
 body > iframe[class*="VIpgJd"],
 body > div.skiptranslate > iframe[class*="VIpgJd"],
-iframe.VIpgJd-ZVi9od-ORHb-OEVmcd {
+iframe.VIpgJd-ZVi9od-ORHb-OEVmcd,
+.VIpgJd-ZVi9od-ORHb,
+.VIpgJd-ZVi9od-ORHb-OEVmcd,
+.VIpgJd-ZVi9od-aZ2wEe,
+.VIpgJd-ZVi9od-aZ2wEe-wOHMyf,
+.VIpgJd-ZVi9od-aZ2wEe-wOHMyf-ti6hGc,
+.VIpgJd-ZVi9od-xl07Ob-lTBxed,
+.VIpgJd-ZVi9od-l4eHX-hSRGPd,
+.VIpgJd-yAWNEb-L7lbkb {
   display:none !important;
   visibility:hidden !important;
   opacity:0 !important;
@@ -990,6 +998,41 @@ body {
 </script>
 
 <script src="/js/gt.min.js" data-gt-widget-id="43217984"></script>
+
+<script>
+  /* Hide only Google Translate injected floating UI outside the J³ navbar widget. */
+  (function(){
+    const GOOGLE_UI_CLASS = 'VIpgJd-ZVi9od';
+
+    function hideGoogleFloatingUI(){
+      document.querySelectorAll('body > *').forEach(function(el){
+        if(el.closest('#gt-mordadam-43217984')) return;
+        if((el.className || '').toString().includes(GOOGLE_UI_CLASS)){
+          el.style.setProperty('display','none','important');
+          el.style.setProperty('visibility','hidden','important');
+          el.style.setProperty('opacity','0','important');
+          el.style.setProperty('pointer-events','none','important');
+        }
+      });
+
+      document.querySelectorAll('body > iframe, body > div.skiptranslate iframe').forEach(function(el){
+        if((el.className || '').toString().includes(GOOGLE_UI_CLASS)){
+          el.style.setProperty('display','none','important');
+          el.style.setProperty('visibility','hidden','important');
+          el.style.setProperty('opacity','0','important');
+          el.style.setProperty('pointer-events','none','important');
+        }
+      });
+    }
+
+    hideGoogleFloatingUI();
+
+    new MutationObserver(hideGoogleFloatingUI).observe(document.body, {
+      childList:true,
+      subtree:true
+    });
+  })();
+</script>
 
 <script>
 
