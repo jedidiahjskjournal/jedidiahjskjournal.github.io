@@ -950,12 +950,10 @@
     }
   
 
-
-
 /* ==============================
    TRANSLATED BOOK TEXT AUTO-FIT
-   Keeps the 420 x 640 canvas fixed and
-   fits translated text inside each page.
+   Keeps the 420 x 640 page fixed and
+   fits translated text inside the page.
    ============================== */
 
 .book-page.book-fit-active{
@@ -963,8 +961,8 @@
 }
 
 .book-page .book-fit-target{
-  max-width:100%;
   box-sizing:border-box;
+  max-width:100%;
 }
 
 </style>
@@ -1214,240 +1212,151 @@
 
 <script src="/js/gt.min.js" data-gt-widget-id="43217984"></script>
 
-
-
 <script>
 /* =========================================
    TRANSLATED BOOK TEXT AUTO-FIT ENGINE
    ========================================= */
-
 (function(){
 
-  const FIT_MIN_REM = 0.42;
-  const FIT_STEP_PX = 0.25;
-  const FIT_MAX_PASSES = 80;
+  const MIN_FONT_PX = 8;
+  const STEP_PX = 0.5;
+  const MAX_PASSES = 80;
 
-  function isUsableTextElement(element){
-
-    if(!element || !(element instanceof HTMLElement)){
-      return false;
+  function saveBase(el){
+    if(!el.dataset.bookFitBaseSize){
+      el.dataset.bookFitBaseSize = getComputedStyle(el).fontSize;
     }
-
-    if(
-      element.closest('.reader-controls') ||
-      element.closest('.page-selector') ||
-      element.tagName === 'IMG' ||
-      element.tagName === 'SCRIPT' ||
-      element.tagName === 'STYLE'
-    ){
-      return false;
+    if(!el.dataset.bookFitBaseLineHeight){
+      el.dataset.bookFitBaseLineHeight = getComputedStyle(el).lineHeight;
     }
-
-    const text = element.textContent.trim();
-
-    if(!text){
-      return false;
+    if(!el.dataset.bookFitBaseWhiteSpace){
+      el.dataset.bookFitBaseWhiteSpace = getComputedStyle(el).whiteSpace;
     }
-
-    /* Prefer leaf elements so nested blocks are not resized twice. */
-    const hasElementChildren =
-      Array.from(element.children).some(
-        child => child instanceof HTMLElement
-      );
-
-    if(hasElementChildren){
-      return false;
+    if(!el.dataset.bookFitBaseWidth){
+      el.dataset.bookFitBaseWidth = el.style.width || '';
     }
-
-    return true;
-  }
-
-  function getFitTargets(page){
-
-    const elements = Array.from(
-      page.querySelectorAll('h1,h2,h3,h4,h5,h6,p,div,span,li,strong,em,a')
-    );
-
-    return elements.filter(isUsableTextElement);
-  }
-
-  function getPageContentWidth(page){
-
-    const styles = getComputedStyle(page);
-    const paddingLeft = parseFloat(styles.paddingLeft) || 0;
-    const paddingRight = parseFloat(styles.paddingRight) || 0;
-
-    return Math.max(
-      40,
-      page.clientWidth - paddingLeft - paddingRight
-    );
-  }
-
-  function getPageContentHeight(page){
-
-    const styles = getComputedStyle(page);
-    const paddingTop = parseFloat(styles.paddingTop) || 0;
-    const paddingBottom = parseFloat(styles.paddingBottom) || 0;
-
-    return Math.max(
-      40,
-      page.clientHeight - paddingTop - paddingBottom
-    );
-  }
-
-  function saveOriginalFontSize(element){
-
-    if(!element.dataset.bookFitBaseSize){
-      element.dataset.bookFitBaseSize =
-        getComputedStyle(element).fontSize;
-    }
-
-    if(!element.dataset.bookFitBaseLineHeight){
-      element.dataset.bookFitBaseLineHeight =
-        getComputedStyle(element).lineHeight;
+    if(!el.dataset.bookFitBaseDisplay){
+      el.dataset.bookFitBaseDisplay = el.style.display || '';
     }
   }
 
-  function restoreOriginalFontSize(element){
-
-    saveOriginalFontSize(element);
-
-    element.style.fontSize =
-      element.dataset.bookFitBaseSize;
-
-    element.style.lineHeight =
-      element.dataset.bookFitBaseLineHeight;
-
-    element.style.maxWidth = '100%';
-    element.classList.add('book-fit-target');
+  function restoreBase(el){
+    saveBase(el);
+    el.style.fontSize = el.dataset.bookFitBaseSize;
+    el.style.lineHeight = el.dataset.bookFitBaseLineHeight;
+    el.style.whiteSpace = el.dataset.bookFitBaseWhiteSpace;
+    el.style.width = el.dataset.bookFitBaseWidth;
+    el.style.display = el.dataset.bookFitBaseDisplay;
+    el.style.maxWidth = '100%';
   }
 
-  function exceedsWidth(element, availableWidth){
+  function pageBox(page){
+    const cs = getComputedStyle(page);
+    const left = parseFloat(cs.paddingLeft) || 0;
+    const right = parseFloat(cs.paddingRight) || 0;
+    const top = parseFloat(cs.paddingTop) || 0;
+    const bottom = parseFloat(cs.paddingBottom) || 0;
 
-    const styles = getComputedStyle(element);
-    const whiteSpace = styles.whiteSpace;
-
-    /* For nowrap text, scrollWidth directly exposes the overflow. */
-    if(whiteSpace === 'nowrap'){
-      return element.scrollWidth > availableWidth + 1;
-    }
-
-    const rect = element.getBoundingClientRect();
-    return rect.width > availableWidth + 1;
+    return {
+      width: Math.max(40, page.clientWidth - left - right - 8),
+      height: Math.max(40, page.clientHeight - top - bottom - 8)
+    };
   }
 
-  function exceedsHeight(element, availableHeight){
+  function targets(page){
+    const selectors = [
+      '.title-the', '.title-three', '.title-secrets', '.title-of',
+      '.title-david', '.title-subtitle', '.title-by', '.title-author',
+      '.title-tagline', '.dedication-heading', '.dedication-text p',
+      '.acknowledgements-heading', '.acknowledgements-text p',
+      'h1','h2','h3','h4','h5','h6','p','li','blockquote'
+    ];
 
-    return element.scrollHeight > availableHeight + 1;
-  }
+    const nodes = Array.from(page.querySelectorAll(selectors.join(',')));
+    const nested = Array.from(page.querySelectorAll('span,strong,em')).filter(el => {
+      if(!el.textContent.trim()) return false;
+      if(el.closest('.reader-controls,.page-selector')) return false;
+      return el.children.length === 0;
+    });
 
-  function fitOneElement(element, page){
-
-    restoreOriginalFontSize(element);
-
-    const pageWidth = getPageContentWidth(page);
-    const pageHeight = getPageContentHeight(page);
-
-    /*
-       Give the element a measurable content width without changing
-       the intended centered alignment of the book page.
-    */
-    const originalWidth = element.style.width;
-    const originalDisplay = element.style.display;
-
-    element.style.maxWidth = '100%';
-
-    if(
-      element.classList.contains('title-subtitle') ||
-      element.classList.contains('title-tagline')
-    ){
-      element.style.width = '100%';
-      element.style.display = 'block';
-    }
-
-    let currentSize = parseFloat(
-      getComputedStyle(element).fontSize
-    );
-
-    if(!Number.isFinite(currentSize) || currentSize <= 0){
-      currentSize = 16;
-    }
-
-    let pass = 0;
-
-    while(pass < FIT_MAX_PASSES){
-
-      const widthOverflow =
-        exceedsWidth(element, pageWidth);
-
-      const heightOverflow =
-        exceedsHeight(element, pageHeight);
-
-      if(!widthOverflow && !heightOverflow){
-        break;
-      }
-
-      if(currentSize <= FIT_MIN_REM * 16){
-        break;
-      }
-
-      currentSize -= FIT_STEP_PX;
-      element.style.fontSize = `${currentSize}px`;
-
-      pass += 1;
-    }
-
-    /* Restore layout properties we temporarily changed. */
-    if(
-      !(element.classList.contains('title-subtitle') ||
-        element.classList.contains('title-tagline'))
-    ){
-      element.style.width = originalWidth;
-      element.style.display = originalDisplay;
-    }
-  }
-
-  function fitBookPage(page){
-
-    if(!page){
-      return;
-    }
-
-    page.classList.add('book-fit-active');
-
-    const targets = getFitTargets(page);
-
-    targets.forEach(saveOriginalFontSize);
-
-    /* First restore the source-language sizes. */
-    targets.forEach(restoreOriginalFontSize);
-
-    /* Then shrink only elements that actually overflow. */
-    targets.forEach(element => {
-      fitOneElement(element, page);
+    const all = [...nodes, ...nested];
+    const seen = new Set();
+    return all.filter(el => {
+      if(seen.has(el)) return false;
+      seen.add(el);
+      return true;
     });
   }
 
-  let fitTimer = 0;
+  function fitElement(el, page){
+    restoreBase(el);
+    el.classList.add('book-fit-target');
 
+    const box = pageBox(page);
+    const isLongTitleLine =
+      el.classList.contains('title-subtitle') ||
+      el.classList.contains('title-tagline');
+
+    const originalWhiteSpace = getComputedStyle(el).whiteSpace;
+
+    if(isLongTitleLine){
+      el.style.width = box.width + 'px';
+      el.style.maxWidth = box.width + 'px';
+      el.style.display = 'block';
+      el.style.marginLeft = 'auto';
+      el.style.marginRight = 'auto';
+    }
+
+    let size = parseFloat(getComputedStyle(el).fontSize);
+    if(!Number.isFinite(size) || size <= 0) size = 16;
+
+    let pass = 0;
+
+    while(pass < MAX_PASSES && size > MIN_FONT_PX){
+      const widthBad = el.scrollWidth > box.width + 1;
+      const heightBad = el.scrollHeight > box.height + 1;
+      if(!widthBad && !heightBad) break;
+      size -= STEP_PX;
+      el.style.fontSize = size + 'px';
+      pass++;
+    }
+
+    /* For translated strings that remain too wide, allow wrapping and
+       continue reducing until the element fits vertically as well. */
+    if(el.scrollWidth > box.width + 1){
+      el.style.whiteSpace = 'normal';
+
+      while(pass < MAX_PASSES && size > MIN_FONT_PX){
+        const widthBad = el.scrollWidth > box.width + 1;
+        const heightBad = el.scrollHeight > box.height + 1;
+        if(!widthBad && !heightBad) break;
+        size -= STEP_PX;
+        el.style.fontSize = size + 'px';
+        pass++;
+      }
+    }
+
+    if(originalWhiteSpace === 'nowrap' && el.scrollWidth <= box.width + 1){
+      el.style.whiteSpace = 'nowrap';
+    }
+  }
+
+  function fitPage(page){
+    if(!page) return;
+    page.classList.add('book-fit-active');
+    targets(page).forEach(saveBase);
+    targets(page).forEach(el => fitElement(el, page));
+  }
+
+  let timer = 0;
   window.requestBookPageFit = function(page){
-
-    window.clearTimeout(fitTimer);
-
-    fitTimer = window.setTimeout(() => {
-      fitBookPage(page);
-    }, 60);
+    clearTimeout(timer);
+    timer = setTimeout(() => fitPage(page), 80);
   };
 
-  /* Re-fit when GTranslate replaces visible text. */
   const observer = new MutationObserver(() => {
-
-    const activePage =
-      document.querySelector('.book-page.active');
-
-    if(activePage){
-      window.requestBookPageFit(activePage);
-    }
+    const active = document.querySelector('.book-page.active');
+    if(active) window.requestBookPageFit(active);
   });
 
   observer.observe(document.body, {
@@ -1457,18 +1366,16 @@
   });
 
   window.addEventListener('resize', () => {
-
-    const activePage =
-      document.querySelector('.book-page.active');
-
-    if(activePage){
-      window.requestBookPageFit(activePage);
-    }
+    const active = document.querySelector('.book-page.active');
+    if(active) window.requestBookPageFit(active);
   });
 
+  setTimeout(() => {
+    const active = document.querySelector('.book-page.active');
+    if(active) window.requestBookPageFit(active);
+  }, 500);
+
 })();
-
-
 </script>
 
 <!-- =========================================================
@@ -1970,7 +1877,5 @@
 
 </script>
 
-
-<!-- Translation auto-fit: active page text is resized to remain inside the fixed 420 x 640 canvas. -->
 </body>
 </html>
