@@ -842,14 +842,29 @@
        ============================== */
 
     /* Keep the intended inline navbar selector, but hide Google's
-       temporary floating/loading visuals. */
+       temporary floating/loading visuals. The floating tab can be
+       injected outside our navbar, so target those generated elements
+       without hiding #gt-mordadam-43217984 itself. */
     .goog-te-spinner-pos,
     .goog-te-gadget-icon,
+    .goog-te-banner-frame.skiptranslate,
+    .goog-te-ftab,
+    .goog-te-balloon-frame,
+    .goog-te-menu-frame.skiptranslate,
     .goog-gt-vt,
     #goog-gt-tt,
-    #goog-gt-original-text {
+    #goog-gt-original-text,
+    body > .skiptranslate {
       display:none !important;
       visibility:hidden !important;
+      opacity:0 !important;
+      pointer-events:none !important;
+    }
+
+    /* Google may temporarily move the document when translating. */
+    html,
+    body {
+      top:0 !important;
     }
 
     .gt_white_content,
@@ -1396,6 +1411,42 @@
       characterData:true
     });
   }
+
+  /* Hide any Google Translate floating tab/loader that may be injected
+     outside the intended navbar translator. This runs only when the DOM
+     changes and does not touch #gt-mordadam-43217984. */
+  function hideGoogleTranslateFloatingUI(){
+    const selectors = [
+      '.goog-te-ftab',
+      '.goog-te-banner-frame.skiptranslate',
+      '.goog-te-balloon-frame',
+      '.goog-te-menu-frame.skiptranslate',
+      '.goog-te-spinner-pos',
+      '.goog-gt-vt',
+      '#goog-gt-tt',
+      '#goog-gt-original-text'
+    ];
+
+    document.querySelectorAll(selectors.join(',')).forEach(el => {
+      if(!el.closest('#gt-mordadam-43217984')){
+        el.style.setProperty('display','none','important');
+        el.style.setProperty('visibility','hidden','important');
+        el.style.setProperty('opacity','0','important');
+        el.style.setProperty('pointer-events','none','important');
+      }
+    });
+  }
+
+  hideGoogleTranslateFloatingUI();
+
+  const googleUiObserver = new MutationObserver(() => {
+    hideGoogleTranslateFloatingUI();
+  });
+
+  googleUiObserver.observe(document.body, {
+    childList:true,
+    subtree:true
+  });
 
   window.addEventListener('resize', () => {
     if(fitPaused) return;
