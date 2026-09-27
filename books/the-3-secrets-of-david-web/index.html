@@ -558,12 +558,6 @@
   color:#111 !important;
 }
 
-
-
-
-
-
-
     
 
 /* ==============================
@@ -728,8 +722,6 @@
   box-shadow:0 20px 70px rgba(0,0,0,.55);
 }
 
-
-
 /* Large jumps from the page selector */
 .book-page.jump-next{
   animation:jumpNext var(--page-turn-duration,.18s) ease-out both;
@@ -841,32 +833,6 @@
        GOOGLE TRANSLATE POPUP
        ============================== */
 
-    /* Keep the intended inline navbar selector, but hide Google's
-       temporary floating/loading visuals. The floating tab can be
-       injected outside our navbar, so target those generated elements
-       without hiding #gt-mordadam-43217984 itself. */
-    .goog-te-spinner-pos,
-    .goog-te-gadget-icon,
-    .goog-te-banner-frame.skiptranslate,
-    .goog-te-ftab,
-    .goog-te-balloon-frame,
-    .goog-te-menu-frame.skiptranslate,
-    .goog-gt-vt,
-    #goog-gt-tt,
-    #goog-gt-original-text,
-    body > .skiptranslate {
-      display:none !important;
-      visibility:hidden !important;
-      opacity:0 !important;
-      pointer-events:none !important;
-    }
-
-    /* Google may temporarily move the document when translating. */
-    html,
-    body {
-      top:0 !important;
-    }
-
     .gt_white_content,
     .gt_white_content *{
       color:#111827 !important;
@@ -974,22 +940,6 @@
         transform:scale(.76);
       }
     }
-  
-
-/* ==============================
-   TRANSLATED BOOK TEXT AUTO-FIT
-   Keeps the 420 x 640 page fixed and
-   fits translated text inside the page.
-   ============================== */
-
-.book-page.book-fit-active{
-  overflow:hidden;
-}
-
-.book-page .book-fit-target{
-  box-sizing:border-box;
-  max-width:100%;
-}
 
 </style>
 </head>
@@ -1238,230 +1188,6 @@
 
 <script src="/js/gt.min.js" data-gt-widget-id="43217984"></script>
 
-<script>
-/* =========================================
-   TRANSLATED BOOK TEXT AUTO-FIT ENGINE
-   ========================================= */
-(function(){
-
-  const MIN_FONT_PX = 8;
-  const STEP_PX = 0.5;
-  const MAX_PASSES = 80;
-
-  function saveBase(el){
-    if(!el.dataset.bookFitBaseSize){
-      el.dataset.bookFitBaseSize = getComputedStyle(el).fontSize;
-    }
-    if(!el.dataset.bookFitBaseLineHeight){
-      el.dataset.bookFitBaseLineHeight = getComputedStyle(el).lineHeight;
-    }
-    if(!el.dataset.bookFitBaseWhiteSpace){
-      el.dataset.bookFitBaseWhiteSpace = getComputedStyle(el).whiteSpace;
-    }
-    if(!el.dataset.bookFitBaseWidth){
-      el.dataset.bookFitBaseWidth = el.style.width || '';
-    }
-    if(!el.dataset.bookFitBaseDisplay){
-      el.dataset.bookFitBaseDisplay = el.style.display || '';
-    }
-  }
-
-  function restoreBase(el){
-    saveBase(el);
-    el.style.fontSize = el.dataset.bookFitBaseSize;
-    el.style.lineHeight = el.dataset.bookFitBaseLineHeight;
-    el.style.whiteSpace = el.dataset.bookFitBaseWhiteSpace;
-    el.style.width = el.dataset.bookFitBaseWidth;
-    el.style.display = el.dataset.bookFitBaseDisplay;
-    el.style.maxWidth = '100%';
-  }
-
-  function pageBox(page){
-    const cs = getComputedStyle(page);
-    const left = parseFloat(cs.paddingLeft) || 0;
-    const right = parseFloat(cs.paddingRight) || 0;
-    const top = parseFloat(cs.paddingTop) || 0;
-    const bottom = parseFloat(cs.paddingBottom) || 0;
-
-    return {
-      width: Math.max(40, page.clientWidth - left - right - 16),
-      height: Math.max(40, page.clientHeight - top - bottom - 8)
-    };
-  }
-
-  function targets(page){
-    const selectors = [
-      '.title-the', '.title-three', '.title-secrets', '.title-of',
-      '.title-david', '.title-subtitle', '.title-by', '.title-author',
-      '.title-tagline', '.dedication-heading', '.dedication-text p',
-      '.acknowledgements-heading', '.acknowledgements-text p',
-      'h1','h2','h3','h4','h5','h6','p','li','blockquote'
-    ];
-
-    const nodes = Array.from(page.querySelectorAll(selectors.join(',')));
-    const nested = Array.from(page.querySelectorAll('span,strong,em')).filter(el => {
-      if(!el.textContent.trim()) return false;
-      if(el.closest('.reader-controls,.page-selector')) return false;
-      return el.children.length === 0;
-    });
-
-    const all = [...nodes, ...nested];
-    const seen = new Set();
-    return all.filter(el => {
-      if(seen.has(el)) return false;
-      seen.add(el);
-      return true;
-    });
-  }
-
-  function fitElement(el, page){
-    restoreBase(el);
-    el.classList.add('book-fit-target');
-
-    const box = pageBox(page);
-    const isLongTitleLine =
-      el.classList.contains('title-subtitle') ||
-      el.classList.contains('title-tagline');
-
-    const originalWhiteSpace = getComputedStyle(el).whiteSpace;
-
-    if(isLongTitleLine){
-      el.style.width = box.width + 'px';
-      el.style.maxWidth = box.width + 'px';
-      el.style.display = 'block';
-      el.style.marginLeft = 'auto';
-      el.style.marginRight = 'auto';
-    }
-
-    let size = parseFloat(getComputedStyle(el).fontSize);
-    if(!Number.isFinite(size) || size <= 0) size = 16;
-
-    let pass = 0;
-
-    while(pass < MAX_PASSES && size > MIN_FONT_PX){
-      const widthBad = el.scrollWidth > box.width + 1;
-      const heightBad = el.scrollHeight > box.height + 1;
-      if(!widthBad && !heightBad) break;
-      size -= STEP_PX;
-      el.style.fontSize = size + 'px';
-      pass++;
-    }
-
-    /* For translated strings that remain too wide, allow wrapping and
-       continue reducing until the element fits vertically as well. */
-    if(el.scrollWidth > box.width + 1){
-      el.style.whiteSpace = 'normal';
-
-      while(pass < MAX_PASSES && size > MIN_FONT_PX){
-        const widthBad = el.scrollWidth > box.width + 1;
-        const heightBad = el.scrollHeight > box.height + 1;
-        if(!widthBad && !heightBad) break;
-        size -= STEP_PX;
-        el.style.fontSize = size + 'px';
-        pass++;
-      }
-    }
-
-    if(originalWhiteSpace === 'nowrap' && el.scrollWidth <= box.width + 1){
-      el.style.whiteSpace = 'nowrap';
-    }
-  }
-
-  function fitPage(page){
-    if(!page) return;
-    page.classList.add('book-fit-active');
-    targets(page).forEach(saveBase);
-    targets(page).forEach(el => fitElement(el, page));
-  }
-
-  let timer = 0;
-  let fitPaused = false;
-
-  window.pauseBookFit = function(){
-    fitPaused = true;
-    clearTimeout(timer);
-  };
-
-  window.resumeBookFit = function(page){
-    fitPaused = false;
-    if(page) window.requestBookPageFit(page);
-  };
-
-  window.requestBookPageFit = function(page){
-    if(fitPaused || !page) return;
-    clearTimeout(timer);
-    timer = setTimeout(() => {
-      if(!fitPaused) fitPage(page);
-    }, 80);
-  };
-
-  /* Only watch the book itself. The previous body-wide observer caused
-     unnecessary work whenever GTranslate updated unrelated UI. */
-  const observer = new MutationObserver(() => {
-    if(fitPaused) return;
-    const active = document.querySelector('.book-page.active');
-    if(active) window.requestBookPageFit(active);
-  });
-
-  const bookStage = document.querySelector('.book-stage');
-  if(bookStage){
-    observer.observe(bookStage, {
-      subtree:true,
-      childList:true,
-      characterData:true
-    });
-  }
-
-  /* Hide any Google Translate floating tab/loader that may be injected
-     outside the intended navbar translator. This runs only when the DOM
-     changes and does not touch #gt-mordadam-43217984. */
-  function hideGoogleTranslateFloatingUI(){
-    const selectors = [
-      '.goog-te-ftab',
-      '.goog-te-banner-frame.skiptranslate',
-      '.goog-te-balloon-frame',
-      '.goog-te-menu-frame.skiptranslate',
-      '.goog-te-spinner-pos',
-      '.goog-gt-vt',
-      '#goog-gt-tt',
-      '#goog-gt-original-text'
-    ];
-
-    document.querySelectorAll(selectors.join(',')).forEach(el => {
-      if(!el.closest('#gt-mordadam-43217984')){
-        el.style.setProperty('display','none','important');
-        el.style.setProperty('visibility','hidden','important');
-        el.style.setProperty('opacity','0','important');
-        el.style.setProperty('pointer-events','none','important');
-      }
-    });
-  }
-
-  hideGoogleTranslateFloatingUI();
-
-  const googleUiObserver = new MutationObserver(() => {
-    hideGoogleTranslateFloatingUI();
-  });
-
-  googleUiObserver.observe(document.body, {
-    childList:true,
-    subtree:true
-  });
-
-  window.addEventListener('resize', () => {
-    if(fitPaused) return;
-    const active = document.querySelector('.book-page.active');
-    if(active) window.requestBookPageFit(active);
-  });
-
-  setTimeout(() => {
-    const active = document.querySelector('.book-page.active');
-    if(active) window.requestBookPageFit(active);
-  }, 500);
-
-})();
-</script>
-
 <!-- =========================================================
      PAGE NAVIGATION
      ========================================================= -->
@@ -1542,10 +1268,6 @@
       targetIndex === currentPage
     ){
       return;
-    }
-
-    if(window.pauseBookFit){
-      window.pauseBookFit();
     }
 
     const distance =
@@ -1671,10 +1393,6 @@
 
         if(currentPage !== targetIndex){
           turnStep();
-        }else if(window.resumeBookFit){
-          window.resumeBookFit(newPage);
-        }else{
-          requestBookPageFit(newPage);
         }
 
       }, duration);
@@ -1725,8 +1443,6 @@
 
     });
 
-    requestBookPageFit(pages[index]);
-
   }
 
   /* =========================================
@@ -1734,10 +1450,6 @@
      ========================================= */
 
   else if(animationMode === 'single'){
-
-    if(window.pauseBookFit){
-      window.pauseBookFit();
-    }
 
     const oldPage = pages[previousIndex];
     const newPage = pages[index];
@@ -1812,11 +1524,6 @@
         'active'
       );
 
-      if(window.resumeBookFit){
-        window.resumeBookFit(newPage);
-      }else{
-        requestBookPageFit(newPage);
-      }
 
     }, 550);
 
@@ -1971,7 +1678,6 @@
      ========================================= */
 
   showPage(0);
-  requestBookPageFit(pages[0]);
 
 </script>
 
