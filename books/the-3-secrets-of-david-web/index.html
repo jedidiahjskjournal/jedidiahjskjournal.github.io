@@ -1016,10 +1016,13 @@
 }
 .journal-page .writing-lines{
   width:82%;
+  flex:1;
+  min-height:0;
   margin:10px auto 0;
   display:flex;
   flex-direction:column;
-  gap:10px;
+  justify-content:space-between;
+  gap:0;
 }
 .journal-page .writing-line{
   width:100%;
@@ -1037,6 +1040,124 @@
 .chapter-page .chapter-bar-purple{background:#7436a7;}
 .chapter-page .chapter-bar-green{background:#00b956;}
 .chapter-page .chapter-bar-orange{background:#cf5b12;}
+/* ==============================
+   PAGES 47-48 - FULL WRITING PAGES
+   ============================== */
+.book-page.full-lined-page{
+  display:none;
+  box-sizing:border-box;
+  width:420px;
+  height:640px;
+  padding:42px 32px 30px;
+  background:#fff;
+  color:#111;
+  overflow:hidden;
+}
+.book-page.full-lined-page.active{display:block;}
+.full-lined-page .full-writing-lines{
+  width:82%;
+  height:100%;
+  margin:0 auto;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  gap:0;
+}
+.full-lined-page .full-writing-line{
+  width:100%;
+  height:1px;
+  background:#111;
+  flex:none;
+}
+/* ==============================
+   PAGE 49 - FINAL PROMOTIONAL PAGE
+   ============================== */
+.book-page.final-page{
+  display:none;
+  box-sizing:border-box;
+  width:420px;
+  height:640px;
+  padding:54px 38px 34px;
+  background:#252525;
+  color:#fff;
+  overflow:hidden;
+  font-family:Inter,Arial,sans-serif !important;
+}
+.book-page.final-page.active{display:block;}
+.final-page .final-inner{
+  width:100%;
+  height:100%;
+  box-sizing:border-box;
+  display:flex;
+  flex-direction:column;
+  position:relative;
+}
+.final-page .final-white-bar{
+  width:250px;
+  height:15px;
+  background:#fff;
+  margin:0 0 12px 0;
+  flex:none;
+}
+.final-page .final-main{
+  width:270px;
+  margin-left:48px;
+}
+.final-page p,
+.final-page h3{
+  margin:0 0 12px;
+  padding:0;
+  color:#fff !important;
+  font-family:Inter,Arial,sans-serif !important;
+  text-align:left !important;
+}
+.final-page .final-question{
+  font-size:.56rem !important;
+  line-height:1.35 !important;
+  font-weight:800 !important;
+}
+.final-page .final-body{
+  font-size:.49rem !important;
+  line-height:1.34 !important;
+  font-weight:500 !important;
+}
+.final-page .final-green{color:#68b52e !important;}
+.final-page .final-red{color:#ff1717 !important;}
+.final-page .final-check{color:#68b52e !important;font-weight:800;}
+.final-page .final-about{
+  margin-top:30px;
+  width:100%;
+}
+.final-page .final-contact-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+  margin-top:18px;
+  margin-left:-32px;
+  width:304px;
+}
+.final-page .final-contact-title{
+  font-size:.50rem !important;
+  line-height:1.25 !important;
+  font-weight:800 !important;
+  text-decoration:underline;
+  text-align:left !important;
+}
+.final-page .final-contact{
+  font-size:.46rem !important;
+  line-height:1.55 !important;
+  font-weight:500 !important;
+  white-space:nowrap;
+}
+.final-page .final-signature{
+  position:absolute;
+  right:8px;
+  bottom:16px;
+  color:#888 !important;
+  font-family:cursive !important;
+  font-size:.46rem !important;
+  transform:rotate(-8deg);
+}
     /* ==============================
        MOBILE
        The book page itself remains fixed.
@@ -2036,6 +2157,97 @@ body {
           </div>
         </div>
       </article>
+      <!-- PAGE 47: FULL WRITING PAGE -->
+      <article class="book-page full-lined-page" data-page="47">
+        <div class="full-writing-lines" aria-hidden="true">
+                    <div class="full-writing-line"></div>
+          <div class="full-writing-line"></div>
+          <div class="full-writing-line"></div>
+          <div class="full-writing-line"></div>
+          <div class="full-writing-line"></div>
+          <div class="full-writing-line"></div>
+          <div class="full-writing-line"></div>
+          <div class="full-writing-line"></div>
+          <div class="full-writing-line"></div>
+          <div class="full-writing-line"></div>
+          <div class="full-writing-line"></div>
+          <div class="full-writing-line"></div>
+          <div class="full-writing-line"></div>
+          <div class="full-writing-line"></div>
+          <div class="full-writing-line"></div>
+          <div class="full-writing-line"></div>
+          <div class="full-writing-line"></div>
+          <div class="full-writing-line"></div>
+          <div class="full-writing-line"></div>
+          <div class="full-writing-line"></div>
+          <div class="full-writing-line"></div>
+          <div class="full-writing-line"></div>
+          <div class="full-writing-line"></div>
+          <div class="full-writing-line"></div>
+          <div class="full-writing-line"></div>
+          <div class="full-writing-line"></div>
+          <div class="full-writing-line"></div>
+        </div>
+      </article>
+      <!-- PAGE 48: FULL WRITING PAGE -->
+      <article class="book-page full-lined-page" data-page="48">
+        <div class="full-writing-lines" aria-hidden="true">
+                    <div class="full-writing-line"></div>
+          <div class="full-writing-line"></div>
+          <div class="full-writing-line"></div>
+          <div class="full-writing-line"></div>
+          <div class="full-writing-line"></div>
+          <div class="full-writing-line"></div>
+          <div class="full-writing-line"></div>
+          <div class="full-writing-line"></div>
+          <div class="full-writing-line"></div>
+          <div class="full-writing-line"></div>
+          <div class="full-writing-line"></div>
+          <div class="full-writing-line"></div>
+          <div class="full-writing-line"></div>
+          <div class="full-writing-line"></div>
+          <div class="full-writing-line"></div>
+          <div class="full-writing-line"></div>
+          <div class="full-writing-line"></div>
+          <div class="full-writing-line"></div>
+          <div class="full-writing-line"></div>
+          <div class="full-writing-line"></div>
+          <div class="full-writing-line"></div>
+          <div class="full-writing-line"></div>
+          <div class="full-writing-line"></div>
+          <div class="full-writing-line"></div>
+          <div class="full-writing-line"></div>
+          <div class="full-writing-line"></div>
+          <div class="full-writing-line"></div>
+        </div>
+      </article>
+      <!-- PAGE 49: FINAL PROMOTIONAL PAGE -->
+      <article class="book-page final-page" data-page="49">
+        <div class="final-inner">
+          <div class="final-white-bar" aria-hidden="true"></div>
+          <div class="final-main">
+            <p class="final-question"><span class="final-green">✣</span> What does it really mean to be “a man after God’s own heart”?</p>
+            <p class="final-body">In <span class="final-red"><strong>The 3 Secrets of David</strong></span>, JeDiDiAh JsK takes you deep into the life of Israel’s greatest king revealing how a shepherd boy became a warrior, worshipper, and leader of a nation.</p>
+            <p class="final-body">This isn’t just a story of David’s triumphs. It’s a spiritual blueprint for anyone seeking to walk in divine purpose.</p>
+            <p class="final-body">Through powerful insights and practical revelations, you will discover:<br><span class="final-check">☑</span> The secret of intimate worship.<br><span class="final-check">☑</span> The strength of radical obedience.<br><span class="final-check">☑</span> The beauty of true repentance.</p>
+            <p class="final-body">Whether you’re leading, waiting, falling, or rising again this book will challenge and equip you to live with a heart fully aligned with God.<br><span class="final-green">Be transformed by the wisdom of a king and live your life after God’s own heart.</span></p>
+            <div class="final-about">
+              <h3 class="final-contact-title">About the Author:</h3>
+              <p class="final-body"><strong>JeDiDiAh JsK</strong> is a young author, passionate believer, and tech entrepreneur from Telangana, India. He is the Founder and CEO of IntelliSurge Technologies, and a rising voice in Christian writing. With a deep love for God’s Word and a heart for this generation, JeDiDiAh JsK writes to inspire others to pursue a life of purpose, worship, and truth.</p>
+              <p class="final-body"><span class="final-red"><strong>The 3 Secrets of David</strong></span> is his debut book.</p>
+              <div class="final-contact-row">
+                <div>
+                  <p class="final-contact-title">📬 Contact Info / Socials:</p>
+                </div>
+                <div>
+                  <p class="final-contact">🌐 Website: www.jedidiahjsk.com<br>📧 Email: jedidiahjsk@icloud.com<br>📱 Instagram: @_jedidiahjsk<br>📞 Phone: +91 934 666 1251</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="final-signature">JeDiDiAh JsK</p>
+        </div>
+      </article>
     </section>
     </div>
     <div class="reader-controls">
@@ -2054,7 +2266,7 @@ body {
     id="pageSelectorButton"
     aria-expanded="false"
   >
-    Page 1 of 8
+    Page 1 of 49
     <span class="page-selector-arrow">▼</span>
   </button>
   <div
