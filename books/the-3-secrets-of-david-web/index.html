@@ -725,6 +725,71 @@
       font-weight:700 !important;
     }
     /* ==============================
+       PAGE 5 - PREFACE / INTRODUCTION
+       ============================== */
+    .book-page.preface-page{
+      display:none;
+      box-sizing:border-box;
+      width:420px;
+      height:640px;
+      padding:38px 32px 30px;
+      background:#fff;
+      color:#111;
+      overflow:hidden;
+      font-family:Georgia, 'Times New Roman', serif !important;
+      text-align:center !important;
+    }
+    .book-page.preface-page.active{
+      display:block;
+    }
+    .preface-page .preface-content{
+      width:100%;
+      height:100%;
+      margin:0 auto;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center !important;
+      font-family:Georgia, 'Times New Roman', serif !important;
+    }
+    .preface-page .preface-heading{
+      margin:0 0 20px !important;
+      padding:0;
+      font-family:Georgia, 'Times New Roman', serif !important;
+      font-size:.78rem !important;
+      line-height:1.15 !important;
+      font-weight:700 !important;
+      text-align:center !important;
+      text-transform:uppercase;
+      color:#111 !important;
+      text-decoration:underline;
+      text-decoration-thickness:1px;
+      text-underline-offset:2px;
+    }
+    .preface-page .preface-text{
+      width:100%;
+      max-width:350px;
+      margin:0 auto;
+      font-family:Georgia, 'Times New Roman', serif !important;
+      text-align:center !important;
+    }
+    .preface-page .preface-text p{
+      margin:0 auto 18px !important;
+      padding:0 !important;
+      font-family:Georgia, 'Times New Roman', serif !important;
+      font-size:.68rem !important;
+      line-height:1.35 !important;
+      text-align:center !important;
+      color:#111 !important;
+    }
+    .preface-page .preface-signature{
+      margin-top:18px !important;
+      margin-bottom:0 !important;
+      font-weight:700 !important;
+      text-align:center !important;
+    }
+    /* ==============================
        GOOGLE TRANSLATE POPUP
        ============================== */
     .gt_white_content,
@@ -964,6 +1029,19 @@ body {
           </div>
         </div>
       </article>
+      <!-- PAGE 5: PREFACE / INTRODUCTION -->
+      <article class="book-page preface-page" data-page="5">
+        <div class="preface-content">
+          <h2 class="preface-heading">Preface / Introduction</h2>
+          <div class="preface-text">
+            <p>David, the shepherd boy turned king, has always captured the hearts of believers not because he was perfect, but because he pursued God passionately.</p>
+            <p>As I studied David’s life, I discovered three divine patterns secrets that shaped him into a man after God’s own heart. These secrets are not hidden from us they’re hidden for us to discover, apply, and live by.</p>
+            <p>In this book, I invite you on a journey. You will see David as a son, a servant, a soldier, and a sovereign. But more than that you’ll discover how to become someone after God's own heart in your own life.</p>
+            <p>May you find strength as a warrior, intimacy as a worshipper, and authority as a king or queen in your divine calling.</p>
+            <p class="preface-signature">- JeDiDiAh JsK</p>
+          </div>
+        </div>
+      </article>
     </section>
     </div>
     <div class="reader-controls">
@@ -982,7 +1060,7 @@ body {
     id="pageSelectorButton"
     aria-expanded="false"
   >
-    Page 1 of 4
+    Page 1 of 5
     <span class="page-selector-arrow">▼</span>
   </button>
   <div
