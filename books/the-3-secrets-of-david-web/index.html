@@ -890,92 +890,6 @@
       text-align:right !important;
       color:#111 !important;
     }
-
-    /* ==============================
-       CHAPTER CONTENT PAGES
-       ============================== */
-    .book-page.chapter-page{
-      display:none;
-      box-sizing:border-box;
-      width:420px;
-      height:640px;
-      padding:42px 32px 30px;
-      background:#fff;
-      color:#111;
-      overflow:hidden;
-      font-family:Georgia, 'Times New Roman', serif !important;
-    }
-    .book-page.chapter-page.active{
-      display:block;
-    }
-    .chapter-page .chapter-content{
-      width:100%;
-      height:100%;
-      display:flex;
-      flex-direction:column;
-      box-sizing:border-box;
-      font-family:Georgia, 'Times New Roman', serif !important;
-    }
-    .chapter-page .chapter-header{
-      display:flex;
-      align-items:flex-end;
-      justify-content:space-between;
-      gap:10px;
-      margin:0 0 30px;
-    }
-    .chapter-page .chapter-title,
-    .chapter-page .chapter-number{
-      margin:0;
-      padding:0;
-      font-family:Georgia, 'Times New Roman', serif !important;
-      font-size:.86rem !important;
-      line-height:1.08 !important;
-      font-weight:700 !important;
-      color:#111 !important;
-      text-transform:uppercase;
-    }
-    .chapter-page .chapter-title{
-      flex:1;
-      text-align:center;
-    }
-    .chapter-page .chapter-number{
-      white-space:nowrap;
-      text-align:right;
-    }
-    .chapter-page .chapter-body{
-      width:100%;
-      max-width:348px;
-      margin:0 auto;
-      font-family:Georgia, 'Times New Roman', serif !important;
-      text-align:left !important;
-    }
-    .chapter-page .chapter-body p{
-      margin:0 0 20px !important;
-      padding:0;
-      font-family:Georgia, 'Times New Roman', serif !important;
-      font-size:.70rem !important;
-      line-height:1.24 !important;
-      text-align:left !important;
-      color:#111 !important;
-    }
-    .chapter-page .chapter-body h2{
-      margin:18px 0 20px !important;
-      padding:0;
-      font-family:Georgia, 'Times New Roman', serif !important;
-      font-size:.84rem !important;
-      line-height:1.10 !important;
-      font-weight:700 !important;
-      text-align:left !important;
-      color:#111 !important;
-      text-transform:uppercase;
-    }
-    .chapter-page .chapter-end-bar{
-      width:108px;
-      height:8px;
-      margin:48px 0 0;
-      background:#17b8e8;
-    }
-
     /* ==============================
        GOOGLE TRANSLATE POPUP
        ============================== */
@@ -988,6 +902,95 @@
     }
     .gt_white_content a:hover{
       color:#16a34a !important;
+    }
+    /* ==============================
+       CHAPTER / CONTENT PAGES
+       ============================== */
+    .book-page.chapter-page{
+      display:none;
+      box-sizing:border-box;
+      width:420px;
+      height:640px;
+      padding:42px 32px 34px;
+      background:#fff;
+      color:#111;
+      overflow:hidden;
+      font-family:Georgia,'Times New Roman',serif !important;
+    }
+    .book-page.chapter-page.active{display:block;}
+    .chapter-page .chapter-inner{
+      width:100%;
+      height:100%;
+      box-sizing:border-box;
+    }
+    .chapter-page .chapter-heading{
+      margin:0 0 24px;
+      font-size:.82rem !important;
+      line-height:1.18 !important;
+      font-weight:700 !important;
+      text-align:left !important;
+      color:#111 !important;
+      text-transform:uppercase;
+    }
+    .chapter-page .chapter-intro{
+      margin:0 0 22px !important;
+      font-size:.68rem !important;
+      line-height:1.25 !important;
+      text-align:left !important;
+      color:#111 !important;
+    }
+    .chapter-page h3{
+      margin:22px 0 14px !important;
+      font-size:.78rem !important;
+      line-height:1.15 !important;
+      font-weight:700 !important;
+      text-align:left !important;
+      color:#111 !important;
+      text-transform:uppercase;
+    }
+    .chapter-page p{
+      margin:0 0 15px !important;
+      font-size:.67rem !important;
+      line-height:1.24 !important;
+      text-align:left !important;
+      color:#111 !important;
+    }
+    .chapter-page .quote{
+      font-style:italic !important;
+      margin-bottom:4px !important;
+    }
+    .chapter-page .verse{
+      margin-bottom:15px !important;
+    }
+    .chapter-page .chapter-closing{
+      font-weight:700 !important;
+      margin-top:24px !important;
+    }
+    .chapter-page .red-text{color:#e50914 !important;}
+    .chapter-page .icon-strip{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      width:260px;
+      margin:28px auto 26px;
+      font-family:Arial,sans-serif;
+      font-weight:700;
+    }
+    .chapter-page .icon-crown{font-size:2.5rem;color:#4169e1;line-height:1;}
+    .chapter-page .icon-keys{font-size:2rem;color:#bdbdbd;letter-spacing:2px;line-height:1;}
+    .chapter-page .icon-heart{font-size:2.7rem;color:#ffd200;line-height:1;}
+    .chapter-page .key-list{
+      margin:0 0 14px 18px;
+      padding:0;
+    }
+    .chapter-page .key-list li{
+      margin:0 0 8px;
+      padding-left:4px;
+      font-size:.67rem !important;
+      line-height:1.22 !important;
+    }
+    .chapter-page .section-label{
+      margin-top:24px !important;
     }
     /* ==============================
        MOBILE
@@ -1365,144 +1368,283 @@ body {
           </div>
         </div>
       </article>
-      <!-- PAGE 9: INTRODUCTION CONTINUED -->
+      <!-- PAGE 9: CHAPTER 03 OPENING -->
       <article class="book-page chapter-page" data-page="9">
-        <div class="chapter-content">
-          <div class="chapter-body">
-            <p>The secrets David carried were not merely the wisdom of one man in one era they are universal truths that transcend time and place. These secrets are as relevant today as they were thousands of years ago, they are for anyone who seeks to understand the heart of God and live a life that honors His purposes.</p>
-            <p>David’s story is not just a historical account it is a blueprint for living a life of purpose and power. His journey reveals that greatness doesn’t come through accolades or earthly triumphs it comes through a heart devoted to God and a life lived with intentionality. The battles he fought, the relationships he built, and the legacy he left behind are all reflections of a deeper spiritual reality a heart that, despite its flaws, continually turned toward the Lord.</p>
-            <p>As you dive into these pages, you’ll discover that the path to greatness is not marked by self sufficiency or pride, but by humility and absolute surrender to God’s will. The secrets of David offer a roadmap for the weary, a guide for those who desire not just success, but significance a significance that comes from aligning with God’s heart.</p>
-            <p>Whether you are standing at the threshold of a new season of leadership, facing challenges that seem insurmountable, or longing to build a legacy that will last beyond your lifetime, these principles hold eternal value. They will teach you how to move beyond the surface of life and lead with integrity, live with purpose, and leave a legacy that speaks of God’s goodness and faithfulness.</p>
-            <p>David was a man marked by passion and pursuit his life was a journey of intimacy with God, of seeking His will, of leading with both strength and grace. Like David, you too are invited to embark on this pursuit. The life you are called to live is one</p>
-          </div>
+        <div class="chapter-inner">
+          <h2 class="chapter-heading">DAVID THE KING- <span>..CHAPTER 03</span></h2>
+          <p class="chapter-intro">From shepherd to king, David's journey was marked by humility, faith, and an unwavering trust in God. This chapter explores David's reign as king over Israel his triumphs, his failures, and how he demonstrated a heart after God even in the midst of leadership challenges.</p>
+          <h3>THE RISE TO THE THRONE</h3>
+          <p>David's path to becoming king wasn't easy. He wasn’t born into a royal family, nor did he have a clear claim to the throne. His journey to kingship began with a single act of <strong>obedience</strong> the moment he was anointed by Samuel in the fields of Bethlehem. While Saul was the reigning king, God had already chosen David to take his place (1 Samuel 16:13).</p>
+          <p>David's rise was not immediate. After being anointed, he spent years serving in Saul’s court, playing the harp for the troubled king and gaining a reputation as a warrior. He fought for Israel, leading battles and victories, but the path was not without <strong>betrayal</strong> and <strong>danger</strong>. Saul, threatened by David's growing popularity, sought to kill him, forcing David into hiding. Yet even in these trying years, David never sought to take the throne by force. Instead, he chose to wait on God's perfect timing.</p>
+          <p>David’s patience was a reflection of his deep trust in God’s plan. He knew that God’s timing was always better than his own ambitions. When Saul died in battle, David's path to the throne was finally clear, and he was anointed king of Judah.</p>
         </div>
       </article>
-      <!-- PAGE 10: INTRODUCTION CONTINUED -->
+      <!-- PAGE 10: CHAPTER 03 CONTINUED -->
       <article class="book-page chapter-page" data-page="10">
-        <div class="chapter-content">
-          <div class="chapter-body">
-            <p>where God’s presence is your foundation, His wisdom is your guide, and His love is your strength.</p>
-            <p>As you explore these secrets, know that your journey to becoming a person after God’s own heart doesn’t require perfection it requires pursuit. And just as David’s pursuit of God was unwavering, so too is yours. This is a call to a deeper life, one that is rooted in intimacy with God, excellence in leadership, and a legacy that honors the Creator.</p>
-            <p>The secrets of David are not just ancient wisdom they are keys to a life filled with purpose, passion, and divine purpose.</p>
-            <p><strong>A journey awaits one that leads you closer to God’s heart.</strong></p>
-            <div style="width:280px;height:120px;margin:12px auto 38px;background:repeating-linear-gradient(-12deg,#63b7f1 0 3px,transparent 3px 9px,#dd0bc8 9px 12px,transparent 12px 18px,#162d59 18px 21px,transparent 21px 28px,#20c0df 28px 31px,transparent 31px 38px,#ffb52e 38px 41px,transparent 41px 48px);"></div>
-            <p><strong>WELCOME TO <span style="color:red;">THE 3 SECRETS OF DAVID.</span></strong></p>
-          </div>
+        <div class="chapter-inner">
+          <p>It wasn’t until years later, after much struggle and conflict, that David became the king over all of Israel.</p>
+          <h3>KING AFTER GOD’S OWN HEART</h3>
+          <p>When David became king, his first act was to bring the Ark of the Covenant to Jerusalem, a symbolic gesture of placing God at the center of the nation (2 Samuel 6). Unlike Saul, who had led without true reverence for God, David understood that true leadership was about submitting to God’s will and honoring Him above all else.</p>
+          <p>David's reign was marked by a heart for worship, obedience to God, and a desire for justice. He established a kingdom that was both spiritually and politically strong. His leadership was deeply influenced by his experiences as a shepherd he led with compassion, cared for his people, and was known for his humility.</p>
+          <p>Yet, despite his heart for God, David was not a perfect king. He faced his own weaknesses, mistakes, and temptations.</p>
+          <h3>THE FALL OF THE KING A MOMENT OF WEAKNESS</h3>
+          <p>A man who was called as the Shepherd, the Warrior, the King, the Psalmist, the Anointed One and while David was a man after God’s heart (Acts 13:22), his reign was not without its dark moments. The most well known story of David’s failure is his affair with Bathsheba, the wife of Uriah. In a moment of moral failure, David allowed his desire to lead him into sin, ultimately causing Uriah’s death in battle to cover up his actions (2 Samuel 11).</p>
+          <p>This was a moment of weakness, and it had serious</p>
         </div>
       </article>
-      <!-- PAGE 11: CHAPTER 01 OPENING -->
+      <!-- PAGE 11: CHAPTER 03 CONTINUED -->
       <article class="book-page chapter-page" data-page="11">
-        <div class="chapter-content">
-          <div class="chapter-header">
-            <h2 class="chapter-title">THE BIRTH AND EARLY LIFE OF DAVID-</h2>
-            <div class="chapter-number">CHAPTER 01</div>
-          </div>
-          <div class="chapter-body">
-            <p>Before the anointing oil ever touched his head, before the giant ever fell there was a BOY, the YOUNGEST of eight sons. This chapter explores David’s roots, family, upbringing, and how God often chooses the overlooked to carry out His greatest purposes.</p>
-            <h2>BORN IN BETHLEHEM A HUMBLE BEGINNING</h2>
-            <p>David’s story begins not in a palace, but in a pasture. He was born in Bethlehem, a small town in the region of Judah insignificant in the eyes of the world, yet deeply significant in the eyes of God. Bethlehem means “House of Bread,” and it’s no coincidence that from this house would come not just a king but a shepherd who would one day foreshadow the Bread of Life, Jesus Christ.</p>
-            <p>David was the youngest of eight sons of a man named Jesse (1 Samuel 16:10-11). Being the youngest in Hebrew tradition often meant being the least likely to inherit honor, attention, or responsibility. In fact, when the prophet Samuel came to Jesse’s house to anoint the next king of Israel, David wasn’t even invited to the lineup. He was left in the field tending sheep. Overlooked by man but seen by God.</p>
-            <h2>A BOY IN THE FIELD TRAINED IN THE QUIET</h2>
-          </div>
+        <div class="chapter-inner">
+          <p>consequences. David's sin brought turmoil to his family and kingdom. The prophet Nathan confronted David about his sin, and David responded with genuine repentance. His response to his sin his willingness to repent and seek forgiveness demonstrated the difference between a man who sought after God's heart and one who was simply a ruler seeking power.</p>
+          <p>In his psalm of repentance, Psalm 51, David cried out to God “Create in me a clean heart, O God, and renew a steadfast spirit within me.” (Psalm 51:10)</p>
+          <p>David’s heart, though imperfect, was tender before God. He didn’t hide his failures he acknowledged them and sought restoration like a warrior.</p>
+          <p>David’s role as a king also required him to be a warrior. He led Israel in several military campaigns, expanding the borders of the kingdom and establishing Israel as a dominant force in the region. His victories were a testimony to God's faithfulness and His hand upon David's life.</p>
+          <p>However, David's success in battle was not just due to military strategy. It was his faith that propelled him. In battle, he continually sought God’s direction, asking whether he should fight, where to fight, and how to fight. He didn’t trust in his army alone but in the <strong>power and guidance of God.</strong></p>
+          <p>David's story as a king resonates deeply with me. The weight of leadership is something I feel even in my own life. As a young entrepreneur and leader, I've faced moments where I've had to make tough decisions, sometimes navigating between what's right and what's easy. I've seen how integrity and humility are crucial when leading others, and how trusting God in moments of uncertainty can make all the difference.</p>
+          <p>But I also resonate with David's moments of failure. I'm not</p>
         </div>
       </article>
-      <!-- PAGE 12: CHAPTER 01 CONTINUED -->
+      <!-- PAGE 12: CHAPTER 03 CLOSING -->
       <article class="book-page chapter-page" data-page="12">
-        <div class="chapter-content">
-          <div class="chapter-body">
-            <p>David’s early life was shaped in the fields, not the throne room. As a shepherd, he was tasked with caring for sheep often alone, exposed to wild animals and harsh weather. But it was in that solitude that David learned how to protect, provide, and lead. The same hands that would one day hold a sword first learned how to sling a stone with deadly accuracy.</p>
-            <p>More importantly, it was in those lonely moments that David learned how to worship. Surrounded by silence, he sang songs to the Lord. Many of the Psalms we read today were likely birthed from these hidden years. Before he ever led a nation, he led his own heart in praise. His strength wasn’t in his skill alone it was in his intimacy with God.</p>
-            <h2>THE FORGOTTEN SON BUT NOT FORGOTTEN BY GOD</h2>
-            <p>When Samuel came to anoint one of Jesse’s sons as the next king, even the prophet was ready to anoint Eliab, the eldest son, based on appearance. But God stopped him: “Do not look at his appearance or at his physical stature, because I have refused him. For the Lord does not see as man sees for man looks at the outward appearance, but the Lord looks at the heart.” - 1 Samuel 16:7</p>
-            <p>David wasn’t chosen because of his position he was chosen because of his heart. That’s the real beginning of David’s greatness not in a battlefield, but in a field of sheep where he chose to be faithful, stay humble, and walk with God when no one was watching.</p>
-            <h2>TAKEAWAY: GOD SEES WHAT OTHERS MISS</h2>
-          </div>
+        <div class="chapter-inner">
+          <p>perfect. There have been moments in my life where I've fallen short, moments where I had to repent and seek God's forgiveness. David's response to his sin his genuine repentance reminds me that as long as I am humble enough to recognize my mistakes and turn back to God, there is grace for me. Leadership isn’t about perfection its about obedience to God, repentance when we fail, and trusting in His grace.</p>
+          <p>David's legacy as a king is remembered not only because of his military victories but also because of his deep devotion to God. His leadership was a blend of strength and humility, courage and worship. He wasn’t just a warrior he was a worshipper. He wasn’t just a ruler also he was a man after God’s own heart.</p>
+          <p>As a king, David left behind a legacy of worship. He organized the Levites to lead worship in the temple, and his psalms became a foundation for the worship of Israel. His commitment to God laid the groundwork for the Davidic covenant (2 Samuel 7), where God promised that his descendants would rule forever ultimately fulfilled in <span class="red-text"><strong>JESUS CHRIST</strong></span>, the eternal King.</p>
         </div>
       </article>
-      <!-- PAGE 13: CHAPTER 01 CONTINUED -->
+      <!-- PAGE 13: CHAPTER 04 OPENING -->
       <article class="book-page chapter-page" data-page="13">
-        <div class="chapter-content">
-          <div class="chapter-body">
-            <p>David’s birth and early life remind us that God doesn’t call the qualified. He calls the called. You may feel overlooked, underestimated, or left out but if your heart is right with God, He sees you. Promotion in the kingdom of God never begins with visibility it begins with faithfulness in obscurity, your private battles, your lonely seasons, your everyday obedience they are not wasted. They are training grounds for destiny.</p>
-            <p>When I reflect on David’s early life, I can’t help but think of my own beginnings. I wasn’t born into influence or fame. I was just a curious, Bible loving boy from Hyderabad often hidden in my room with Scripture, notebooks, and dreams much bigger than myself.</p>
-            <p>There were seasons where I felt like I was in the “field” too unnoticed, working quietly, not sure when or how my purpose would unfold. But it was in those quiet places that I discovered my voice, my calling, and most importantly, my God.</p>
-            <p>Like David, I’ve learned that the field is never a waste of time. It’s where God builds warriors and worshippers. It’s where He tests the heart before He gives the crown. And it’s where many of us are right now being prepared for something greater.</p>
-            <p>I didn’t always understand why I was passionate about both Scripture and technology, or why my path included business, law, and ministry but I now see it’s all part of the field God has placed me in. It’s all part of the preparation.</p>
-            <p>If you feel unseen today, I want to remind you that you are not forgotten. You may have people like Jesse and Eliab in your life right now those who overlook or doubt you but take heart and have faith. As 2 Corinthians 4:8-9 reminds us, we may face struggles, but we are not abandoned. You are in the hands of the same God who chose David, not for his status, but for</p>
-          </div>
+        <div class="chapter-inner">
+          <h2 class="chapter-heading">THE THREE SECRETS- <span>..CHAPTER 04</span></h2>
+          <p>Unveiling the Heart of a Warrior, Worshipper, and King.</p>
+          <p>Let’s start with a question, and then we will uncover/understand the deeper truths about this second king of Israel.</p>
+          <p><u>What made David different?</u></p>
+          <p>Not just anointed but chosen, not just successful but significant, not just a king but a man after God's own heart.</p>
+          <p>In a world filled with titles and achievements, David carried something deeper secrets forged in the wilderness, revealed in battle, tested in leadership, and proven in legacy. These secrets were not techniques but truths, not mere traits but dimensions of the heart.</p>
+          <div class="icon-strip" aria-hidden="true"><span class="icon-crown">♛</span><span class="icon-keys">⚿⚿⚿</span><span class="icon-heart">♥</span></div>
+          <p><strong>THIS CHAPTER 4 UNPACKS THE 3 SECRETS OF DAVID,</strong> each holding four life shaping keys. we are</p>
         </div>
       </article>
-      <!-- PAGE 14: CHAPTER 01 END -->
+      <!-- PAGE 14: CHAPTER 04 KEYS -->
       <article class="book-page chapter-page" data-page="14">
-        <div class="chapter-content">
-          <div class="chapter-body">
-            <p>his heart. Keep walking with Him. Keep worshipping in the quiet. The anointing will come.</p>
-            <div class="chapter-end-bar"></div>
-          </div>
+        <div class="chapter-inner">
+          <p>now at the core of this book, and I can say that this is the ‘chip’ that runs the book, like the central component of an electronic device.</p>
+          <h3 class="section-label">I. SPIRITUAL HEART.</h3>
+          <ol class="key-list">
+            <li>Humility &amp; repentance</li>
+            <li>Faith &amp; courage</li>
+            <li>Worship &amp; intimacy</li>
+            <li>Fear of the Lord</li>
+          </ol>
+          <h3>II. LEADERSHIP MINDSET.</h3>
+          <ol class="key-list" start="5">
+            <li>Strategic wisdom</li>
+            <li>Resilience under pressure</li>
+            <li>Emotional intelligence</li>
+            <li>Patience &amp; timing</li>
+          </ol>
+          <h3>III. RELATIONAL &amp; LEGACY BUILDING.</h3>
+          <ol class="key-list" start="9">
+            <li>Authenticity</li>
+            <li>Ability to inspire &amp; unite</li>
+            <li>Mentorship &amp; legacy</li>
+            <li>Creative communication</li>
+          </ol>
+          <h3>I. SPIRITUAL HEART.</h3>
         </div>
       </article>
-      <!-- PAGE 15: CHAPTER 02 OPENING -->
+      <!-- PAGE 15: SPIRITUAL HEART -->
       <article class="book-page chapter-page" data-page="15">
-        <div class="chapter-content">
-          <div class="chapter-header">
-            <h2 class="chapter-title">THE YOUTH OF DAVID-</h2>
-            <div class="chapter-number">CHAPTER 02</div>
-          </div>
-          <div class="chapter-body">
-            <p>The young shepherd who faced lions and bears in the wilderness was not just learning how to fight he was learning to trust in God. This chapter explores the courageous youth of David, his deep relationship with God, and the key moments that shaped him into the man after God's own heart.</p>
-            <h2>A HEART FOR GOD IN THE FIELDS</h2>
-            <p>David was a boy when God called him a <strong>teenager</strong>, barely more than a child when he was chosen to be king. The very fact that God saw his potential at such a young age is a testimony to His love and understanding of the human heart. David wasn’t called because of his age or stature he was chosen because of the heart he had for God, as we can see in Genesis 6:5. God's focus on the heart highlights that the nature of humanity's heart, corrupted by sin all the time, was a major reason for the flood during Noah's time. The heart is presented as central to God's judgment every time we see it in Scripture.</p>
-            <p>In the quiet fields of Bethlehem, David’s life was shaped by moments that seemed insignificant but were divine preparation. It was there, alone with his sheep, that David’s heart for worship grew. While other boys were playing games or dreaming of grander futures, David was writing songs, praying, and meditating on God’s Word.</p>
-            <p>His youth wasn’t wasted in selfish pursuits. It was in these formative years that David learned the <strong>power of worship</strong> and the <strong>strength of a heart devoted to God.</strong> These moments of devotion in solitude were not just an escape from his responsibilities but were moments that prepared him for</p>
-          </div>
+        <div class="chapter-inner">
+          <p>The foundation of David's success his relationship with God was the first and most essential secret. Long before he ever ruled from a throne or conquered giants, David was a man of the heart. A warrior at his core, but a worshipper at his foundation.</p>
+          <p>His spiritual heart was not formed in the comforts of a royal palace, but in the rugged fields where he tended sheep. It was in those quiet moments of solitude that David learned the depth of humility, the strength of repentance, and the unshakable faith that would later carry him through life's darkest valleys.</p>
+          <p>David’s heart was both soft and strong soft enough to humble himself before God in repentance, and strong enough to trust in God's ability to deliver him from every fear, every enemy. David knew that before any battle was fought with a sword, it had already been won in the heart. His devotion was not just ceremonial; it was personal, raw, and transformational.</p>
+          <p>In this we will discover how David’s spiritual heart was the bedrock of his intimacy with God, and how it fueled his courage, worship, and reverence. These keys will help you cultivate your own heart after God one that seeks to honor Him in both the small moments and the grand ones.</p>
+          <h3>1. Humility &amp; Repentance</h3>
+          <p>David wasn't perfect, but he was quick to humble himself. When confronted with sin, he didn’t deflect or deny. He broke. His psalm of repentance (Psalm 51) remains a timeless guide for every sinner seeking restoration.</p>
+          <p>Humility and repentance were David's reset buttons. They realigned him with God after every fall. This was the first secret ever running from God, always running to Him,</p>
+          <p class="quote">“Create in me a clean heart, O God...a broken and contrite</p>
         </div>
       </article>
-      <!-- PAGE 16: CHAPTER 02 CONTINUED -->
+      <!-- PAGE 16: FAITH / WORSHIP / FEAR -->
       <article class="book-page chapter-page" data-page="16">
-        <div class="chapter-content">
-          <div class="chapter-body">
-            <p>the much greater battles ahead.</p>
-            <h2>A SHEPHERD'S COURAGE FIGHTS IN THE WILDERNESS</h2>
-            <p>While many of his peers were learning the skills of a soldier, David was learning a different kind of warfare. As a shepherd, his main responsibility was to protect the sheep. This meant facing wild animals lions, bears, and other threats that would come for his flock. It was in these fierce encounters, where David stood alone against much stronger opponents, that his courage and trust in God were formed.</p>
-            <p>One particular incident stands out: “And David said, ‘The Lord who delivered me from the paw of the lion and the paw of the bear, He will deliver me from the hand of this Philistine.’” -1 Samuel 17:37</p>
-            <p>David wasn’t bragging about his skill he was recognizing that his victories were not his own. His faith in God, even in the face of danger, was what gave him strength. He learned early that God was with him in the battle, even when no one else was there.</p>
-            <p>This courage in his youth would eventually set the stage for his legendary battle against Goliath. But it wasn’t just physical strength or skill that made David stand out it was his deep trust in the God who delivered him in the past and would continue to deliver him in the future.</p>
-            <h2>A HEART THAT KNOWS GOD’S VOICE</h2>
-            <p>As a young shepherd, David’s most significant weapon wasn’t</p>
-          </div>
+        <div class="chapter-inner">
+          <p class="quote">heart you will not despise.”</p>
+          <p class="verse">-Psalm 51:10, 17</p>
+          <h3>2. Faith &amp; Courage</h3>
+          <p>Faith in God gave David courage when logic said he should be afraid. He faced Goliath not with armor, but with a sling, a stone, and a heart full of trust.</p>
+          <p class="quote">“The Lord who rescued me from the paw of the lion... will rescue me from the hand of this Philistine.”</p>
+          <p class="verse">1 Samuel 17:37</p>
+          <p>David’s courage wasn't rooted in ego it was rooted in confidence in God's faithfulness.</p>
+          <h3>3. Worship &amp; Intimacy</h3>
+          <p>David was a warrior, but also a worshipper. He didn’t just fight battles he sang songs to the Lord. The Psalms are more than poetry they are a record of a soul in constant communion with God.</p>
+          <p class="quote">“One thing I ask of the Lord... to gaze upon the beauty of the Lord and to seek Him in His temple.”</p>
+          <p class="verse">-Psalm 27:4</p>
+          <p>Worship wasn’t an event for David it was a lifestyle. In music, in prayer, in silence he pursued intimacy with God.</p>
+          <h3>4. Fear of the Lord</h3>
+          <p>David’s reverence for God shaped all his decisions. Even when he had the chance to kill Saul, he refrained not because Saul was righteous, but because God had anointed him.</p>
+          <p class="quote">“Who can lay a hand on the Lord’s anointed and be guiltless?”</p>
+          <p class="verse">-1 Samuel 26:9</p>
+          <p>This holy fear kept David aligned with God's will, even when it</p>
         </div>
       </article>
-      <!-- PAGE 17: CHAPTER 02 CONTINUED -->
+      <!-- PAGE 17: LEADERSHIP MINDSET -->
       <article class="book-page chapter-page" data-page="17">
-        <div class="chapter-content">
-          <div class="chapter-body">
-            <p>his slingshot it was his <u>ability to hear and recognize the voice of God.</u> In the fields, away from distractions, David learned to listen to the Lord. His psalms are full of language that speaks of God as his shepherd, his refuge, and his fortress. David knew the voice of his Shepherd, and he followed it.</p>
-            <p>In today’s world, we often face a million distractions. But David’s youth teaches us the power of solitude and stillness before God. It was in that space that David learned to hear God’s voice clearly and respond with obedience.</p>
-            <p>I can relate deeply to David’s experience as a young person learning to hear God’s voice. I remember moments in my own youth when I felt alone, unsure of my place in the world, and yet I knew in my heart that God was leading me. It wasn’t always in grand events or loud moments it was in the stillness of prayer, the quiet times spent reading Scripture, and the subtle promptings of the Holy Spirit.</p>
-            <p>I believe the quiet moments of our youth are not wasted. When we spend time seeking God whether it’s in a prayer closet, a Bible study, or even in our thoughts during the day we are allowing ourselves to hear His voice. Just like David in the fields, we are being shaped for greater things.</p>
-            <p>David’s youth was also marked by a deep devotion to prayer. His relationship with God wasn’t just ceremonial it was personal. Even when he faced rejection from his family and his peers, David continued to cultivate this relationship with the Lord. He wasn’t just a future king in the making he was a worshipper, a man of prayer, a servant at heart.</p>
-            <p>The Psalms, many of which were written by David during his youth, are evidence of his constant dialogue with God. Whether it was in times of joy or sorrow, David’s heart poured out in worship and prayer.</p>
-          </div>
+        <div class="chapter-inner">
+          <p>cost him comfort or control.</p>
+          <h3>II. LEADERSHIP MINDSET.</h3>
+          <p>David wasn’t just a man with a heart for God he was a leader of men. His rise to kingship was not a mere result of his battle victories or political prowess, but of his ability to lead from a place of wisdom, resilience, and emotional intelligence.</p>
+          <p>A warrior at heart, David led Israel to victory in numerous battles, but it wasn’t just his strategy or military skill that marked him as a great leader. His leadership mindset was defined by his ability to see beyond the immediate, to trust in God’s timing, and to maintain resilience under pressure. David faced betrayal, rebellion, and personal failure but he never lost sight of his divine calling. His emotional intelligence was evident in how he responded to both victory and failure, balancing humility with bold action.</p>
+          <p>David's leadership was characterized by patience not rushing into decisions but trusting that God would reveal the right time for action. His example shows us how great leadership requires not just intellect, but emotional maturity and strategic vision.</p>
+          <p>In this section, we’ll examine the keys that helped David develop a mindset of leadership. We'll explore how resilience, patience, and strategic wisdom helped him lead not just with power, but with grace and integrity.</p>
+          <p>God didn’t just give David a heart after His own He gave him the mind of a leader. These were the qualities that sustained David through <strong>betrayal, warfare, and national crisis.</strong></p>
         </div>
       </article>
-      <!-- PAGE 18: CHAPTER 02 CONTINUED -->
+      <!-- PAGE 18: LEADERSHIP KEYS -->
       <article class="book-page chapter-page" data-page="18">
-        <div class="chapter-content">
-          <div class="chapter-body">
-            <p>David’s youth teaches us a powerful lesson, no time is wasted when it’s spent with God. God doesn’t just shape us in our later years as the world thinks in the aged experienced people can do the better things. He begins His work in us early on, even in the seemingly small and quiet seasons of life. The prayers we pray, the worship we offer, and the courage we show in our youth have the potential to prepare us for the battles and callings of our future.</p>
-            <p>So, if you’re young or in a season where you feel you haven’t yet stepped into your purpose, remember that God is at work in you now. He is shaping you, preparing you, and drawing you closer to Himself. Your youth is not a waiting period, it’s a training ground. Remember 1 Samuel 2:18-21: “But Samuel was ministering before the Lord a boy wearing a linen ephod. Each year, his mother made him a little robe and took it to him when she went up with her husband to offer the annual sacrifice. Eli would bless Elkanah and his wife, saying, ‘May the Lord give you children by this woman to take the place of the one she prayed for and gave to the Lord.’ Then they would go home. And the Lord was gracious to Hannah she gave birth to three sons and two daughters. Meanwhile, the boy Samuel grew up in the presence of the Lord.</p>
-            <p>This passage highlights Samuel's early life, where, as a child, he was dedicated to the Lord's service. Samuel’s <strong>early training</strong> in the temple laid the foundation for his later role as a prophet and <strong>leader of Israel.</strong> Samuel’s youth was very much a time of preparation for his future calling similarly, remember that your youth is not a waiting period it’s a training ground. Make good use of this time so that when the game is on, you can perform at your best and achieve victory.</p>
-            <p>I’ve often thought of the times when I was younger, struggling with doubts, fears, and questions about my future. But I’ve</p>
-          </div>
+        <div class="chapter-inner">
+          <h3>5. Strategic Wisdom</h3>
+          <p>David was more than brave he was smart. He planned, adapted, and sought divine counsel. He unified tribes, expanded borders, and organized armies, worship, and administration.</p>
+          <p class="quote">“David inquired of the Lord, Shall I go up against the Philistines?”</p>
+          <p class="verse">-2 Samuel 5:19</p>
+          <p>He combined prayer with planning-never assuming, always asking.</p>
+          <h3>6. Resilience Under Pressure</h3>
+          <p>David’s path to the throne was paved with trials. Hunted by Saul. Betrayed by his own son. Mocked, slandered, exiled. And yet he kept rising.</p>
+          <p class="quote">“The Lord is my rock, my fortress, and my deliverer.”</p>
+          <p class="verse">-Psalm 18:2</p>
+          <p>Resilience was forged in the wilderness. David learned to lead not just in victory but in suffering.</p>
+          <h3>7. Emotional Intelligence</h3>
+          <p>David wasn’t just strong he was self-aware. He wept openly. He listened. He grieved deeply. He knew when to confront and when to retreat.</p>
+          <p>Whether comforting a broken Mephibosheth or mourning his enemy Saul, David showed emotional depth rare among ancient kings.</p>
+          <h3>8. Patience &amp; Timing</h3>
+          <p>David was anointed long before he was appointed. He waited years to ascend the throne years of running, hiding, and serving, he didn’t force God’s hand. He knew that a promise in God’s time is better than a throne in your own strength</p>
         </div>
       </article>
-      <!-- PAGE 19: CHAPTER 02 END -->
+      <!-- PAGE 19: RELATIONAL & LEGACY BUILDING -->
       <article class="book-page chapter-page" data-page="19">
-        <div class="chapter-content">
-          <div class="chapter-body">
-            <p>found that the times I spent seeking God in those moments of vulnerability and they were the times that <strong>anchored me most deeply in my relationship with Him and future.</strong> It was a time to ask questions, to find peace, and to rest in His presence.</p>
-            <div class="chapter-end-bar"></div>
-          </div>
+        <div class="chapter-inner">
+          <p class="quote">“I waited patiently for the Lord He turned to me and heard my cry.”</p>
+          <p class="verse">-Psalm 40:1</p>
+          <h3>III. RELATIONAL &amp; LEGACY BUILDING.</h3>
+          <p>David knew that true greatness wasn’t measured by how many battles he won or how powerful his kingdom became but by how he built others. This third secret reveals the relational wisdom David used to cultivate a lasting legacy. David wasn’t simply interested in his own success he cared deeply about others his men, his family, and his future.</p>
+          <p>David's ability to inspire and unite was a rare gift, and he used it to build a loyal following, even when his life was marked by conflict and adversity. His authenticity made him approachable, and his deep understanding of mentorship ensured that the legacy of his leadership would extend far beyond his own reign. He didn’t just lead he invested in people drawing them out of their potential and into their purpose.</p>
+          <p>But perhaps the most profound aspect of David’s relational wisdom was his communication. David didn't just speak to the people he spoke to their hearts. He communicated not just with words, but with actions, leading by example in ways that left an indelible mark on those who followed him.</p>
+          <p>This final section will teach you how to build your own legacy by embracing authenticity, inspiring others, and communicating with creativity and clarity. David’s legacy wasn’t just in his wealth or military power it was in the hearts of those he mentored, and the generations that would follow him.</p>
+          <p>David was more than a solitary hero he was a builder of community, a father of legacy. His influence shaped</p>
+        </div>
+      </article>
+      <!-- PAGE 20: RELATIONAL KEYS -->
+      <article class="book-page chapter-page" data-page="20">
+        <div class="chapter-inner">
+          <p>generations.</p>
+          <h3>9. Authenticity</h3>
+          <p>David didn’t lead with a mask. His flaws were known. His psalms were personal. He didn’t pretend to be perfect he let people see his humanity.</p>
+          <p>Authenticity created trust. It made people want to follow him, not just because of his victories, but because of his heart.</p>
+          <h3>10. Ability to Inspire &amp; Unite</h3>
+          <p>David turned outcasts into mighty men. He brought together divided tribes into a United Kingdom. His leadership awakened destiny in others.</p>
+          <p class="quote">“Day after day men came to help David, until he had a great army, like the army of God.”</p>
+          <p class="verse">-1 Chronicles 12:22</p>
+          <p>He inspired loyalty because he led from conviction and purpose.</p>
+          <h3>11. Mentorship &amp; Legacy</h3>
+          <p>David didn’t keep greatness to himself he passed it on. To Solomon, to his mighty men, to the psalmists, to the nation. He poured wisdom into others, preparing them to build what he could only dream.</p>
+          <p>He didn’t just lead for his lifetime he led for the next one.</p>
+          <h3>12. Creative Communication.</h3>
+          <p>David used psalms, music, and storytelling to communicate truth. His creative expressions of faith songs, prayers, laments continue to impact millions today.</p>
+          <p>He knew that truth wrapped in beauty becomes timeless.</p>
+        </div>
+      </article>
+      <!-- PAGE 21: CHAPTER 04 CLOSING -->
+      <article class="book-page chapter-page" data-page="21">
+        <div class="chapter-inner">
+          <p><strong>These 12 secrets</strong> were more than traits they were entrusted. David stewarded them faithfully. And through them, he shaped history.</p>
+          <ul class="key-list">
+            <li>His <strong>spiritual heart</strong> gave him favor with God.</li>
+            <li>His <strong>leadership mindset</strong> gave him influence among people.</li>
+            <li>His <strong>relational legacy</strong> gave him impact beyond his years.</li>
+          </ul>
+          <p>And the beauty is these aren't secrets meant to stay hidden. They are divine keys passed down to us. Through Christ, we too are called to walk in humility, courage, wisdom, and legacy.</p>
+        </div>
+      </article>
+      <!-- PAGE 22: CHAPTER 05 OPENING -->
+      <article class="book-page chapter-page" data-page="22">
+        <div class="chapter-inner">
+          <h2 class="chapter-heading">DAVID &amp; SAUL HONOR IN OPPOSITION <span>..CHAPTER 05</span></h2>
+          <p><strong>Even when hunted, David chooses integrity over revenge.</strong></p>
+          <p>It's one thing to follow God when life is peaceful, when victories are won, and praise is abundant. But the real test of character comes when we are misunderstood, mistreated, and pursued by people who wish us harm.</p>
+          <p>This is where we find David anointed by God, yet on the run from a jealous king. Betrayed, hunted, forced into caves and foreign lands his story in these years is not one of ease, but endurance. And yet, in the middle of chaos, David displays something truly remarkable honor in opposition.</p>
+          <p>Saul had everything: the crown, the army, the support of a nation. But once David stepped into the spotlight slaying Goliath, winning battles, and inspiring songs Saul’s insecurities took root.</p>
+          <p class="quote">“Saul has slain his thousands, and David his tens of thousands.”</p>
+          <p class="verse">1 Samuel 18:7</p>
+          <p>Those words ignited a fire of envy in Saul’s heart. What began as admiration quickly became fear. Saul saw David not as a servant, but as a threat. And so, he began his descent a downward spiral of paranoia, manipulation, and violence.</p>
+          <p>Saul hurled spears, made secret plots, and eventually set out to kill David, chasing him across deserts and mountains with relentless fury.</p>
+          <p>While Saul ruled in the palace, David hid in caves. While Saul feasted, David fasted. The wilderness became David's crucible, where his heart was tested, and his character refined.</p>
+        </div>
+      </article>
+      <!-- PAGE 23: CHAPTER 05 CONTINUED -->
+      <article class="book-page chapter-page" data-page="23">
+        <div class="chapter-inner">
+          <p>But even in hiding, David never lost sight of the truth God had anointed him, but God had not yet appointed him. David knew the crown would one day be his, but he refused to take it by force. He would not touch what God had not yet released to him.</p>
+          <p>Twice, David had the opportunity to kill Saul and both times, he chose restraint over revenge. (1 Samuel 24-27)</p>
+          <p>David’s actions were not driven by fear, but by reverence. He honored Saul, not because Saul was honorable, but because David trusted God’s timing more than his own ambition.</p>
+          <p>He could have taken the throne through violence. But instead, David chose to wait for God’s hand to move.</p>
+          <p>This is the mark of true leadership not grasping for power but surrendering to God's process. David showed that integrity is not proven in public moments of praise but in hidden decisions when no one is watching.</p>
+          <p>David's restraint teaches us powerful truths like Revenge is easy honor is holy, God’s promises don’t require manipulation, Leadership is forged in waiting.</p>
+          <p>David's refusal to harm Saul wasn’t weakness it was worship. His trust in God was greater than his need to prove himself. He wasn’t just fighting Saul's army he was fighting pride, impatience, and bitterness. And through it all, David kept his heart clean.</p>
+          <p>He lived these words long before he wrote them <em>“Wait for the Lord be strong and take heart and wait for the Lord.”</em> Psalm 27:14</p>
+        </div>
+      </article>
+      <!-- PAGE 24: CHAPTER 06 OPENING -->
+      <article class="book-page chapter-page" data-page="24">
+        <div class="chapter-inner">
+          <h2 class="chapter-heading">DAVID’S FAILURES &amp; GOD’S MERCY <span>..CHAPTER 06</span></h2>
+          <p><strong>Adultery, murder, and the beauty of repentance what not.</strong></p>
+          <p>The man after God’s own heart, is often remembered for his triumphs his victory over Goliath, his conquest of Jerusalem, his leadership of Israel. But David's story is also marked by some of the darkest moments in biblical history. The king who unified a kingdom, wrote psalms of worship, and led God’s people was also the same man who committed adultery, orchestrated murder, and failed miserably in his moral choices.</p>
+          <p>Yet, even in the midst of such profound failure, David’s life tells a story of grace God's mercy, His pursuit of the lost, and the beauty of true repentance.</p>
+          <p>The story of David's sin with Bathsheba begins with a moment of weakness. It was springtime, a time when kings went off to war. Yet David stayed behind in Jerusalem. Perhaps he grew comfortable, complacent, or simply let his guard down. Whatever the reason, while his men fought, David found himself on the roof of his palace, gazing down at Bathsheba, a beautiful woman bathing.</p>
+          <p>What followed was a series of choices that would haunt David for the rest of his life. He sent for Bathsheba, slept with her, and she became pregnant. In an attempt to cover his sin, David summoned her husband, Uriah, a loyal soldier fighting in his army, and tried to get him to sleep with his wife. When that plan failed, David orchestrated Uriah’s death on the battlefield. He gave the orders to have Uriah placed in the most dangerous part of the battle, where he was killed.</p>
+          <p class="quote">“The thing David had done displeased the Lord.”</p>
+          <p class="verse">-2 Samuel 11:27</p>
+        </div>
+      </article>
+      <!-- PAGE 25: CHAPTER 06 NATHAN -->
+      <article class="book-page chapter-page" data-page="25">
+        <div class="chapter-inner">
+          <p>This cold-hearted act of adultery and murder was a tragedy that shook the nation. David, the man who had once been a humble shepherd, now seemed distant from the God he once passionately followed.</p>
+          <p>For a time, David lived in the shadow of his sin. He tried to hide the truth from his people, from his own heart, and from God. It’s easy to imagine the weight David carried during this time: guilt, shame, and the haunting thought that he had lost the purity that once defined him. What he had done felt unforgivable. Yet, he never truly got away from the voice of conviction deep within him.</p>
+          <p>In the silence of his heart, David knew the truth. Though he may have thought he could hide his actions from men, there was one who saw everything the God who had anointed him, called him, and loved him despite his flaws.</p>
+          <p>It wasn’t until God sent the prophet Nathan that David was forced to confront his sin. Nathan came to David with a parable about a rich man who took the only lamb of a poor man to prepare a meal for a traveler. David, enraged at the injustice, declared that the rich man deserved to die. Nathan, with piercing clarity, responded</p>
+          <p class="quote">“You are the man!”</p>
+          <p class="verse">-2 Samuel 12:7</p>
+          <p>In that moment, the weight of David's sin came crashing down. Nathan revealed not just the wrongs of adultery and murder, but the deeper sin David had despised the word of the Lord, trampled on God’s commandments, and brought shame to the name of God.</p>
+          <p>David could have chosen to reject Nathan’s words, to justify his actions, or to turn away in pride. But instead, David's response was one of raw honesty.</p>
+        </div>
+      </article>
+      <!-- PAGE 26: CHAPTER 06 REPENTANCE -->
+      <article class="book-page chapter-page" data-page="26">
+        <div class="chapter-inner">
+          <p class="quote">“I have sinned against the Lord.”</p>
+          <p class="verse">-2 Samuel 12:13</p>
+          <p>David's acknowledgment of his sin was not simply an admission of guilt. It was an act of repentance. Repentance is more than feeling sorry it's a radical turning away from sin and toward God. David’s confession didn't come with excuses or attempts to minimize the severity of his actions. He didn’t blame Bathsheba or claim his position as king entitled him to indulgence. He owned his sin.</p>
+          <p>In Psalm 51, we find David’s prayer of repentance one of the most heartfelt and powerful prayers in Scripture. Here, we hear the cry of a broken man who understands the depth of his offense against God.</p>
+          <p class="quote">“Have mercy on me, O God,<br>according to your unfailing love<br>according to your great compassion<br>blot out my transgressions.”</p>
+          <p class="verse">-Psalm 51:1</p>
+          <p>David's prayer is not just about the consequences of his sin it’s about the restoration of his relationship with God. He recognizes that his sin has wounded the heart of God, and that only God's mercy can heal the wound.</p>
+          <p class="quote">“Create in me a pure heart, O God,<br>and renew a steadfast spirit within me.”</p>
+          <p class="verse">-Psalm 51:10</p>
+          <p>This is the beauty of repentance: it restores what sin has broken. It reopens the door to fellowship with God, even when we feel unworthy. Repentance is not about punishment it’s about reconciliation. David, despite his failures, found mercy at the foot of God’s throne.</p>
+          <p>Though David found forgiveness, the consequences of his sin were not removed. The child born of Bathsheba died, and</p>
+        </div>
+      </article>
+      <!-- PAGE 27: CHAPTER 06 CLOSING -->
+      <article class="book-page chapter-page" data-page="27">
+        <div class="chapter-inner">
+          <p>there was turmoil within David's family. Yet, through it all, God’s mercy remained.</p>
+          <p class="quote">“The Lord has taken away your sin. You are not going to die.”</p>
+          <p class="verse">2 Samuel 12:13</p>
+          <p>David's story shows us that even when <em>“We fall, God’s mercy is greater.</em> The price of sin is high, and repentance doesn't erase the consequences, but it restores us to the God who loves us.</p>
+          <p>David’s failure was great, but God's forgiveness was greater. His story is a testimony to the power of mercy not the kind that excuses sin, but the kind that transforms the sinner.</p>
+          <p>Failures didn't disqualify anyone from God's purpose. In fact, they showed the depths of God’s grace. Through David’s brokenness, God made a way for redemption a way that would ultimately lead to the Messiah.</p>
+          <p><span class="red-text"><strong>Jesus</strong></span>, the Son of David, would bear the weight of sin on the cross. The King who was born from David’s line would take on the very failures that stained David’s legacy. Through His death and resurrection, forgiveness would be available to all who, like David, come before God in repentance.</p>
         </div>
       </article>
     </section>
@@ -1523,7 +1665,7 @@ body {
     id="pageSelectorButton"
     aria-expanded="false"
   >
-    Page 1 of 19
+    Page 1 of 8
     <span class="page-selector-arrow">▼</span>
   </button>
   <div
