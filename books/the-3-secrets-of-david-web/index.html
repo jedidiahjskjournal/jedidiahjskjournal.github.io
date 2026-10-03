@@ -1272,6 +1272,15 @@
   box-sizing:border-box;
   max-width:100%;
 }
+
+/* Invisible content boundary used by translation fitting. */
+.book-fit-boundary{
+  position:absolute;
+  inset:0;
+  border:0;
+  pointer-events:none;
+  overflow:hidden;
+}
 /* ==============================
    GOOGLE TRANSLATE INJECTED UI
    Target only the floating Google graphic container
@@ -2651,41 +2660,58 @@ body {
     pageTargets.forEach(el => fitElement(el, page));
 
     /*
-       Final page-level safety pass. The original fitter checks each
-       translated element individually. A translated page can still
-       overflow when several individually-fitting elements stack together.
-       When that happens, reduce the text elements together until the whole
-       content block fits inside the existing fixed page.
-
-       English pages that already fit are unchanged. Mobile keeps its existing
-       whole-stage scaling; this pass only acts when the page content itself
-       is actually taller than its available box.
+       PAGE BOUNDARY PASS
+       The visible page is the fixed 355 x 550 boundary. The translator
+       can increase line count/height, so measure the actual bottom edge
+       of all rendered content inside that boundary. Reduce translated
+       text only when something crosses the boundary.
     */
-    const contentRoot =
-      page.querySelector('.chapter-inner, .chapter-opener-inner, .preface-content, .dedication-content, .publication-content, .toc-content, .final-inner');
+    const root = page.querySelector(
+      '.chapter-inner, .chapter-opener-inner, .preface-content, .dedication-content, .publication-content, .toc-content, .final-inner'
+    );
+    if(!root) return;
 
-    if(!contentRoot) return;
+    const pageRect = page.getBoundingClientRect();
+    const cs = getComputedStyle(page);
+    const bottomLimit =
+      pageRect.bottom - (parseFloat(cs.paddingBottom) || 0) - 4;
+    const topLimit =
+      pageRect.top + (parseFloat(cs.paddingTop) || 0);
+
+    function contentOverflow(){
+      let bottom = topLimit;
+      const elements = Array.from(root.querySelectorAll('*')).filter(el => {
+        if(!el.textContent.trim()) return false;
+        const r = el.getBoundingClientRect();
+        const style = getComputedStyle(el);
+        if(style.display === 'none' || style.visibility === 'hidden') return false;
+        return r.width > 0 && r.height > 0;
+      });
+      elements.forEach(el => {
+        const r = el.getBoundingClientRect();
+        if(r.bottom > bottom) bottom = r.bottom;
+      });
+      return bottom - bottomLimit;
+    }
 
     let pass = 0;
-    while(contentRoot.scrollHeight > contentRoot.clientHeight + 1 && pass < MAX_PASSES){
+    while(contentOverflow() > 0.5 && pass < MAX_PASSES){
       let changed = false;
-
       pageTargets.forEach(el => {
-        if(!contentRoot.contains(el)) return;
+        if(!root.contains(el)) return;
         const current = parseFloat(getComputedStyle(el).fontSize);
         if(!Number.isFinite(current) || current <= MIN_FONT_PX) return;
-
         const next = Math.max(MIN_FONT_PX, current - STEP_PX);
         if(next < current){
           el.style.fontSize = next + 'px';
           changed = true;
         }
       });
-
       if(!changed) break;
       pass++;
     }
   }
+
   let timer = 0;
   window.requestBookPageFit = function(page){
     clearTimeout(timer);
