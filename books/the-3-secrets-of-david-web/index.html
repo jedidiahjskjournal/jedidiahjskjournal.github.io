@@ -1270,6 +1270,20 @@
   box-sizing:border-box;
   max-width:100%;
 }
+
+/* Keep translated text wrapping inside the fixed page canvas. */
+.book-page.book-fit-active p,
+.book-page.book-fit-active h1,
+.book-page.book-fit-active h2,
+.book-page.book-fit-active h3,
+.book-page.book-fit-active h4,
+.book-page.book-fit-active h5,
+.book-page.book-fit-active h6,
+.book-page.book-fit-active li,
+.book-page.book-fit-active blockquote{
+  overflow-wrap:anywhere;
+  word-break:normal;
+}
 /* ==============================
    GOOGLE TRANSLATE INJECTED UI
    Target only the floating Google graphic container
@@ -2640,11 +2654,91 @@ body {
       el.style.whiteSpace = 'nowrap';
     }
   }
+  function pageContentBox(page){
+    const inner = page.querySelector(
+      '.chapter-inner, .title-content, .dedication-content, .publication-content, .preface-content, .toc-content, .final-inner'
+    );
+    if(inner){
+      return {
+        element: inner,
+        height: Math.max(40, inner.clientHeight)
+      };
+    }
+    const cs = getComputedStyle(page);
+    const top = parseFloat(cs.paddingTop) || 0;
+    const bottom = parseFloat(cs.paddingBottom) || 0;
+    return {
+      element: page,
+      height: Math.max(40, page.clientHeight - top - bottom)
+    };
+  }
+
+  function blockTargets(page){
+    const selectors = [
+      '.title-the', '.title-three', '.title-secrets', '.title-of',
+      '.title-david', '.title-subtitle', '.title-by', '.title-author',
+      '.title-tagline', '.dedication-heading', '.dedication-text p',
+      '.acknowledgements-heading', '.acknowledgements-text p',
+      '.toc-heading', '.toc-item-title', '.toc-item-desc', '.toc-item-number',
+      'h1','h2','h3','h4','h5','h6','p','li','blockquote'
+    ];
+    return Array.from(page.querySelectorAll(selectors.join(','))).filter(el => {
+      if(!el.textContent.trim()) return false;
+      if(el.closest('.reader-controls,.page-selector')) return false;
+      return true;
+    });
+  }
+
   function fitPage(page){
     if(!page) return;
     page.classList.add('book-fit-active');
-    targets(page).forEach(saveBase);
-    targets(page).forEach(el => fitElement(el, page));
+
+    const allTargets = targets(page);
+    allTargets.forEach(saveBase);
+    allTargets.forEach(el => fitElement(el, page));
+
+    /*
+       A translated page can overflow even when every individual paragraph
+       fits its own local box. The total translated composition is what must
+       stay inside the fixed 355 x 550 page. Reduce the block-level text only
+       when the complete page still overflows.
+    */
+    const blocks = blockTargets(page);
+    const MAX_PAGE_PASSES = 80;
+    const PAGE_STEP_PX = 0.5;
+    const MIN_PAGE_FONT_PX = 7;
+    let pass = 0;
+
+    while(pass < MAX_PAGE_PASSES){
+      const box = pageContentBox(page);
+      if(box.element.scrollHeight <= box.height + 1) break;
+
+      let changed = false;
+      blocks.forEach(el => {
+        if(el.closest('.reader-controls,.page-selector')) return;
+        const size = parseFloat(getComputedStyle(el).fontSize);
+        if(!Number.isFinite(size) || size <= MIN_PAGE_FONT_PX) return;
+        el.style.fontSize = Math.max(MIN_PAGE_FONT_PX, size - PAGE_STEP_PX) + 'px';
+        changed = true;
+      });
+
+      if(!changed) break;
+      pass++;
+    }
+
+    /* Final per-element guard after the page-level reduction. */
+    const localBox = pageBox(page);
+    blocks.forEach(el => {
+      let size = parseFloat(getComputedStyle(el).fontSize);
+      if(!Number.isFinite(size)) return;
+      let guard = 0;
+      while(guard < 20 && size > MIN_PAGE_FONT_PX &&
+            (el.scrollWidth > localBox.width + 1 || el.scrollHeight > localBox.height + 1)){
+        size -= PAGE_STEP_PX;
+        el.style.fontSize = Math.max(MIN_PAGE_FONT_PX, size) + 'px';
+        guard++;
+      }
+    });
   }
   let timer = 0;
   window.requestBookPageFit = function(page){
